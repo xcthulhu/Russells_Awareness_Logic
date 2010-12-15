@@ -1,0 +1,142 @@
+\begin{proof}
+  Soundness is straightforward, so we will only address completeness.  Assume
+  $\nvdash \psi$.  Consider the finite canonical model $\mathbbm{M}= \langle
+  W, V, R, \mathcal{A} \rangle$ formed of maximally consistent sets of
+  subformulae of $\phi$ (closed under single negations{\footnote{A discussion
+  of this property may be found in {\cite[pg.
+  243]{blackburn_modal_2001}}.}}), as per the finitary modal completeness
+  proofs found in {\cite[chapter 4.8]{blackburn_modal_2001}} and
+  {\cite[chapter 5]{boolos_logic_1995}}.  Typical presentations do not
+  include awareness, however it is defined intuitively in this case:
+  \[ \phi \in \mathcal{A}_w \Longleftrightarrow A : \phi \in w \]
+  Since $\psi$ is a subformula of itself, we have $\mathbbm{M}, w \nvDash
+  \psi$ for some world $w$ by a finitary {\tmem{Lindenbaum Lemma}} and
+  {\tmem{Truth Theorem}}.  Moreover, it is straightforward to verify that
+  $\mathbbm{M}$ makes true the following properties:
+  \begin{enumeratenumeric}
+    \item $W$ and $\mathcal{A}_v$ are finite, and $\psi \in \mathcal{A}_v$
+    only if $\psi$ is a (possibly negated) subformula of $\phi$
+    
+    \item if $\mathbbm{M}, v \vDash A : \psi$ then $\mathbbm{M}, v \vDash \Box
+    \psi$
+    
+    \item if $\mathbbm{M}, v \vDash \circlearrowleft$ then $v R v$
+  \end{enumeratenumeric}
+  
+  We next produce a bisimular{\footnote{The notion of bisimulation is
+  discussed at length in {\cite[chapter 2.2]{blackburn_modal_2001}}.  We
+  note that the basic definition and all of the usual theorems (modal
+  equivalence, Henessy-Milner, etc.) may be generalized to awareness models in
+  a straightforward fashion. }} model $\mathbbm{M}'$ which makes true (1), (2)
+  and a stronger from of (3):
+  
+  {\hspace*{\fill}}\begin{tabular}{ll}
+    \tmtextbf{3$'$.} & $\mathbbm{M}', v \vDash \circlearrowleft \iff v R v$
+  \end{tabular}{\hspace*{\fill}}
+  
+  
+  
+  To this end define $\mathbbm{M}' \assign \langle W', V', R', \mathcal{A}'
+  \rangle$ such that{\footnote{Throughout this article, we use $l$ and $r$ to
+  denote the two canonical injections associated with the coproduct $W \uplus
+  W$. We will use $v_l$ and $v_r$ as the shorthand for $l (v)$ and $r (v)$
+  respectively.}}: {\hspace*{\fill}}
+  \begin{itemizedot}
+    \item $W' \assign W \uplus W$
+    
+    \item $V' (p) \assign \{v_l, v_r \hspace{1em} | \hspace{1em} v \in V
+    (p)\}$
+    
+    \item $R' \assign \{(v_l, u_r), (v_r, u_l) \hspace{1em} | \hspace{1em} v R
+    u\} \cup \{(v_l, v_l), (v_r, v_r) \hspace{1em} | \hspace{1em} \mathbbm{M},
+    v \vDash \circlearrowleft\}$
+    
+    \item $\mathcal{A}' (v_l) \assign \mathcal{A}' (v_r) \assign \mathcal{A}
+    (v)$
+  \end{itemizedot}
+  
+  
+  It is straightforward to verify that $\mathbbm{M}'$ makes true the desired
+  properties.  Let $Z \assign \{(v, v_l), (v, v_r) \hspace{1em} |
+  \hspace{1em} v \in W\}$.  then $Z$ is a bisimulation between $\mathbbm{M}$
+  and $\mathbbm{M}'$.  Therefore we know there is some $w \in W$ such that
+  $\mathbbm{M}', w_l \nvDash \psi$ and $\mathbbm{M}', w_r \nvDash \psi$.
+  
+  
+  
+  Finally we construct a model $\mathbbm{M}''$ which agrees with
+  $\mathbbm{M}'$ for all subformulae of $\psi$, which makes true
+  \tmtextbf{CSQ} and \tmtextbf{SND}.  Let $\Lambda$ be the set of proposition
+  letters occurring in $\psi$.  We will make use members of $\Phi \backslash
+  \Lambda$ as {\tmem{nominals}}, as per the tradition in hybrid logic.  This
+  is possible since both $W'$ and $\Lambda$ are finite and $\Phi$ is infinite
+  by hypothesis.  Let $\iota : W \uplus W \hookrightarrow \Phi \backslash
+  \Lambda$ be an injection assigning a fresh nominal associated with each
+  world in $\mathbbm{M}'$.  Now define $\mathbbm{M}'' \assign \langle W'',
+  V'', R'', \mathcal{A}'' \rangle$, where:
+  
+  
+  
+  \begin{center}
+    \begin{tabular}{lllll}
+      $\bullet$ & $W'' \assign W'$ &  & $\bullet$ & $V'' (p) \assign \left\{
+      \begin{array}{ll}
+        V' (p) & p \in \Lambda\\
+        \{v\} & p = \iota (v)\\
+        \varnothing & o / w
+      \end{array} \right.$\\
+      $\bullet$ & $R'' \assign R'$ & {\hspace{3em}} & $\bullet$ &
+      $\mathcal{A}''_v \assign \{\phi \hspace{1em} | \phi \in \mathcal{A}'_v
+      \} \cup \{\neg \iota (u) \hspace{1em} | \hspace{1em} \neg v R' u\}$
+    \end{tabular}
+  \end{center}
+  
+  
+  
+  By induction we have that for every subformula $\phi$ of $\psi$ that
+  $\mathbbm{M}', v \vDash \phi$ if and only if $\mathbbm{M}'', v \vDash \phi$,
+  hence $\mathbbm{M}'', w_l \nvDash \psi$.
+  
+  
+  
+  All that is left to show is that $\mathbbm{M}''$ makes true \tmtextbf{CSQ}
+  and \tmtextbf{SND}.  $\mathbbm{M}''$ has three further properties:
+  \begin{enumerateroman}
+    \item $\mathcal{A}''_v$ is finite for all worlds $v$
+    
+    \item  $v R' u$ if and only if $\mathbbm{M}'', u \vDash \bigwedge
+    \mathcal{A}'' (v)$
+    
+    \item The logic presented in Table \ref{logic1} is sound for
+    $\mathbbm{M}''$
+  \end{enumerateroman}
+  From (ii) and the fact that $\mathbbm{M}'$ makes true (3$'$), we have
+  \tmtextbf{SND} for $\mathbbm{M}''$.
+  
+  
+  
+  All that is left is to demonstrate \tmtextbf{CSQ} for some sound logic.  We
+  will use the logic in Table \ref{logic1} itself.  From (i), (ii), (iii),
+  and the \tmtextit{deduction theorem} for modal logic, we have the following
+  line of reasoning:
+  
+  \begin{align*}
+    Th({\mathbbm{M}}''){\cup}\mathcal{A}''_v{\vdash}{\phi} &
+    {\Longleftrightarrow}Th({\mathbbm{M}}''){\vdash}\bigwedge\mathcal{A}''_v{\rightarrow}{\phi}\\
+    &
+    {\Longleftrightarrow}\bigwedge\mathcal{A}''_v{\rightarrow}{\phi}{\in}Th({\mathbbm{M}}'')\\
+    &
+    {\Longleftrightarrow}{\mathbbm{M}}'',u{\vDash}\bigwedge\mathcal{A}''_v{\rightarrow}{\phi}\text{
+    for all $u \in W''$}\\
+    & {\Longleftrightarrow}\text{ for all $u \in W''$, if
+    }{\mathbbm{M}}'',u{\vDash}\mathcal{A}''_v\text{ then
+    }{\mathbbm{M}}'',u{\vDash}{\phi}\\
+    & {\Longleftrightarrow}\text{ for all $u \in W''$, if }v R 'u \text{ then
+    }{\mathbbm{M}}'',u{\vDash}{\phi}\\
+    & {\Longleftrightarrow}{\mathbbm{M}}'',v{\models}\Box{\phi}
+  \end{align*}
+\end{proof}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 
