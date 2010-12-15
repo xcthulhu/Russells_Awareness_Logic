@@ -1,0 +1,85 @@
+\begin{proof}
+  Assume $\nvdash \psi$.  Let $\mathbbm{M} \assign \langle W, V, R,
+  \mathcal{A}, \preccurlyeq \rangle$ be the same as the finitary canonical
+  model we initially constructed in Theorem \ref{completeness5}, only
+  $\preccurlyeq$ is defined as:
+  \[ X \preccurlyeq_w Y \Longleftrightarrow w \vdash X \sqsubseteq Y \]
+  We may deduce that there is a world $w \in W$ such that $\mathbbm{M}, w
+  \nvDash \psi$.  This canonical model makes true properties (\ref{fin})
+  through (\ref{union}) we listed in Theorem \ref{completeness5}, as well as a
+  certain new properties:
+  
+  \begin{descriptioncompact}
+    \item[6$\preccurlyeq$] For all $X, Y \in \Xi$, if $X \preccurlyeq_v Y$
+    then $R_Y [v] \subseteq R_X [v]$
+    
+    \item[7] For all $X, Y \in \Xi$, if $X \preccurlyeq_v Y$ then
+    $\mathcal{A}_v (X) \subseteq \mathcal{A}_v (Y)$
+    
+    \item[8] If $X \nin \Xi$, then $R_X = W \times W$ and $\mathcal{A}_v (X) =
+    \varnothing$ for all $v \in W$
+    
+    \item[9] $\langle \preccurlyeq_v, \oplus \rangle$ is a join-semilattice
+    over $\tau (\Pi)$ for all $v \in W$
+  \end{descriptioncompact}
+  
+  As in previous constructions, completeness is achieved by through a series
+  of model refinements.  Note that property 8 has been implicitly true in all
+  of our previous constructions, although we have not been interested in
+  enforcing it to be inherited by model refinements previously.
+  
+  
+  
+  We first construct a model $\mathbbm{M}'$ which is bisimular to
+  $\mathbbm{M}$, where (\ref{refl}) is strengthened to a biconditional.  This
+  is done exactly as we proceeded in previous constructions. We note that the
+  notion of ``bisimulation'' here includes that two bisimular worlds $v$ and
+  $u$ must have isomorphic semilattices $\preccurlyeq_v$ and
+  $\preccurlyeq_w$.  This is achieved by enforcing that $\preccurlyeq_{v_l}
+  \assign \preccurlyeq_{v_r} \assign \preccurlyeq_v$. As before, we have that
+  $\mathbbm{M}', w \nvDash \psi$ for some world $w \in W'$.
+  
+  
+  
+  We next strengthen (6$\preccurlyeq$) to a biconditional.  Define
+  $\mathbbm{M}'' \assign \langle W'', V'', R'', \mathcal{A}'' \rangle$ such
+  that:
+  \begin{itemizedot}
+    \item $W'' \assign \uplus_{\Xi} W'$
+    
+    \item $V'' (p) \assign \{v_X \  | \  X \in \Xi
+    \  \& \  v \in V' (p)\}$
+    
+    \item $R''_X \assign \{(v_Y, u_Z) \  | \  Y, Z \in \Xi
+    \  \& \  v R'_Z u \  \& \  X
+    \preccurlyeq_v Z\}$
+    
+    \item $\mathcal{A}'' (v_Y, X) \assign \mathcal{A}' (v, X)$
+  \end{itemizedot}
+  $\mathbbm{M}''$ is bisimular to $\mathbbm{M}'$ by the same mechanism as the
+  previous construction.  The important feature of this structure is to
+  observe that the converse of (6$\preccurlyeq$) holds:
+  \begin{eqnarray*}
+    R_Y [v] \subseteq R_X [v] & \Longleftrightarrow & \forall Z \in \Xi
+    \forall u_Z \in W'' (v_Q R'_Z u_Z \Longrightarrow v_Q R_X' u_Z)\\
+    & \Longleftrightarrow & \forall Z \in \Xi \forall u_Z \in W'' (v R'_Z
+    \Longrightarrow v_Q R_X u_Z)
+  \end{eqnarray*}
+  
+  
+  Our first transformation strengthens (\ref{union}), (6$\preccurlyeq$a) and
+  (6$\preccurlyeq$b) so that they hold for all terms in $\tau (\Pi)$, rather
+  than being restricted to $\Xi$.  To this end define $\mathbbm{M}' \assign
+  \langle W', V', R', \mathcal{A}', \preccurlyeq' \rangle$ where $W'$, $R'$
+  and $\preccurlyeq'$ are the same as in $\mathbbm{M}$, but $R'$ and
+  $\mathcal{A}'$ have the following modifications:
+  \begin{eqnarray}
+    R'_Y [v] & \assign & \bigcap_{X \preccurlyeq_v Y} R_X [v] \nonumber\\
+    \mathcal{A}'_v (Y) & \assign & \bigcup_{X \preccurlyeq_v Y} \mathcal{A}'_v
+    (X) \nonumber
+  \end{eqnarray}
+  \end{proof}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 
