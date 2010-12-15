@@ -1,0 +1,326 @@
+Justification Logic (JL) was originally developed by Artemov as the
+\tmtextit{Logic of Proofs} (LP) {\cite{artemov_logic_1994}}.  Its original
+purpose was to provide a framework for reasoning about explicit provability in
+Peano Arithmetic.  The first introduction of Justification Logic can be found
+in {\cite{artemov_introducing_2005}}, where Artemov and Nogina propose LP as a
+logic for reasoning about evidence.  In {\cite{fitting_logic_2005}}, Melvin
+Fitting provided JL with Kripke model based semantics.
+
+The principle innovation of LP/JL is to extend awareness logic, such that
+awareness operations are now \tmtextit{proof terms}.  Informally, we say that
+``a proof term $X$ witnesses proposition $\phi$'', denoted ``$X : \phi$'',
+whenever $X$ represents a proof of $\phi$.  Proofs may have
+{\tmstrong{multiple-conclusions}} in this system, so it is possible that $X :
+\phi$ and $X : \psi$ can be true where $\phi \neq \psi$.  In Fitting's Kripke
+semantics, $X : \phi$ means that $\phi$ is in awareness set corresponding to
+$X$.  Proof terms are thought be operating in a \tmtextit{multi-conclusion}
+proof system, so the same proof term may witness many different propositions.
+
+
+
+The logics LP/JL include operators over proofs terms, so that new proof terms
+may be assembled.  One operation of particular interest to us is
+{\tmem{choice}}, denoted $\oplus$.  The expression ``$X \oplus Y : \phi$''
+denotes that either $X$ or $Y$ are proofs witnessing $\phi$.  There are other
+operations which correspond to \tmtextit{modus ponens} and
+\tmtextit{proof-theoretic reflection}, however we do not consider these
+operations here.
+
+
+
+In this section we consider a simplified form of JL suitable for reasoning
+over multiple knowledge bases, which we call \tmtextit{simple justification
+logic} (SJL). However, instead of thinking of terms as representing proofs, we
+use them to represent knowledge bases. This is in the spirit of JL as a logic
+of evidence: we consider each knowledge base to be a corpus of evidence. \
+Each term ``names'' a different knowledge base at a particular world.  Terms
+may not refer to the same knowledge base at different worlds, just as in how
+in awareness logic the agent need not be aware of the same formulae at
+different worlds.  Finally, we will make use of JL's {\tmem{choice}} operator
+as a mechanism for forming the union of knowledge bases, creating new ones.
+
+\begin{definition}
+  Let $\Pi$ be a set of primitive terms.  Define $\tau (\Pi)$ with the
+  following grammar:
+  \[ X \hspace{1em} : : = \hspace{1em} t \in \Pi \hspace{1em} | \hspace{1em} X
+     \oplus Y \]
+  
+  
+  Let $\Phi$ be a set of letters and $\Pi$ a set of primitive terms, and
+  define the language $\mathcal{L}_{\tmop{SJL}} (\Phi, \Pi)$ as:
+  \[ \phi \hspace{1em} : : = \hspace{1em} p \in \Phi \hspace{1em} |
+     \hspace{1em} \circlearrowleft_X \hspace{1em} | \hspace{1em} \bot
+     \hspace{1em} | \hspace{1em} \phi \rightarrow \psi \hspace{1em} |
+     \hspace{1em} \Box_X \phi \hspace{1em} | \hspace{1em} X : \phi \]
+  where $X \in \tau (\Pi)$
+\end{definition}
+
+\begin{definition}
+  \label{justmodels}A {\tmstrong{simple justification model}} $\mathbbm{M}=
+  \langle W, V, R, \mathcal{A} \rangle$ is a Kripke model with a valuation $V
+  : \Phi \cup \{\circlearrowleft_X \hspace{1em} | \hspace{1em} X \in \tau
+  (\Pi)\} \rightarrow 2^W$, an indexed relation $R : \tau (\Pi) \rightarrow
+  2^{W \times W}$, along with a modified awareness function $\mathcal{A} : W
+  \times \tau (\Pi) \rightarrow 2^{\mathcal{L}_{\tmop{SJL}} (\Phi, \Pi)}$. \
+  In practice we will denote $\mathcal{A} (w, X)$ by a curried shorthand,
+  namely $\mathcal{A}_w (X)$.
+  
+  
+  
+  The semantics for $\vDash$ have the following modifications:
+  \begin{eqnarray*}
+    \mathbbm{M}, w \vDash \Box_X \phi & \text{iff} & \text{for all $v \in W$
+    where $w R_X v$ we have $\mathbbm{M}, v \vDash v$}\\
+    \mathbbm{M}, w \vDash X : \phi & \text{iff} & \phi \in \mathcal{A}_w (X)
+  \end{eqnarray*}
+\end{definition}
+
+\begin{definition}
+  The following defines properties a simple justification model may make true:
+  
+  \begin{descriptiondash}
+    \item[JCSQ] $\mathbbm{M}, w \vDash \Box_X \phi \text{ iff } \tmop{Th}
+    (\mathbbm{M}) \cup \mathcal{A}_w (X) \vdash \phi$
+    
+    \item[JSND] $\mathbbm{M}, w \vDash \circlearrowleft_X \text{ iff
+    $\mathbbm{M}, w \vDash \phi$ for all $\phi \in \mathcal{A}_w (X)$}$
+    
+    \item[CHOICE] $\mathcal{A}_w (X \oplus Y) = \mathcal{A}_w (X) \cup
+    \mathcal{A}_w (Y)$
+  \end{descriptiondash}
+  
+  as before, $\vdash$ is any sound logical consequence relation for $\vDash$
+  with \tmtextbf{modus ponens} and \tmtextbf{reflection}
+\end{definition}
+
+The above semantics are similar to the ones given in previous sections. \
+\tmtextbf{JCSQ} is the same as \tmtextbf{CSQ} from {\S}\ref{awarenesslogic},
+only it is relativized to a knowledge base denoted by $X$ at $w$.  The
+awareness logic of knowledge bases is special case of simple justification
+logic where there is only one term.
+
+
+
+Simplified justification logic is given in Table \ref{logic5}.  We assert
+without proof that this is a conservative extension of the awareness logic in
+{\S}\ref{awarenesslogic}.
+
+
+
+\begin{table}[h]
+  \begin{tabular}{ll}
+    $\vdash \phi \rightarrow \psi \rightarrow \phi$ & \\
+    $\vdash (\phi \rightarrow \psi \rightarrow \chi) \rightarrow (\phi
+    \rightarrow \psi) \rightarrow \phi \rightarrow \chi$ & \\
+    $\vdash ((\phi \rightarrow \bot) \rightarrow (\psi \rightarrow \bot))
+    \rightarrow \psi \rightarrow \phi$ & \\
+    $\vdash \Box_X (\phi \rightarrow \psi) \rightarrow \Box_X \phi \rightarrow
+    \Box_X \psi$ & \\
+    $\vdash (X : \phi) \rightarrow \Box_X \phi$ & \\
+    $\vdash \circlearrowleft_X \rightarrow \Box_X \phi \rightarrow \phi$ & \\
+    $\vdash (X : \phi) \rightarrow (Y : \phi) \rightarrow X \oplus Y : \phi$ &
+    \\
+    $\vdash (X \oplus Y : \phi) \rightarrow X : \phi$ & $\vdash (X \oplus Y :
+    \phi) \rightarrow Y : \phi$\\
+    $\vdash \circlearrowleft_X \rightarrow \circlearrowleft_Y \rightarrow
+    \circlearrowleft_{X \oplus Y}$ & \\
+    $\vdash \circlearrowleft_{X \oplus Y} \rightarrow \circlearrowleft_X$ &
+    $\vdash \circlearrowleft_{X \oplus Y} \rightarrow \circlearrowleft_Y$\\
+    $\vdash \Box_X \phi \rightarrow \Box_{X \oplus Y} \phi$ & \\
+    $\vdash \Box_{X \oplus X} \phi \rightarrow \Box_X \phi$ & $\vdash \Box_{(X
+    \oplus X) \oplus Y} \phi \rightarrow \Box_{X \oplus Y} \phi$ \\
+    $\vdash \Box_{X \oplus Y} \phi \rightarrow \Box_{Y \oplus X} \phi$ &
+    $\vdash \Box_{(X \oplus Y) \oplus Z} \phi \rightarrow \Box_{(Y \oplus X)
+    \oplus Z} \phi$\\
+    $\vdash \Box_{(X \oplus Y) \oplus Z} \phi \rightarrow \Box_{X \oplus (Y
+    \oplus Z)} \phi$ & \\
+    & \\
+    \begin{tabular}{lll}
+      $\frac{\vdash \phi \rightarrow \psi \hspace{4em} \vdash \phi}{\vdash
+      \psi}$ & {\hspace{6em}} & $\frac{\vdash \phi}{\vdash \Box_X \phi}$
+    \end{tabular} & 
+  \end{tabular}
+  \caption{\label{logic5}Simple Justification Logic}
+\end{table}
+
+\begin{theorem}
+  \label{completeness5}Assuming an infinite store of proposition letters
+  $\Phi$, SJL is sound and weakly complete for simple justification models
+  making true \tmtextbf{JCSQ}, \tmtextbf{JSND} and \tmtextbf{CHOICE}
+\end{theorem}
+
+\begin{proof}
+  As in the previous proofs, we only show completeness.  Assume that $\nvdash
+  \psi$.  Let $\Xi \subseteq \tau (\Pi)$ be all of the subterms occurring in
+  $\psi$; we assume that $\Xi$ is non-empty, since otherwise we may obtain the
+  theorem via the usual completeness theorem for classical propositional
+  logic. Let $\Sigma_0$ be the subformulae of $\psi$.  Define:
+  
+  \begin{align*}
+    {\Sigma}_1 &
+    {\assign}{\Sigma}_0{\cup}\{\Box_Y{\phi}{\hspace{1em}}|{\hspace{1em}}\Box_X{\phi}{\in}{\Sigma}_0{\hspace{1em}}\&{\hspace{1em}}Y{\in}{\Xi}\}\\
+    {\Sigma}_2 &
+    {\assign}{\Sigma}_1{\cup}\{{\neg}{\phi}{\hspace{1em}}|{\hspace{1em}}{\phi}{\in}{\Sigma}_1\}
+  \end{align*}
+  
+  As in the proof of Theorem \ref{completeness2}, it is simple to verify that
+  $\Sigma_2$ is closed under subformulae and single negations.  Let
+  $\mathbbm{M} \assign \langle W, V, R, \mathcal{A} \rangle$ be the finite
+  cannonical model formed of maximally consistent subsets of $\Sigma_2$, where
+  $V$ and $\mathcal{A}$ are defined as usual, and $R : \Xi \rightarrow 2^{W
+  \times W}$ is defined by:
+  \[ w R_X v \Longleftrightarrow \{\phi \hspace{1em} | \hspace{1em} \Box_X
+     \phi \in w\} \subseteq v \]
+  As in previous constructions we may prove the usual Lindenbaum and Truth
+  Lemmas an use them obtain a world $w \in W$ where $\mathbbm{M}, w \nvDash
+  \psi$.
+  
+  
+  
+  Next, define an operator $\twonotes : \tau (\Pi) \rightarrow 2^{\Pi}$ where:
+  \[ \twonotes (X) \assign \{t \in \Pi \hspace{1em} | \hspace{1em} t \text{
+     occurs in } X\} \]
+  In other words, $\twonotes (X)$ is the set of atomic terms in $X$.  As in
+  our construction for Theorem \ref{completeness1}, $\mathbbm{M}$ makes true
+  certain properties, along with some new properties:
+  \begin{enumeratenumeric}
+    \item \label{fin}$W$ and $\mathcal{A}_v (X)$ are finite, and $\phi \in
+    \mathcal{A}_v (X)$ only if $\phi \in \Sigma_2$
+    
+    \item if $\mathbbm{M}, v \vDash X : \phi$ then $\mathbbm{M}, v \vDash
+    \Box_X \phi$
+    
+    \item \label{refl}if $\mathbbm{M}, v \vDash \circlearrowleft_X$ then $v
+    R_X v$
+    
+    \item \label{sndness}For all $X \oplus Y \in \Xi$, $\mathbbm{M}, v \vDash
+    \circlearrowleft_{X \oplus Y}$ if and only if $\mathbbm{M}, v \vDash
+    \circlearrowleft_X$ and $\mathbbm{M}, v \vDash \circlearrowleft_Y$
+    
+    \item \label{union}For all $X \oplus Y \in \Xi$, $\mathcal{A}_v (X \oplus
+    Y) = \mathcal{A}_v (X) \cup \mathcal{A}_v (Y)$
+    
+    \item \label{sub}For all $X, Y \in \Xi$, if $\twonotes (X) \subseteq
+    \twonotes (Y)$ then $R_Y \subseteq R_X$
+  \end{enumeratenumeric}
+  As in our previous constructions, it is necessary to refine this model using
+  bisimulations to achieve properties which are not modally definable.  In
+  particular, we shall strengthen (\ref{refl}) to a biconditional and
+  (\ref{sub}) to:
+  
+  \begin{center}
+    \begin{tabular}{ll}
+      \tmtextbf{6$'$.} & For all $X, Y \in \Xi$, $R_{X \oplus Y} = R_X \cap
+      R_Y$
+    \end{tabular}
+  \end{center}
+  
+  
+  
+  We first strengthen (\ref{refl}) by constructing $\mathbbm{M}' \assign
+  \langle W', V', R', \mathcal{A}' \rangle$, just as in Theorem
+  \ref{completeness1}: {\hspace*{\fill}}
+  \begin{itemizedot}
+    \item $W' \assign W \uplus W$
+    
+    \item $V' (p) \assign \{v_l, v_r \hspace{1em} | \hspace{1em} v \in V
+    (p)\}$
+    
+    \item $R'_X \assign \{(v_l, u_r), (v_r, u_l) \hspace{1em} | \hspace{1em} v
+    R_X u\} \cup \{(v_l, v_l), (v_r, v_r) \hspace{1em} | \hspace{1em}
+    \mathbbm{M}, v \vDash \circlearrowleft_X \}$
+    
+    \item $\mathcal{A}' (v_l, X) \assign \mathcal{A}' (v_r, X) \assign
+    \mathcal{A} (v, X)$
+  \end{itemizedot}
+  The same bisimulation relation $Z$ previously given suffices.
+  
+  
+  
+  We next make a strengthened the model where (\ref{sub}$'$) holds.  Define
+  $\mathbbm{M}'' \assign \langle W'', V'', R'', \mathcal{A}'' \rangle$ such
+  that{\footnote{Let $\{i_X \hspace{1em} | \hspace{1em} X \in \Xi\}$ be the
+  family of canonical injections into the coproduct $\uplus_{\Xi} W$. As per
+  our previous convention, we use $v_X$ as shorthand for $i_X (v)$.}}:
+  \begin{itemizedot}
+    \item $W'' \assign \uplus_{\Xi} W'$
+    
+    \item $V'' (p) \assign \{v_X \hspace{1em} | \hspace{1em} X \in \Xi
+    \hspace{1em} \& \hspace{1em} v \in V' (p)\}$
+    
+    \item $R''_X \assign \{(v_Y, u_Z) \hspace{1em} | \hspace{1em} Y, Z \in \Xi
+    \hspace{1em} \& \hspace{1em} v R'_Z u \hspace{1em} \& \hspace{1em}
+    \twonotes (X) \subseteq \twonotes (Z)\}$
+    
+    \item $\mathcal{A}'' (v_Y, X) \assign \mathcal{A}' (v, X)$
+  \end{itemizedot}
+  Note that this construction makes use of the assumption that $\Xi$ is
+  non-empty.  Let $Z \assign \{(v, v_X) \hspace{1em} | \hspace{1em} X \in \Xi
+  \hspace{1em} \& \hspace{1em} v \in W' \}$; it is straightforward to prove
+  that $Z$ is a bisimulation between $\mathbbm{M}'$ and $\mathbbm{M}''$, for
+  all relations corresponding to terms $X \in \Xi$. Hence $\mathbbm{M}'', w_X
+  \nvDash \psi$ for some $w_X \in W''$.  In addition, $\mathbbm{M}''$
+  inherits (\ref{fin}) through (\ref{sub}) from $\mathbbm{M}'$, as well as the
+  converse of (\ref{refl}).  Next observe, forall $X \oplus Y \in \Xi$:
+  \begin{eqnarray*}
+    \text{$(v_V, u_Z) \in R''_X \cap R''_Y$} & \Longleftrightarrow & \exists Z
+    \in \Xi . \text{$v R'_Z u \hspace{1em} \& \hspace{1em} \twonotes (X)
+    \subseteq \twonotes (Z) \hspace{1em} \& \hspace{1em} \twonotes (Y)
+    \subseteq \twonotes (Z)$}\\
+    & \Longleftrightarrow & \exists Z \in \Xi . \text{$v R'_Z u \hspace{1em}
+    \& \hspace{1em} \twonotes (X) \cup \twonotes (Y) \subseteq \twonotes
+    (Z)$}\\
+    & \Longleftrightarrow & \exists Z \in \Xi . \text{$v R'_Z u \hspace{1em}
+    \& \hspace{1em} \twonotes (X \oplus Y) \subseteq \twonotes (Z)$}\\
+    & \Longleftrightarrow &  \text{$(v_V, u_Z) \in R''_{X \oplus Y}$}
+  \end{eqnarray*}
+  We now turn to our final construction. As in previous constructions, let
+  $\iota : W'' \hookrightarrow \Phi \backslash \Psi$ be an injection assigning
+  fresh nominals to worlds.  Define $\mathbbm{M}''' \assign \langle W''',
+  V''', R''', \mathcal{A}''' \rangle$ just as in the final construction in the
+  proof of Theorem \ref{completeness1}, except that $R'''_X$ and
+  $\mathcal{A}_v''' (X)$ are defined inductively as follows:
+  
+  
+  
+  \begin{center}
+    \begin{tabular}{lll}
+      $\bullet$ & $R'''_t \assign \left\{ \begin{array}{ll}
+        R''_t & t \in \Xi\\
+        W''' \times W''' & o / w
+      \end{array} \right.$ & \\
+      $\bullet$ & $R'''_{X \oplus Y} \assign R'''_X \cap R'''_Y$ & \\
+      &  & \\
+      $\bullet$ & $\mathcal{A}'''_v (t) \assign \{\phi \hspace{1em} | \phi \in
+      \mathcal{A}''_v \} \cup \{\neg \iota (u) \hspace{1em} | \hspace{1em}
+      \neg v R'''_t u\}$ & where $t \in \Pi$\\
+      $\bullet$ & $\mathcal{A}'''_v (X \oplus Y) \assign \mathcal{A}'''_v (X)
+      \cup \mathcal{A}'''_v (Y)$ & 
+    \end{tabular}
+  \end{center}
+  
+  
+  
+  
+  
+  Induction over complexity of subformulae $\phi$ of $\psi$ yields
+  $\mathbbm{M}'', w \vDash \phi \Longleftrightarrow \mathbbm{M}''', w \vDash
+  \phi$, so we know that there is some world $w \in W'''$ such that
+  $\mathbbm{M}''', w \nvDash \psi$.  All that is left is to illustrate that
+  $\mathbbm{M}'''$ has the properties we desire.
+  
+  
+  
+  First note that by definition, $\mathbbm{M}'''$ makes true
+  \tmtextbf{CHOICE}.  Next, an induction argument on the complexity of a
+  terms $X$, making essential use of (\ref{sub}$'$), yields:
+  \[ u R_X''' v \Longleftrightarrow \mathbbm{M}''', v \vDash \bigwedge
+     \mathcal{A}'''_v (X) \]
+  With this, $\mathbbm{M}'''$ makes true \tmtextbf{JSND} since it inherits
+  (\ref{refl}).  Finally, we note that we may repeat our previous arguments
+  from Theorem \ref{completeness1} to prove \tmtextbf{JCSQ}.
+\end{proof}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 

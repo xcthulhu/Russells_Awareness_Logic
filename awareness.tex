@@ -1,0 +1,259 @@
+In this section, we give the explicit semantics to basic awareness logic,
+originally presented in {\cite{fagin_belief_1987}}, with an additional axiom.
+ One difference in our presentation is the inclusion of a novel letter and a
+superficial change in notation.  This work is inspired by the developments in
+van Benthem and Vel\'azquez-Quesada {\cite{van_benthem_inference_2009}}.
+
+\begin{definition}
+  Let $\Phi$ be a set of letters and define the language $\mathcal{L}_A
+  (\Phi)$ as:
+  \[ \phi \hspace{1em} : : = \hspace{1em} p \in \Phi \hspace{1em} |
+     \hspace{1em} \circlearrowleft \hspace{1em} | \hspace{1em} \bot
+     \hspace{1em} | \hspace{1em} \phi \rightarrow \psi \hspace{1em} |
+     \hspace{1em} \Box \phi \hspace{1em} | \hspace{1em} A : \phi \hspace{1em}
+  \]
+\end{definition}
+
+We define the other connectives and modal operators as usual for classical
+modal logics.
+
+\begin{definition}
+  \label{awarenessmodels}An {\tmstrong{awareness model}} $\mathbbm{M}= \langle
+  W, V, R, \mathcal{A} \rangle$ is a Kripke model with a valuation $V : \Phi
+  \cup \{\circlearrowleft\} \rightarrow 2^W$ and an awareness function
+  $\mathcal{A} : W \rightarrow 2^{\mathcal{L}_A (\Phi)}$.  We will usually
+  denote $\mathcal{A} (w)$ as $\mathcal{A}_w$.
+  
+  
+  
+  Define the semantic entailment relation $\vDash$ where atomic propositions,
+  logical connectives and modality are interpreted as usual.  We employ the
+  following novel definition:
+  \begin{eqnarray*}
+    \mathbbm{M}, w \vDash A : \phi & \text{iff} & \phi \in \mathcal{A_w}
+  \end{eqnarray*}
+\end{definition}
+
+The following definition distinguishes us from previously investigations of
+awareness logic:
+
+\begin{definition}
+  Define the ``\tmtextbf{theory of a model} $\mathbbm{M}$'' as:
+  \[ \tmop{Th} (\mathbbm{M}) \assign \{\phi \hspace{1em} | \hspace{1em}
+     \mathbbm{M}, v \vDash \phi \text{ for all } v \in W\} \]
+  We define the following properties that a model $\mathbbm{M}$ may posses:
+  
+  \begin{descriptiondash}
+    \item[CSQ] $\mathbbm{M}, w \vDash \Box \phi \text{ iff } \tmop{Th}
+    (\mathbbm{M}) \cup \mathcal{A}_w \vdash \phi$
+    
+    \item[SND] $\mathbbm{M}, w \vDash \circlearrowleft \text{ iff }
+    \mathbbm{M}, w \vDash \phi$ for all $\phi \in \mathcal{A}_w$
+  \end{descriptiondash}
+  
+  Here $\vdash$ is any logical consequence relation which is sound for
+  $\vDash$, making true \tmtextbf{modus ponens} and \tmtextbf{reflection} (ie,
+  $\Gamma \vdash \phi$ if $\phi \in \Gamma$)
+\end{definition}
+
+Neither \tmtextbf{CSQ} nor \tmtextbf{SND} correspond to simple modally
+definable properties.
+
+
+
+Intuitively, the \tmtextbf{CSQ} asserts that an agent believes a formula
+$\phi$ if and only if it follows logically from their knowledge base and their
+background knowledge, represented by $\tmop{Th} (\mathbbm{M})$. \
+\tmtextbf{CSQ} is Vincent Hendrik's principle of logical omniscience mentioned
+in {\S}\ref{intro}.
+
+
+
+\tmtextbf{SND} asserts that $\circlearrowleft$ corresponds to the agent's
+knowledge base being sound. A sound knowledge base will only render true
+conclusions when used in deductions.  If one considers ``the existance of a
+sound deduction'' sufficient for a kind of knowledge, then $\circlearrowleft$
+is suitable for investigating this notion of epistemology.  That is, if
+$\mathbbm{M}, w \vDash \circlearrowleft \wedge \Box \phi$, then we may
+naturally say that the agent (implicitly) {\tmem{knows}} $\phi$ on the basis
+of $\mathcal{A}_w$, rather than merely {\tmem{believing}} $\phi$ on the basis
+of $\mathcal{A}_w$.
+
+
+
+The logic of models making true \tmtextbf{CSQ} and \tmtextbf{SND} is provided
+in Table \ref{logic1}.
+
+\begin{table}[h]
+  \begin{tabular}{l}
+    $\vdash \phi \rightarrow \psi \rightarrow \phi$\\
+    $\vdash (\phi \rightarrow \psi \rightarrow \chi) \rightarrow (\phi
+    \rightarrow \psi) \rightarrow \phi \rightarrow \chi$\\
+    $\vdash ((\phi \rightarrow \bot) \rightarrow (\psi \rightarrow \bot))
+    \rightarrow \psi \rightarrow \phi$\\
+    $\vdash \Box(\phi \rightarrow \psi) \rightarrow \Box \phi \rightarrow \Box
+    \psi$\\
+    $\vdash A : \phi \rightarrow \Box \phi$\\
+    $\vdash \circlearrowleft \rightarrow \Box \phi \rightarrow \phi$\\
+    \\
+    \begin{tabular}{lll}
+      $\frac{\vdash \phi \rightarrow \psi \hspace{4em} \vdash \phi}{\vdash
+      \psi}$ & {\hspace{6em}} & $\frac{\vdash \phi}{\vdash \Box \phi}$
+    \end{tabular}
+  \end{tabular}
+  \caption{\label{logic1}Awareness Logic for \tmtextbf{CSQ} and
+  \tmtextbf{SND}}
+\end{table}
+
+\begin{theorem}
+  \label{completeness1}Assuming an infinite store of proposition letters
+  $\Phi$, the awareness logic presented is sound and weakly complete for
+  awareness models making true \tmtextbf{CSQ} and \tmtextbf{SND}.
+\end{theorem}
+
+\begin{proof}
+  Soundness is straightforward, so we will only address completeness.  Assume
+  $\nvdash \psi$.  Consider the finite canonical model $\mathbbm{M}= \langle
+  W, V, R, \mathcal{A} \rangle$ formed of maximally consistent sets of
+  subformulae of $\phi$ (closed under single negations{\footnote{A discussion
+  of this property may be found in {\cite[pg.
+  243]{blackburn_modal_2001}}.}}), as per the finitary modal completeness
+  proofs found in {\cite[chapter 4.8]{blackburn_modal_2001}} and
+  {\cite[chapter 5]{boolos_logic_1995}}.  Typical presentations do not
+  include awareness, however it is defined intuitively in this case:
+  \[ \phi \in \mathcal{A}_w \Longleftrightarrow A : \phi \in w \]
+  Since $\psi$ is a subformula of itself, we have $\mathbbm{M}, w \nvDash
+  \psi$ for some world $w$ by a finitary {\tmem{Lindenbaum Lemma}} and
+  {\tmem{Truth Theorem}}.  Moreover, it is straightforward to verify that
+  $\mathbbm{M}$ makes true the following properties:
+  \begin{enumeratenumeric}
+    \item $W$ and $\mathcal{A}_v$ are finite, and $\psi \in \mathcal{A}_v$
+    only if $\psi$ is a (possibly negated) subformula of $\phi$
+    
+    \item if $\mathbbm{M}, v \vDash A : \psi$ then $\mathbbm{M}, v \vDash \Box
+    \psi$
+    
+    \item if $\mathbbm{M}, v \vDash \circlearrowleft$ then $v R v$
+  \end{enumeratenumeric}
+  
+  
+  We next produce a bisimular{\footnote{The notion of bisimulation is
+  discussed at length in {\cite[chapter 2.2]{blackburn_modal_2001}}.  We
+  note that the basic definition and all of the usual theorems (modal
+  equivalence, Henessy Milner, etc.) may be generalized to awareness models in
+  a straightforward fashion. }} model $\mathbbm{M}'$ which makes true (1), (2)
+  and a stronger from of (3):
+  
+  
+  
+  {\hspace*{\fill}}\begin{tabular}{ll}
+    \tmtextbf{3$'$.} & $\mathbbm{M}', v \vDash \circlearrowleft$ iff $v R v$
+  \end{tabular}{\hspace*{\fill}}
+  
+  
+  
+  To this end define $\mathbbm{M}' \assign \langle W', V', R', \mathcal{A}'
+  \rangle$ such that{\footnote{Throughout this article, we use $l$ and $r$ to
+  denote the two canonical injections associated with the coproduct $W \uplus
+  W$. We will use $v_l$ and $v_r$ as the shorthand for $l (v)$ and $r (v)$
+  respectively.}}: {\hspace*{\fill}}
+  \begin{itemizedot}
+    \item $W' \assign W \uplus W$
+    
+    \item $V' (p) \assign \{v_l, v_r \hspace{1em} | \hspace{1em} v \in V
+    (p)\}$
+    
+    \item $R' \assign \{(v_l, u_r), (v_r, u_l) \hspace{1em} | \hspace{1em} v R
+    u\} \cup \{(v_l, v_l), (v_r, v_r) \hspace{1em} | \hspace{1em} \mathbbm{M},
+    v \vDash \circlearrowleft\}$
+    
+    \item $\mathcal{A}' (v_l) \assign \mathcal{A}' (v_r) \assign \mathcal{A}
+    (v)$
+  \end{itemizedot}
+  
+  
+  It is straightforward to verify that $\mathbbm{M}'$ makes true the desired
+  properties.  Let $Z \assign \{(v, v_l), (v, v_r) \hspace{1em} |
+  \hspace{1em} v \in W\}$.  then $Z$ is a bisimulation between $\mathbbm{M}$
+  and $\mathbbm{M}'$.  Therefore we know there is some $w \in W$ such that
+  $\mathbbm{M}', w_l \nvDash \psi$ and $\mathbbm{M}', w_r \nvDash \psi$.
+  
+  
+  
+  Finally we construct a model $\mathbbm{M}''$ which agrees with
+  $\mathbbm{M}'$ for all subformulae of $\psi$, which makes true
+  \tmtextbf{CSQ} and \tmtextbf{SND}.  Let $\Lambda$ be the set of proposition
+  letters occuring in $\psi$.  We will make use members of $\Phi \backslash
+  \Lambda$ as {\tmem{nominals}}, as per the tradition in hybrid logic.  This
+  is possible since both $W'$ and $\Lambda$ are finite and $\Phi$ is infinite
+  by hypothesis.  Let $\iota : W \uplus W \hookrightarrow \Phi \backslash
+  \Lambda$ be an injection assigning a fresh nominal associated with each
+  world in $\mathbbm{M}'$.  Now define $\mathbbm{M}'' \assign \langle W'',
+  V'', R'', \mathcal{A}'' \rangle$, where:
+  
+  
+  
+  \begin{center}
+    \begin{tabular}{lllll}
+      $\bullet$ & $W'' \assign W'$ &  & $\bullet$ & $V'' (p) \assign \left\{
+      \begin{array}{ll}
+        V' (p) & p \in \Lambda\\
+        \{v\} & p = \iota (v)\\
+        \varnothing & o / w
+      \end{array} \right.$\\
+      $\bullet$ & $R'' \assign R'$ & {\hspace{3em}} & $\bullet$ &
+      $\mathcal{A}''_v \assign \{\phi \hspace{1em} | \phi \in \mathcal{A}'_v
+      \} \cup \{\neg \iota (u) \hspace{1em} | \hspace{1em} \neg v R' u\}$
+    \end{tabular}
+  \end{center}
+  
+  
+  
+  By induction we have that for every subformula $\phi$ of $\psi$ that
+  $\mathbbm{M}', v \vDash \phi$ if and only if $\mathbbm{M}'', v \vDash \phi$,
+  hence $\mathbbm{M}'', w_l \nvDash \psi$.
+  
+  
+  
+  All that is left to show is that $\mathbbm{M}''$ makes true \tmtextbf{CSQ}
+  and \tmtextbf{SND}.  $\mathbbm{M}''$ has three further properties:
+  \begin{enumerateroman}
+    \item $\mathcal{A}''_v$ is finite for all worlds $v$
+    
+    \item  $v R' u$ if and only if $\mathbbm{M}'', u \vDash \bigwedge
+    \mathcal{A}'' (v)$
+    
+    \item The logic presented in Table \ref{logic1} is sound for
+    $\mathbbm{M}''$
+  \end{enumerateroman}
+  From (ii) and the fact that $\mathbbm{M}'$ makes true (3$'$), we have
+  \tmtextbf{SND} for $\mathbbm{M}''$.
+  
+  
+  
+  All that is left is to demonstrate \tmtextbf{CSQ} for some sound logic.  We
+  will use the logic in Table \ref{logic1} itself.  From (i), (ii), (iii),
+  and the \tmtextit{deduction theorem} for modal logic, we have the following
+  line of reasoning:
+  
+  \begin{align*}
+    Th({\mathbbm{M}}''){\cup}\mathcal{A}''_v{\vdash}{\phi} &
+    {\Longleftrightarrow}Th({\mathbbm{M}}''){\vdash}\bigwedge\mathcal{A}''_v{\rightarrow}{\phi}\\
+    &
+    {\Longleftrightarrow}\bigwedge\mathcal{A}''_v{\rightarrow}{\phi}{\in}Th({\mathbbm{M}}'')\\
+    &
+    {\Longleftrightarrow}{\mathbbm{M}}'',u{\vDash}\bigwedge\mathcal{A}''_v{\rightarrow}{\phi}\text{
+    for all $u \in W''$}\\
+    & {\Longleftrightarrow}\text{ for all $u \in W''$, if
+    }{\mathbbm{M}}'',u{\vDash}\mathcal{A}''_v\text{ then
+    }{\mathbbm{M}}'',u{\vDash}{\phi}\\
+    & {\Longleftrightarrow}\text{ for all $u \in W''$, if }v R 'u \text{ then
+    }{\mathbbm{M}}'',u{\vDash}{\phi}\\
+    & {\Longleftrightarrow}{\mathbbm{M}}'',v{\models}\Box{\phi}
+  \end{align*}
+\end{proof}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 

@@ -1,0 +1,93 @@
+The modern tradition in epistemic logic is to assume knowledge modalities
+conform to the $S 5$ axiom schema.  As noted in
+{\cite{halpern_set-theoretic_1999,rubinstein_modeling_1998}}, the semantics of
+$S 5$ knowledge correspond exactly to partitioning a collection of situations
+into \tmtextit{information sets}, which is the traditional approach in game
+theory and decision theory.  While it is not commonly acknowledged in
+epistemic logic, economists and philosophers accept that traditional decision
+theory is externalist and behaviorist in nature
+\footnote{An early essay by
+Amartya Sen on the philosophical foundations of traditional decision theory
+makes the behaviorist reading of decision theory clear
+\cite{sen_behaviour_1973}.  Kaushik Basu also discusses the behaviorist
+nature of decision theory {\cite[pgs. 53--54]{basu_revealed_1980}}. 
+Finally, Donald Davidson appeals to decision theory to motivate an externalist
+epistemology in \cite{davidson_could_1995}.}.
+
+In {\cite{van_benthem_reflectionsepistemic_1991}}, Johan van Benthem proposed
+a research program to find logics for explicit knowledge, providing the first
+suggestion of an internalist perspective on epistemic logic.  Subsequently,
+Sergei Artemov and Elena Nogina proposed a logic of explicit justification,
+which has come to be known as \tmtextit{Justification Logic} (JL)
+{\cite{artemov_introducing_2005}}, based on Artemov's \tmtextit{Logic of
+Proofs} {\cite{artemov_logic_1994}}.  While the original semantics of
+JL were based on interpretability into Peano Arithmetic, Melvin Fitting proposed Kripke
+semantics for JL in {\cite{fitting_logic_2005}}.  Recently, Fernando
+Vel\'azquez-Quesada and Johan van Benthem have developed a simpler framework
+for explicit epistemics in {\cite{van_benthem_inference_2009}}, entitled the
+\tmtextit{Dynamics of Awareness}.  This work was based on Joseph Halpern and
+Ronald Fagin's original \tmtextit{Awareness Logic} {\cite{fagin_belief_1987}}.
+
+
+
+In this essay we repurpose various externalist logics to take on an
+internalist reading.  The concept of a \tmtextit{knowledge base}, from which
+beliefs may be implicitly deduced, will play a crucial role in our discussion.
+\ We propose this as an avenue for representing foundationalist perspectives
+on epistemology in epistemic logic.  Our philosophical motivation is taken
+from two sources.  The first is Vincent Hendricks in
+{\cite{hendricks_mainstream_2006}}, where he characterizes the principal of
+{\tmem{logical omniscience}} for implicit knowledge in epistemic
+logic{\footnote{We have modified Hendricks' notation here slightly to match
+our own.}}:
+
+\begin{quote}
+  {\tmem{Whenever an agent $\Xi$ knows all of the formulae in $\mathcal{A}$,
+  and $\phi$ follows logically from $\mathcal{A}$, then $\Xi$ [implicitly]
+  knows $\phi$.}}
+\end{quote}
+
+We will design our semantics such that ``$\Box \phi$'' may be equated with
+``$\phi$ follows logically from a knowledge base $\mathcal{A}$,'' which is
+sometimes written as $\phi \in \tmop{Cn} ( \mathcal{A})$ in the artificial
+intelligence literature.  Our second inspiration comes from what Hilary
+Kornblith calls the \tmtextit{the arguments on paper thesis}
+{\cite{kornblith_beyond_1980}}, which he feels characterizes apsychological,
+internalist theories of knowledge:
+
+\begin{quote}
+  Let us suppose that, for any person, it is possible, at least in principle,
+  to list all of the propositions that person believes.  The
+  arguments-on-paper thesis is just the view that a person has a justified
+  belief that a particular proposition is true just in case that proposition
+  appears on the list of propositions that person believes, and either it
+  requires no argument, or a {\tmem{good argument}} can be given for it which
+  takes as premises certain other propositions on the list.
+\end{quote}
+
+Kornblith asserts that foundationalism and coherentism vie for accounts of a
+``good argument'' in the above thesis.  He provides an extensive bibliography
+citing proposals for this principle by a number of 20th century
+epistemologists, including figures such as A.J. Ayer and C.I. Lewis.  The
+rest of Kornblith's paper is devoted to attacking this view and proposing a
+form of naturalized epistemology; we will not address this debate here,
+however.
+
+
+
+We adopt a arguments-on-paper-thesis perspective on epistemic logic in this
+paper.  We consider a \tmtextit{good argument} to be a logical derivation
+from propositions present in a knowledge base in this setting.  \
+Special attention will be given to \tmtextit{sound derivations}, which will be
+thought of as a form of knowledge.  In \emph{Awareness Logic}, we will interpret
+awareness of a formula as membership in a knowledge base.  We prove
+completeness for basic awareness logic and a hybrid logic extension.  Logics
+of multiple knowledge bases are also presented: a simplified form of
+Justification Logic, a logic with neighborhood semantics, an a logic with
+modalities for quantifying over knowledge bases.  We conclude with an
+application to naturalized epistemology found in the psychological
+literature.
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 

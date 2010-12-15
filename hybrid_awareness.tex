@@ -1,0 +1,180 @@
+The method of the previous completeness proof makes implicit use of concepts from
+hybrid logic{\footnote{Hybrid logic was first presented in
+{\cite{prior_revised_1969}} and later formally developed in
+{\cite{bull_approach_1970}}.}}.  In this section we adapt hybrid logic and
+show that it is a complete for reasoning about knowledge bases.  We note that
+because of the increased expressive power of hybrid logic, our completeness
+theorem is simpler.
+
+\begin{definition}
+  Let $\Phi$ be a set of letters and $\Psi$ a set of nominals, and define the
+  language $\mathcal{L}_H (\Phi, \Psi)$ as:
+  \[ \phi \hspace{1em} : : = \hspace{1em} p \in \Phi \hspace{1em} |
+     \hspace{1em} i \in \Psi \hspace{1em} | \hspace{1em} \bot \hspace{1em} |
+     \hspace{1em} \phi \rightarrow \psi \hspace{1em} | \hspace{1em} \Box \phi
+     \hspace{1em} | \hspace{1em} A : \phi \hspace{1em} | \hspace{1em} \forall
+     \phi \]
+\end{definition}
+
+Our approach in hybrid logic is to employ a universal modality along with
+nominals.  This framework presents a logic where the agent may reason about
+various labeled scenarios.  Scenarios may be multiply labeled or not labeled
+at all.  From these intuitions we have the following definition:
+
+\begin{definition}
+  \label{hybridsemantics}Let a \tmtextbf{hybrid model} $\mathbbm{M}= \langle
+  W, V, R, \mathcal{A}, \ell \rangle$ be an awareness model as in Definition
+  \ref{awarenessmodels}, along with a partial labeling function $\ell : \Psi
+  \nrightarrow W$
+  
+  
+  
+  The semantics for $\vDash$ are the same as in Definition
+  \ref{awarenessmodels}, only we have
+  \begin{eqnarray*}
+    \mathbbm{M}, w \vDash \forall \phi & \text{iff} & \forall v \in
+    W.\mathbbm{M}, v \vDash \phi\\
+    \mathbbm{M}, w \vDash i & \text{iff} & \ell (i) = w
+  \end{eqnarray*}
+\end{definition}
+
+The other connectives and operators are defined as usual, although we employ a
+few special shorthands:
+
+\begin{definition}
+  We employ the following special abbreviations:
+  \begin{eqnarray}
+    \text{\tmtextup{@}}_i \phi \assign \forall (i \rightarrow \phi)
+    \hspace{2em} & \exists \phi \assign \neg \forall \neg \phi \hspace{3em} &
+    \circlearrowleft_i \assign \diamondsuit i \nonumber
+  \end{eqnarray}
+\end{definition}
+
+This gives rise to a validity reflecting one of the axioms we saw in
+{\S}\ref{awarenesslogic}:
+\[ \vDash \circlearrowleft_i \rightarrow \Box \phi \rightarrow
+   \text{\tmtextup{@}}_i \phi \]
+This can be read as ``If the agent's knowledge base is sound at world $i$,
+then if they can deduce something from their knowledge base, what they deduce
+must be true at world $i$.'.  In a way, this may be considered as
+{\tmem{relativising}} knowledge particular named situations.
+
+
+
+The semantics in Definition \ref{hybridsemantics} obviates the \tmtextbf{SND}
+principle we previously presented, since there is no explicit
+$\circlearrowleft$ symbol in this setting. \tmtextbf{CSQ} still makes sense
+without modification, however.  The following gives a logic for hybrid models
+making true \tmtextbf{CSQ}:
+
+\begin{table}[h]
+  \begin{tabular}{ll}
+    $\vdash \phi \rightarrow \psi \rightarrow \phi$ & $\vdash \forall (\phi
+    \rightarrow \psi) \rightarrow \forall \phi \rightarrow \forall \psi$\\
+    $\vdash (\phi \rightarrow \psi \rightarrow \chi) \rightarrow (\phi
+    \rightarrow \psi) \rightarrow \phi \rightarrow \chi$ & $\vdash \forall
+    \phi \rightarrow \phi$\\
+    $\vdash ((\phi \rightarrow \bot) \rightarrow (\psi \rightarrow \bot))
+    \rightarrow \psi \rightarrow \phi$ & $\vdash \forall \phi \rightarrow
+    \forall \forall \phi$\\
+    $\vdash \Box(\phi \rightarrow \psi) \rightarrow \Box \phi \rightarrow \Box
+    \psi$ & $\vdash \exists \phi \rightarrow \forall \exists \phi$\\
+    $\vdash A : \phi \rightarrow \Box \phi$ & $\vdash \forall \phi \rightarrow
+    \Box \phi$\\
+    & $\vdash i \rightarrow \phi \rightarrow \text{\tmtextup{@}}_i \phi$\\
+    & \\
+    \begin{tabular}{llll}
+      $\frac{\vdash \phi \rightarrow \psi \hspace{4em} \vdash \phi}{\vdash
+      \psi}$ & {\hspace{6em}}$\frac{\vdash \phi}{\vdash \Box \phi}$ &
+      {\hspace{6em}} & $\frac{\vdash \phi}{\vdash \forall \phi}$
+    \end{tabular} & 
+  \end{tabular}
+  \caption{\label{logic2}Hybrid Awareness Logic for \tmtextbf{CSQ}}
+\end{table}
+
+\begin{theorem}
+  \label{completeness2}Assuming an infinite store of nominals $\Psi$, the
+  hybrid awareness logic presented is sound and weakly complete for all hybrid
+  models making true \tmtextbf{CSQ}.
+\end{theorem}
+
+\begin{proof}
+  As before, soundness is trivial.  Completeness is based on a modification
+  of techniques found in {\cite[chapter 5]{boolos_logic_1995}}.  Assume
+  that $\nvdash \psi$ and let $\Sigma_0$ be the set of subformulae of $\psi$,
+  and let $\Upsilon$ be the set of nominals occuring in $\psi$.  Define:
+  
+  \begin{align*}
+    {\Sigma}_1 &
+    {\assign}{\Sigma}_0{\cup}\{{\forall}{\phi}{\hspace{1em}}|{\hspace{1em}}\Box{\phi}{\in}{\Sigma}_0\}\\
+    {\Sigma}_2 &
+    {\assign}{\Sigma}_1{\cup}\{\text{@}_i{\phi}{\hspace{1em}},i{\rightarrow}{\phi}|{\hspace{1em}}{\phi}{\in}{\Sigma}_1{\hspace{1em}}\&{\hspace{1em}}i{\in}{\Upsilon}\}\\
+    {\Sigma}_3 &
+    {\assign}{\Sigma}_2{\cup}\{{\neg}{\phi}{\hspace{1em}}|{\hspace{1em}}{\phi}{\in}{\Sigma}_2\}
+  \end{align*}
+  
+  It is easy to see that $\Sigma_3$ is finite and closed under subformulae and
+  single negations. Let $\mathbbm{M}= \langle W, V, R_{\Box}, \sim_{\forall},
+  \mathcal{A} \rangle$ be the finite cannonical model formed of maximally
+  consistent subsets of $\Sigma_3$, where everything is defined as usual,
+  except $\sim_{\forall}$, which obeys the following specification:
+  
+  \begin{align*}
+    w {\sim}_{{\forall}}v & {\Longleftrightarrow}(({\forall}{\phi}){\in}w
+    {\Longleftrightarrow}({\forall}{\phi}){\in}v)
+  \end{align*}
+  
+  This model makes true the following properties:
+  \begin{enumerateroman}
+    \item $\sim_{\forall}$ is an equivalence relation
+    
+    \item $R_{\Box} \subseteq \sim_{\forall}$
+    
+    \item In each equivalence class specified by $\sim_{\forall}$, there is at
+    most one world making true $i$ for all $i \in \Upsilon$
+  \end{enumerateroman}
+  As in our previous construction we have that there is some world $w$ where
+  $\mathbbm{M}, w \nvDash \psi$.  Let $\mathbbm{M}^1 = \langle W', V',
+  R_{\Box}', \sim_{\forall}', \mathcal{A}' \rangle$ be the submodel generated
+  by $\{w\}$; we have that $\mathbbm{M}', w \nvDash \psi$ (see {\cite[chapter
+  2.1]{blackburn_modal_2001}} for details on generated submodels).  In this
+  model $\forall$ is a universal modality and either $\left\llbracket i
+  \right\rrbracket^{\mathbbm{M}'} = \varnothing$ or $\left\llbracket i
+  \right\rrbracket^{\mathbbm{M}'} =\{v\}${\footnote{As per the usual
+  convention, here $\left\llbracket \phi \right\rrbracket^{\mathbbm{M}}$
+  denotes $\{w \in W \hspace{1em} | \hspace{1em} \mathbbm{M}, w \vDash
+  \phi\}$.  We will drop $\mathbbm{M}$ where it is unambiguous.}}. Since the
+  store $\Psi$ of nominals is infinite and $\Upsilon$ is finite, we have that
+  $\Psi \backslash \Upsilon$ is infinite, so there is some injection $\iota :
+  W' \hookrightarrow \Psi \backslash \Upsilon$ which assigns a fresh nominal
+  to every world.  Let $\mathbbm{M}'' = \langle W'', V'', R'', \mathcal{A}'',
+  \ell \rangle$, where:
+  
+  \begin{center}
+    \begin{tabular}{lllll}
+      $\bullet$ & $W'' \assign W'$ &  & $\bullet$ & $V'' (p) \assign V' (p)$\\
+      $\bullet$ & $R'' \assign R'_{\Box}$ & {\hspace{3em}} & $\bullet$ &
+      $\mathcal{A}'' (v) \assign \{\phi \hspace{1em} | \hspace{1em} \phi \in
+      \mathcal{A}' (v)\} \cup \{\neg \iota (u) \hspace{1em} | \hspace{1em}
+      \neg v R' u\}$\\
+      \begin{tabular}{ll}
+        $\bullet$ & $\ell (i) \assign \left\{ \begin{array}{ll}
+          w & i \in \Upsilon \hspace{1em} \& \hspace{1em} \mathbbm{M}, w
+          \vDash i\\
+          \iota^{- 1} (i) & i \in \iota [W]\\
+          \text{undefined} & \text{o/w}
+        \end{array} \right.$
+      \end{tabular} & $R'' \assign R'_{\Box}$ &  &  & 
+    \end{tabular}
+  \end{center}
+  
+  The the worlds is $\mathbbm{M}'$ and $\mathbbm{M}''$ agree on all
+  subformulae of $\psi$, hence $\mathbbm{M}'', w \nvDash \psi$. The same
+  reasoning as in the proof of Theorem \ref{completeness1} establishes and
+  that the logic in Table \ref{logic2} itself is sound for $\mathbbm{M}''$ and
+  makes true \tmtextbf{CSQ}, establishing completeness.
+\end{proof}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 
