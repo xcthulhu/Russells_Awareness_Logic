@@ -1,0 +1,181 @@
+\begin{proof}
+  Assume that $\nvdash \psi$, and define the finitary canonical model
+  $\mathbbm{M}= \langle W, V, \mathcal{K}, \mathcal{N}, \mathcal{A} \rangle$
+  where:
+  \begin{itemizedot}
+    \item $W \assign \text{the maximally consistent sets of subformulae of
+    $\psi$, closed under single negation}$
+    
+    \item $V (p) \assign \{v \in W \  | \  p \in v\}$
+    
+    \item $\mathcal{K}_w \assign \{S \in 2^W \  | \  \{v
+    \in W \  | \  \phi \in v\} \subseteq S \  \&
+    \  K \phi \in w\}$
+    
+    \item $\mathcal{N}_w \assign \{S \in 2^W \  | \  \{v
+    \in W \  | \  \phi \in v\} \subseteq S \  \&
+    \  \Box \phi \in w\}$
+    
+    \item $\mathcal{A}_w \assign \{\{\phi\} \  | \  A :
+    \phi \in w\}$
+  \end{itemizedot}
+  Note that in this model, there are neighborhoods for both knowledge and
+  belief; more work is necessary to find a model based on this one which
+  conforms to the semantics in Definition \ref{neighborhoodmodels}.  For now,
+  assume that $K$ is just another modality governed by the neighborhoods in
+  $\mathcal{K}_w$.  In both neighborhood functions, our idea is that the
+  neighborhoods of $w$ in are supersets $S \supseteq \left\llbracket \phi
+  \right\rrbracket$ where $\Box \phi \in w$ or $K \phi \in w$, respectively.
+  
+  
+  
+  There are steps of the inductive proof of the Truth Lemma for this structure
+  which are not obvious nor obviously documented elsewhere.  Assume
+  $\mathbbm{M}, w \vDash \Box \chi$, where the Truth Lemma has been proven to
+  hold for $\chi$; we must show $\Box \chi \in w$.  By our assumption there
+  is some $\phi$ and $S$ where $\Box \phi \in w$ and $S \supseteq \{v \in W
+  \  | \  \phi \in v\}$.  We argue that $\vdash \phi
+  \rightarrow \chi$; for if not then by the finitary Lindenbaum lemma there is
+  some $u \in W$ where $\phi \in u$ and $\chi \nin u$.  Hence $u \in S$ and
+  $\mathbbm{M}, u \nvDash \chi$, a contradiction.  Since $\vdash \phi
+  \rightarrow \chi$ then we know that $\vdash \Box \phi \rightarrow \Box \chi$
+  by our rules, which means that $\Box \chi \in w$ by maximality.
+  
+  
+  
+  By the Lindenbaum Lemma we have that there is some $w \in W$ where
+  $\mathbbm{M}, w \nvDash \psi$.  $\mathbbm{M}$ makes true a number of
+  properties:
+  \begin{enumeratenumeric}
+    \item $W$ and $\mathcal{A}_v$ are finite for all $v \in W$, and $\psi \in
+    \bigcup \mathcal{A_w}$ only if $\psi$ is a subformula of $\phi$
+    
+    \item $\mathcal{K}_w \subseteq \mathcal{N}_w$
+    
+    \item If $S \in \mathcal{K}_w$ then $w \in S$
+    
+    \item $\mathbbm{M}, v \vDash A : \phi \rightarrow \Box \phi$ for all $v
+    \in W$
+    
+    \item $\mathcal{N}_w$ and $\mathcal{K}_w$ are closed under supersets
+  \end{enumeratenumeric}
+  
+  
+  As in the proof of Theorem \ref{completeness1}, we use a bisimulation to
+  move to a model where property (3) is strengthened to (3$'$): for all $S \in
+  \mathcal{N}_w$, $w \in S$ if and only if $S \in \mathcal{K}'_w$.  We defer
+  the reader to {\cite{hansen_bisimulation_2007,pauly_bisimulation_1999}} for
+  details regarding bisimulation in neighborhood semantics.  Define
+  $\mathbbm{M}' \assign \langle W', V', \mathcal{K}', \mathcal{N}',
+  \mathcal{A}' \rangle$ such that:
+  \begin{itemizedot}
+    \item $W' \assign W \uplus W$ wher.  $l, r$ its associated canonical
+    injections and $\theta (v_l) \assign \theta (v_r) \assign v$ is a
+    left-inverse of $l, r$
+    
+    \item $V' (p) \assign \{v_l, v_r \  | \  v \in V
+    (p)\}$
+    
+    \item $\mathcal{K}' (v_i) \assign \{S \  | \  v_i \in
+    S \  \& \  \theta [S] \in \mathcal{K_v} \}$ where $i =
+    l, r$
+    
+    \item $\mathcal{N}' (v_i) \assign \mathcal{K}' (v_i) \cup \{S \ 
+    | \  v_i \nin S \  \& \  \theta [S] \in
+    \mathcal{N_v} \}$ where $i = l, r$
+    
+    \item $\mathcal{A}' (v_l) \assign \mathcal{A}' (v_r) \assign \mathcal{A}
+    (v)$
+  \end{itemizedot}
+  
+  
+  If we let $Z \assign \{(v, v_r), (v, v_l) \  | \  v \in
+  W\}$, it is straightforward to verify that $Z$ is a neighborhood
+  bisimulation.  Hence $\mathbbm{M}, w_l \nvDash \psi$.  Along with (3$'$),
+  this model makes true (1), (2), (4).  In fact, in light of ($3'$), we can
+  see that this model does not need $\mathcal{K}'$, and conforms to the
+  semantics in Definition \ref{neighborhoodmodels}.{\hspace*{\fill}}
+  
+  
+  
+  As in previous proofs, let $\Lambda$ be the proposition letters occuring in
+  $\psi$ and define an injection $\iota : W' \hookrightarrow \Phi \backslash
+  \Lambda$, assigning a nominal to every world in $\mathbbm{M}'$.  Define
+  $\mathbbm{M}'' \assign \langle W'', V'', \mathcal{N}'', \mathcal{A}''
+  \rangle$ such that:
+  
+  
+  
+  \begin{center}
+    \begin{tabular}{lllll}
+      $\bullet$ & $W'' \assign W'$ &  & $\bullet$ & $V'' (p) \assign \left\{
+      \begin{array}{ll}
+        V' (p) & p \in \Lambda\\
+        \{v\} & p = i (v)\\
+        \varnothing & o / w
+      \end{array} \right.$\\
+      $\bullet$ & $\mathcal{N}''_w \assign \mathcal{N}'_w$ & {\hspace{3em}} &
+      $\bullet$ & $\mathcal{A}''_v \assign \{\partial_v S \  |
+      \  S \in \mathcal{N}'_w \}$
+    \end{tabular}
+  \end{center}
+  
+  
+  
+  
+  
+  Where $\partial_v S \assign \{\phi \  | \  \phi \in
+  \bigcup \mathcal{A}_v', \text{$\phi$ is a subformula of $\psi$ and}
+  \  S \subseteq \left\llbracket \phi
+  \right\rrbracket^{\mathbbm{M}'} \} \cup \{\neg \iota (u) \  |
+  \  u \nin S\}$.
+  
+  As before, this model agrees with $\mathbbm{M}'$ on all subformulae of
+  $\psi$, using the semantics in Definition \ref{neighborhoodmodels}, hence
+  $\mathbbm{M}'', w_l \nvDash \phi$. \
+  
+  
+  
+  All that is left is to show \tmtextbf{NCSQ} and \tmtextbf{NSND} from three
+  new properties:
+  \begin{enumerateroman}
+    \item For all words $v$ and all $X \in \mathcal{A}_v''$, $X$ is finite and
+  .  $X = \partial_v S$ for some $S \in \mathcal{N}_v''$
+    
+    \item For all $v$ and all $S \in \mathcal{N}_v$, $u \in S$ if and only if
+    $\mathbbm{M}'', u \vDash \bigwedge \partial_v S$
+    
+    \item The logic presented in Table \ref{logic3} is sound for
+    $\mathbbm{M}''$
+  \end{enumerateroman}
+  Along with the deduction theorem for $\vdash$, these properties establish
+  \tmtextbf{NCSQ} for this model using the logic of Table \ref{logic3} itself:
+  
+  \begin{align*}
+    \text{$\exists X \in \mathcal{A''_v} \text{ s.t. } \tmop{Th}
+    (\mathbbm{M}'') \cup X \vdash \phi$} & {\Longleftrightarrow}\text{$\exists
+    S \in \mathcal{N''_v} \text{ s.t. } \tmop{Th} (\mathbbm{M}'') \cup
+    \partial_v S \vdash \phi$}\\
+    & {\Longleftrightarrow}\text{$\exists S \in \mathcal{N''_v} \text{ s.t. }
+    \tmop{Th} (\mathbbm{M}'') \vdash \bigwedge \partial_v S \rightarrow
+    \phi$}\\
+    & {\Longleftrightarrow}\text{$\exists S \in \mathcal{N''_v} \text{ s.t. }
+    \bigwedge \partial_v S \rightarrow \phi \in \tmop{Th} (\mathbbm{M}'')$}\\
+    & {\Longleftrightarrow}\text{$\exists S \in \mathcal{N''_v} \text{ s.t. }
+    \left\llbracket \bigwedge \partial_v S \right\rrbracket \subseteq
+    \left\llbracket \phi \right\rrbracket$}\\
+    & {\Longleftrightarrow}\text{$\exists S \in \mathcal{N''_v} \text{ s.t.
+    $\forall u \in W$ if } \mathbbm{M}, u \vDash \bigwedge \partial_v S \text{
+    then } \mathbbm{M}, u \vDash \phi$}\\
+    & {\Longleftrightarrow}\text{$\exists S \in \mathcal{N''_v} \text{ s.t. }
+    \mathbbm{M}, u \vDash \phi \text{ for all } u \in S$}\\
+    & {\Longleftrightarrow}{\mathbbm{M}},v{\vDash}\Box{\phi}
+  \end{align*}
+  
+  \tmtextbf{NSND} follows from \tmtextbf{NCSQ} and the semantics of Definition
+  \ref{neighborhoodmodels}.
+\end{proof}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 
