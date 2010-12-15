@@ -6,4 +6,4 @@ all:
 	pdflatex paper.tex
 
 clean:
-	rm -f *.aux *.log *.pdf *.bbl *.blg
+	rm -f *.aux *.log *.pdf *.bbl *.blg *.tdo *.out
