@@ -3,6 +3,8 @@
 *.pdf
 *.bbl
 *.blg
+*.out
+*.tdo
 \#*
 .#*
 *~
