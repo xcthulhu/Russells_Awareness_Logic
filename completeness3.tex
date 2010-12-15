@@ -1,0 +1,177 @@
+\begin{proof}
+  As in the previous proofs, we only show completeness.  Assume that $\nvdash
+  \psi$.  Let $\Xi \subseteq \tau (\Pi)$ be all of the subterms occurring in
+  $\psi$; we assume that $\Xi$ is non-empty, since otherwise we may obtain the
+  theorem via the usual completeness theorem for classical propositional
+  logic. Let $\Sigma_0$ be the subformulae of $\psi$.  Define:
+  
+  \begin{align*}
+    {\Sigma}_1 &
+    {\assign}{\Sigma}_0{\cup}\{\Box_Y{\phi}{\ }|{\ }\Box_X{\phi}{\in}{\Sigma}_0{\ }\&{\ }Y{\in}{\Xi}\}\\
+    {\Sigma}_2 &
+    {\assign}{\Sigma}_1{\cup}\{{\neg}{\phi}{\ }|{\ }{\phi}{\in}{\Sigma}_1\}
+  \end{align*}
+  
+  As in the proof of Theorem \ref{completeness2}, it is simple to verify that
+  $\Sigma_2$ is closed under subformulae and single negations.  Let
+  $\mathbbm{M} \assign \langle W, V, R, \mathcal{A} \rangle$ be the finite
+  canonical model formed of maximally consistent subsets of $\Sigma_2$, where
+  $V$ and $\mathcal{A}$ are defined as usual, and $R : \Xi \rightarrow 2^{W
+  \times W}$ is defined by:
+  \[ w R_X v \Longleftrightarrow \{\phi \  | \  \Box_X
+     \phi \in w\} \subseteq v \]
+  As in previous constructions we may prove the usual Lindenbaum and Truth
+  Lemmas an use them obtain a world $w \in W$ where $\mathbbm{M}, w \nvDash
+  \psi$.
+  
+  
+  
+  Next, define an operator $\twonotes : \tau (\Pi) \rightarrow 2^{\Pi}$ where:
+  \[ \twonotes (X) \assign \{t \in \Pi \  | \  t \text{
+     occurs in } X\} \]
+  In other words, $\twonotes (X)$ is the set of atomic terms in $X$.  As in
+  our construction for Theorem \ref{completeness1}, $\mathbbm{M}$ makes true
+  certain properties, along with some new properties:
+  \begin{enumeratenumeric}
+    \item \label{fin}$W$ and $\mathcal{A}_v (X)$ are finite, and $\phi \in
+    \mathcal{A}_v (X)$ only if $\phi \in \Sigma_2$
+    
+    \item if $\mathbbm{M}, v \vDash X : \phi$ then $\mathbbm{M}, v \vDash
+    \Box_X \phi$
+    
+    \item \label{refl}if $\mathbbm{M}, v \vDash \circlearrowleft_X$ then $v
+    R_X v$
+    
+    \item \label{sndness}For all $X \oplus Y \in \Xi$, $\mathbbm{M}, v \vDash
+    \circlearrowleft_{X \oplus Y}$ if and only if $\mathbbm{M}, v \vDash
+    \circlearrowleft_X$ and $\mathbbm{M}, v \vDash \circlearrowleft_Y$
+    
+    \item \label{union}For all $X \oplus Y \in \Xi$, $\mathcal{A}_v (X \oplus
+    Y) = \mathcal{A}_v (X) \cup \mathcal{A}_v (Y)$
+    
+    \item \label{sub}For all $X, Y \in \Xi$, if $\twonotes (X) \subseteq
+    \twonotes (Y)$ then $R_Y \subseteq R_X$
+  \end{enumeratenumeric}
+  As in our previous constructions, it is necessary to refine this model using
+  bisimulations to achieve properties which are not modally definable.  In
+  particular, we shall strengthen (\ref{refl}) to a biconditional and
+  (\ref{sub}) to:
+  
+  \begin{center}
+    \begin{tabular}{ll}
+      \tmtextbf{6$'$.} & For all $X, Y \in \Xi$, $R_{X \oplus Y} = R_X \cap
+      R_Y$
+    \end{tabular}
+  \end{center}
+  
+  
+  
+  We first strengthen (\ref{refl}) by constructing $\mathbbm{M}' \assign
+  \langle W', V', R', \mathcal{A}' \rangle$, just as in Theorem
+  \ref{completeness1}: {\hspace*{\fill}}
+  \begin{itemizedot}
+    \item $W' \assign W \uplus W$
+    
+    \item $V' (p) \assign \{v_l, v_r \  | \  v \in V
+    (p)\}$
+    
+    \item $R'_X \assign \{(v_l, u_r), (v_r, u_l) \  | \  v
+    R_X u\} \cup \{(v_l, v_l), (v_r, v_r) \  | \ 
+    \mathbbm{M}, v \vDash \circlearrowleft_X \}$
+    
+    \item $\mathcal{A}' (v_l, X) \assign \mathcal{A}' (v_r, X) \assign
+    \mathcal{A} (v, X)$
+  \end{itemizedot}
+  The same bisimulation relation $Z$ previously given suffices.
+  
+  
+  
+  We next make a strengthened the model where (\ref{sub}$'$) holds.  Define
+  $\mathbbm{M}'' \assign \langle W'', V'', R'', \mathcal{A}'' \rangle$ such
+  that{\footnote{Let $\{i_X \  | \  X \in \Xi\}$ be the
+  family of canonical injections into the coproduct $\uplus_{\Xi} W$. As per
+  our previous convention, we use $v_X$ as shorthand for $i_X (v)$.}}:
+  \begin{itemizedot}
+    \item $W'' \assign \uplus_{\Xi} W'$
+    
+    \item $V'' (p) \assign \{v_X \  | \  X \in \Xi
+    \  \& \  v \in V' (p)\}$
+    
+    \item $R''_X \assign \{(v_Y, u_Z) \  | \  Y, Z \in \Xi
+    \  \& \  v R'_Z u \  \& \ 
+    \twonotes (X) \subseteq \twonotes (Z)\}$
+    
+    \item $\mathcal{A}'' (v_Y, X) \assign \mathcal{A}' (v, X)$
+  \end{itemizedot}
+  Note that this construction makes use of the assumption that $\Xi$ is
+  non-empty.  Let $Z \assign \{(v, v_X) \  | \  X \in \Xi
+  \  \& \  v \in W' \}$; it is straightforward to prove
+  that $Z$ is a bisimulation between $\mathbbm{M}'$ and $\mathbbm{M}''$, for
+  all relations corresponding to terms $X \in \Xi$. Hence $\mathbbm{M}'', w_X
+  \nvDash \psi$ for some $w_X \in W''$.  In addition, $\mathbbm{M}''$
+  inherits (\ref{fin}) through (\ref{sub}) from $\mathbbm{M}'$, as well as the
+  converse of (\ref{refl}).  Next observe, forall $X \oplus Y \in \Xi$:
+  \begin{eqnarray*}
+    \text{$(v_V, u_Z) \in R''_X \cap R''_Y$} & \Longleftrightarrow & \exists Z
+    \in \Xi . \text{$v R'_Z u \  \& \  \twonotes (X)
+    \subseteq \twonotes (Z) \  \& \  \twonotes (Y)
+    \subseteq \twonotes (Z)$}\\
+    & \Longleftrightarrow & \exists Z \in \Xi . \text{$v R'_Z u \ 
+    \& \  \twonotes (X) \cup \twonotes (Y) \subseteq \twonotes
+    (Z)$}\\
+    & \Longleftrightarrow & \exists Z \in \Xi . \text{$v R'_Z u \ 
+    \& \  \twonotes (X \oplus Y) \subseteq \twonotes (Z)$}\\
+    & \Longleftrightarrow &  \text{$(v_V, u_Z) \in R''_{X \oplus Y}$}
+  \end{eqnarray*}
+  We now turn to our final construction. As in previous constructions, let
+  $\iota : W'' \hookrightarrow \Phi \backslash \Psi$ be an injection assigning
+  fresh nominals to worlds.  Define $\mathbbm{M}''' \assign \langle W''',
+  V''', R''', \mathcal{A}''' \rangle$ just as in the final construction in the
+  proof of Theorem \ref{completeness1}, except that $R'''_X$ and
+  $\mathcal{A}_v''' (X)$ are defined inductively as follows:
+  
+  
+  
+  \begin{center}
+    \begin{tabular}{lll}
+      $\bullet$ & $R'''_t \assign \left\{ \begin{array}{ll}
+        R''_t & t \in \Xi\\
+        W''' \times W''' & o / w
+      \end{array} \right.$ & \\
+      $\bullet$ & $R'''_{X \oplus Y} \assign R'''_X \cap R'''_Y$ & \\
+      &  & \\
+      $\bullet$ & $\mathcal{A}'''_v (t) \assign \{\phi \  | \phi \in
+      \mathcal{A}''_v \} \cup \{\neg \iota (u) \  | \ 
+      \neg v R'''_t u\}$ & where $t \in \Pi$\\
+      $\bullet$ & $\mathcal{A}'''_v (X \oplus Y) \assign \mathcal{A}'''_v (X)
+      \cup \mathcal{A}'''_v (Y)$ & 
+    \end{tabular}
+  \end{center}
+  
+  
+  
+  
+  
+  Induction over complexity of subformulae $\phi$ of $\psi$ yields
+  $\mathbbm{M}'', w \vDash \phi \Longleftrightarrow \mathbbm{M}''', w \vDash
+  \phi$, so we know that there is some world $w \in W'''$ such that
+  $\mathbbm{M}''', w \nvDash \psi$.  All that is left is to illustrate that
+  $\mathbbm{M}'''$ has the properties we desire.
+  
+  
+  
+  First note that by definition, $\mathbbm{M}'''$ makes true
+  \tmtextbf{CHOICE}.  Next, an induction argument on the complexity of a
+  terms $X$, making essential use of (\ref{sub}$'$), yields:
+  \[ u R_X''' v \Longleftrightarrow \mathbbm{M}''', v \vDash \bigwedge
+     \mathcal{A}'''_v (X) \]
+  With this, $\mathbbm{M}'''$ makes true \tmtextbf{JSND} since it inherits
+  (\ref{refl}).  Finally, we note that we may repeat our previous arguments
+  from Theorem \ref{completeness1} to prove \tmtextbf{JCSQ}.
+\end{proof}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 
