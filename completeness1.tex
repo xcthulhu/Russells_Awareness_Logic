@@ -44,11 +44,11 @@
   \begin{itemizedot}
     \item $W' \assign W \uplus W$
     
-    \item $V' (p) \assign \{v_l, v_r \hspace{1em} | \hspace{1em} v \in V
+    \item $V' (p) \assign \{v_l, v_r \  | \  v \in V
     (p)\}$
     
-    \item $R' \assign \{(v_l, u_r), (v_r, u_l) \hspace{1em} | \hspace{1em} v R
-    u\} \cup \{(v_l, v_l), (v_r, v_r) \hspace{1em} | \hspace{1em} \mathbbm{M},
+    \item $R' \assign \{(v_l, u_r), (v_r, u_l) \  | \  v R
+    u\} \cup \{(v_l, v_l), (v_r, v_r) \  | \  \mathbbm{M},
     v \vDash \circlearrowleft\}$
     
     \item $\mathcal{A}' (v_l) \assign \mathcal{A}' (v_r) \assign \mathcal{A}
@@ -57,8 +57,8 @@
   
   
   It is straightforward to verify that $\mathbbm{M}'$ makes true the desired
-  properties.  Let $Z \assign \{(v, v_l), (v, v_r) \hspace{1em} |
-  \hspace{1em} v \in W\}$.  then $Z$ is a bisimulation between $\mathbbm{M}$
+  properties.  Let $Z \assign \{(v, v_l), (v, v_r) \  |
+  \  v \in W\}$.  then $Z$ is a bisimulation between $\mathbbm{M}$
   and $\mathbbm{M}'$.  Therefore we know there is some $w \in W$ such that
   $\mathbbm{M}', w_l \nvDash \psi$ and $\mathbbm{M}', w_r \nvDash \psi$.
   
@@ -86,8 +86,8 @@
         \varnothing & o / w
       \end{array} \right.$\\
       $\bullet$ & $R'' \assign R'$ & {\hspace{3em}} & $\bullet$ &
-      $\mathcal{A}''_v \assign \{\phi \hspace{1em} | \phi \in \mathcal{A}'_v
-      \} \cup \{\neg \iota (u) \hspace{1em} | \hspace{1em} \neg v R' u\}$
+      $\mathcal{A}''_v \assign \{\phi \  | \phi \in \mathcal{A}'_v
+      \} \cup \{\neg \iota (u) \  | \  \neg v R' u\}$
     \end{tabular}
   \end{center}
   

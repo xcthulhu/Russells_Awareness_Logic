@@ -12,10 +12,10 @@ knowledge bases cannot be merged by the agent.
 
 \begin{definition}
   Let $\Phi$ be a set of letters and define the language $\mathcal{L}_N (\Phi)$ as:
-  \[ \phi \hspace{1em} : : = \hspace{1em} p \in \Phi \hspace{1em} |
-     \hspace{1em} \bot \hspace{1em} | \hspace{1em} \phi \rightarrow \psi
-     \hspace{1em} | \hspace{1em} \Box \phi \hspace{1em} | \hspace{1em} A :
-     \phi \hspace{1em} | \hspace{1em} K \phi \]
+  \[ \phi \  : : = \  p \in \Phi \  |
+     \  \bot \  | \  \phi \rightarrow \psi
+     \  | \  \Box \phi \  | \  A :
+     \phi \  | \  K \phi \]
 \end{definition}
 
 Just as previous semantics, ``$\Box \phi$'' is intended to mean that the agent
@@ -101,17 +101,17 @@ match how our semantics are intended for reasoning over multiple bases:
     \item $W \assign \text{the maximally consistent sets of subformulae of
     $\psi$, closed under single negation}$
     
-    \item $V (p) \assign \{v \in W \hspace{1em} | \hspace{1em} p \in v\}$
+    \item $V (p) \assign \{v \in W \  | \  p \in v\}$
     
-    \item $\mathcal{K}_w \assign \{S \in 2^W \hspace{1em} | \hspace{1em} \{v
-    \in W \hspace{1em} | \hspace{1em} \phi \in v\} \subseteq S \hspace{1em} \&
-    \hspace{1em} K \phi \in w\}$
+    \item $\mathcal{K}_w \assign \{S \in 2^W \  | \  \{v
+    \in W \  | \  \phi \in v\} \subseteq S \  \&
+    \  K \phi \in w\}$
     
-    \item $\mathcal{N}_w \assign \{S \in 2^W \hspace{1em} | \hspace{1em} \{v
-    \in W \hspace{1em} | \hspace{1em} \phi \in v\} \subseteq S \hspace{1em} \&
-    \hspace{1em} \Box \phi \in w\}$
+    \item $\mathcal{N}_w \assign \{S \in 2^W \  | \  \{v
+    \in W \  | \  \phi \in v\} \subseteq S \  \&
+    \  \Box \phi \in w\}$
     
-    \item $\mathcal{A}_w \assign \{\{\phi\} \hspace{1em} | \hspace{1em} A :
+    \item $\mathcal{A}_w \assign \{\{\phi\} \  | \  A :
     \phi \in w\}$
   \end{itemizedot}
   Note that in this model, there are neighborhoods for both knowledge and
@@ -129,7 +129,7 @@ match how our semantics are intended for reasoning over multiple bases:
   $\mathbbm{M}, w \vDash \Box \chi$, where the Truth Lemma has been proven to
   hold for $\chi$; we must show $\Box \chi \in w$.  By our assumption there
   is some $\phi$ and $S$ where $\Box \phi \in w$ and $S \supseteq \{v \in W
-  \hspace{1em} | \hspace{1em} \phi \in v\}$.  We argue that $\vdash \phi
+  \  | \  \phi \in v\}$.  We argue that $\vdash \phi
   \rightarrow \chi$; for if not then by the finitary Lindenbaum lemma there is
   some $u \in W$ where $\phi \in u$ and $\chi \nin u$.  Hence $u \in S$ and
   $\mathbbm{M}, u \nvDash \chi$, a contradiction.  Since $\vdash \phi
@@ -168,15 +168,15 @@ match how our semantics are intended for reasoning over multiple bases:
     injections and $\theta (v_l) \assign \theta (v_r) \assign v$ is a
     left-inverse of $l, r$
     
-    \item $V' (p) \assign \{v_l, v_r \hspace{1em} | \hspace{1em} v \in V
+    \item $V' (p) \assign \{v_l, v_r \  | \  v \in V
     (p)\}$
     
-    \item $\mathcal{K}' (v_i) \assign \{S \hspace{1em} | \hspace{1em} v_i \in
-    S \hspace{1em} \& \hspace{1em} \theta [S] \in \mathcal{K_v} \}$ where $i =
+    \item $\mathcal{K}' (v_i) \assign \{S \  | \  v_i \in
+    S \  \& \  \theta [S] \in \mathcal{K_v} \}$ where $i =
     l, r$
     
-    \item $\mathcal{N}' (v_i) \assign \mathcal{K}' (v_i) \cup \{S \hspace{1em}
-    | \hspace{1em} v_i \nin S \hspace{1em} \& \hspace{1em} \theta [S] \in
+    \item $\mathcal{N}' (v_i) \assign \mathcal{K}' (v_i) \cup \{S \ 
+    | \  v_i \nin S \  \& \  \theta [S] \in
     \mathcal{N_v} \}$ where $i = l, r$
     
     \item $\mathcal{A}' (v_l) \assign \mathcal{A}' (v_r) \assign \mathcal{A}
@@ -184,7 +184,7 @@ match how our semantics are intended for reasoning over multiple bases:
   \end{itemizedot}
   
   
-  If we let $Z \assign \{(v, v_r), (v, v_l) \hspace{1em} | \hspace{1em} v \in
+  If we let $Z \assign \{(v, v_r), (v, v_l) \  | \  v \in
   W\}$, it is straightforward to verify that $Z$ is a neighborhood
   bisimulation.  Hence $\mathbbm{M}, w_l \nvDash \psi$.  Along with (3$'$),
   this model makes true (1), (2), (4).  In fact, in light of ($3'$), we can
@@ -210,8 +210,8 @@ match how our semantics are intended for reasoning over multiple bases:
         \varnothing & o / w
       \end{array} \right.$\\
       $\bullet$ & $\mathcal{N}''_w \assign \mathcal{N}'_w$ & {\hspace{3em}} &
-      $\bullet$ & $\mathcal{A}''_v \assign \{\partial_v S \hspace{1em} |
-      \hspace{1em} S \in \mathcal{N}'_w \}$
+      $\bullet$ & $\mathcal{A}''_v \assign \{\partial_v S \  |
+      \  S \in \mathcal{N}'_w \}$
     \end{tabular}
   \end{center}
   
@@ -219,11 +219,11 @@ match how our semantics are intended for reasoning over multiple bases:
   
   
   
-  Where $\partial_v S \assign \{\phi \hspace{1em} | \hspace{1em} \phi \in
+  Where $\partial_v S \assign \{\phi \  | \  \phi \in
   \bigcup \mathcal{A}_v', \text{$\phi$ is a subformula of $\psi$ and}
-  \hspace{1em} S \subseteq \left\llbracket \phi
-  \right\rrbracket^{\mathbbm{M}'} \} \cup \{\neg \iota (u) \hspace{1em} |
-  \hspace{1em} u \nin S\}$.
+  \  S \subseteq \left\llbracket \phi
+  \right\rrbracket^{\mathbbm{M}'} \} \cup \{\neg \iota (u) \  |
+  \  u \nin S\}$.
   
   As before, this model agrees with $\mathbbm{M}'$ on all subformulae of
   $\psi$, using the semantics in Definition \ref{neighborhoodmodels}, hence

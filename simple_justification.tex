@@ -42,23 +42,23 @@ as a mechanism for forming the union of knowledge bases, creating new ones.
 \begin{definition}
   Let $\Pi$ be a set of primitive terms.  Define $\tau (\Pi)$ with the
   following grammar:
-  \[ X \hspace{1em} : : = \hspace{1em} t \in \Pi \hspace{1em} | \hspace{1em} X
+  \[ X \  : : = \  t \in \Pi \  | \  X
      \oplus Y \]
   
   
   Let $\Phi$ be a set of letters and $\Pi$ a set of primitive terms, and
   define the language $\mathcal{L}_{\tmop{SJL}} (\Phi, \Pi)$ as:
-  \[ \phi \hspace{1em} : : = \hspace{1em} p \in \Phi \hspace{1em} |
-     \hspace{1em} \circlearrowleft_X \hspace{1em} | \hspace{1em} \bot
-     \hspace{1em} | \hspace{1em} \phi \rightarrow \psi \hspace{1em} |
-     \hspace{1em} \Box_X \phi \hspace{1em} | \hspace{1em} X : \phi \]
+  \[ \phi \  : : = \  p \in \Phi \  |
+     \  \circlearrowleft_X \  | \  \bot
+     \  | \  \phi \rightarrow \psi \  |
+     \  \Box_X \phi \  | \  X : \phi \]
   where $X \in \tau (\Pi)$
 \end{definition}
 
 \begin{definition}
   \label{justmodels}A {\tmstrong{simple justification model}} $\mathbbm{M}=
   \langle W, V, R, \mathcal{A} \rangle$ is a Kripke model with a valuation $V
-  : \Phi \cup \{\circlearrowleft_X \hspace{1em} | \hspace{1em} X \in \tau
+  : \Phi \cup \{\circlearrowleft_X \  | \  X \in \tau
   (\Pi)\} \rightarrow 2^W$, an indexed relation $R : \tau (\Pi) \rightarrow
   2^{W \times W}$, along with a modified awareness function $\mathcal{A} : W
   \times \tau (\Pi) \rightarrow 2^{\mathcal{L}_{\tmop{SJL}} (\Phi, \Pi)}$. \
@@ -158,9 +158,9 @@ without proof that this is a conservative extension of the awareness logic in
   
   \begin{align*}
     {\Sigma}_1 &
-    {\assign}{\Sigma}_0{\cup}\{\Box_Y{\phi}{\hspace{1em}}|{\hspace{1em}}\Box_X{\phi}{\in}{\Sigma}_0{\hspace{1em}}\&{\hspace{1em}}Y{\in}{\Xi}\}\\
+    {\assign}{\Sigma}_0{\cup}\{\Box_Y{\phi}{\ }|{\ }\Box_X{\phi}{\in}{\Sigma}_0{\ }\&{\ }Y{\in}{\Xi}\}\\
     {\Sigma}_2 &
-    {\assign}{\Sigma}_1{\cup}\{{\neg}{\phi}{\hspace{1em}}|{\hspace{1em}}{\phi}{\in}{\Sigma}_1\}
+    {\assign}{\Sigma}_1{\cup}\{{\neg}{\phi}{\ }|{\ }{\phi}{\in}{\Sigma}_1\}
   \end{align*}
   
   As in the proof of Theorem \ref{completeness2}, it is simple to verify that
@@ -169,7 +169,7 @@ without proof that this is a conservative extension of the awareness logic in
   canonical model formed of maximally consistent subsets of $\Sigma_2$, where
   $V$ and $\mathcal{A}$ are defined as usual, and $R : \Xi \rightarrow 2^{W
   \times W}$ is defined by:
-  \[ w R_X v \Longleftrightarrow \{\phi \hspace{1em} | \hspace{1em} \Box_X
+  \[ w R_X v \Longleftrightarrow \{\phi \  | \  \Box_X
      \phi \in w\} \subseteq v \]
   As in previous constructions we may prove the usual Lindenbaum and Truth
   Lemmas an use them obtain a world $w \in W$ where $\mathbbm{M}, w \nvDash
@@ -178,7 +178,7 @@ without proof that this is a conservative extension of the awareness logic in
   
   
   Next, define an operator $\twonotes : \tau (\Pi) \rightarrow 2^{\Pi}$ where:
-  \[ \twonotes (X) \assign \{t \in \Pi \hspace{1em} | \hspace{1em} t \text{
+  \[ \twonotes (X) \assign \{t \in \Pi \  | \  t \text{
      occurs in } X\} \]
   In other words, $\twonotes (X)$ is the set of atomic terms in $X$.  As in
   our construction for Theorem \ref{completeness1}, $\mathbbm{M}$ makes true
@@ -223,11 +223,11 @@ without proof that this is a conservative extension of the awareness logic in
   \begin{itemizedot}
     \item $W' \assign W \uplus W$
     
-    \item $V' (p) \assign \{v_l, v_r \hspace{1em} | \hspace{1em} v \in V
+    \item $V' (p) \assign \{v_l, v_r \  | \  v \in V
     (p)\}$
     
-    \item $R'_X \assign \{(v_l, u_r), (v_r, u_l) \hspace{1em} | \hspace{1em} v
-    R_X u\} \cup \{(v_l, v_l), (v_r, v_r) \hspace{1em} | \hspace{1em}
+    \item $R'_X \assign \{(v_l, u_r), (v_r, u_l) \  | \  v
+    R_X u\} \cup \{(v_l, v_l), (v_r, v_r) \  | \ 
     \mathbbm{M}, v \vDash \circlearrowleft_X \}$
     
     \item $\mathcal{A}' (v_l, X) \assign \mathcal{A}' (v_r, X) \assign
@@ -239,24 +239,24 @@ without proof that this is a conservative extension of the awareness logic in
   
   We next make a strengthened the model where (\ref{sub}$'$) holds.  Define
   $\mathbbm{M}'' \assign \langle W'', V'', R'', \mathcal{A}'' \rangle$ such
-  that{\footnote{Let $\{i_X \hspace{1em} | \hspace{1em} X \in \Xi\}$ be the
+  that{\footnote{Let $\{i_X \  | \  X \in \Xi\}$ be the
   family of canonical injections into the coproduct $\uplus_{\Xi} W$. As per
   our previous convention, we use $v_X$ as shorthand for $i_X (v)$.}}:
   \begin{itemizedot}
     \item $W'' \assign \uplus_{\Xi} W'$
     
-    \item $V'' (p) \assign \{v_X \hspace{1em} | \hspace{1em} X \in \Xi
-    \hspace{1em} \& \hspace{1em} v \in V' (p)\}$
+    \item $V'' (p) \assign \{v_X \  | \  X \in \Xi
+    \  \& \  v \in V' (p)\}$
     
-    \item $R''_X \assign \{(v_Y, u_Z) \hspace{1em} | \hspace{1em} Y, Z \in \Xi
-    \hspace{1em} \& \hspace{1em} v R'_Z u \hspace{1em} \& \hspace{1em}
+    \item $R''_X \assign \{(v_Y, u_Z) \  | \  Y, Z \in \Xi
+    \  \& \  v R'_Z u \  \& \ 
     \twonotes (X) \subseteq \twonotes (Z)\}$
     
     \item $\mathcal{A}'' (v_Y, X) \assign \mathcal{A}' (v, X)$
   \end{itemizedot}
   Note that this construction makes use of the assumption that $\Xi$ is
-  non-empty.  Let $Z \assign \{(v, v_X) \hspace{1em} | \hspace{1em} X \in \Xi
-  \hspace{1em} \& \hspace{1em} v \in W' \}$; it is straightforward to prove
+  non-empty.  Let $Z \assign \{(v, v_X) \  | \  X \in \Xi
+  \  \& \  v \in W' \}$; it is straightforward to prove
   that $Z$ is a bisimulation between $\mathbbm{M}'$ and $\mathbbm{M}''$, for
   all relations corresponding to terms $X \in \Xi$. Hence $\mathbbm{M}'', w_X
   \nvDash \psi$ for some $w_X \in W''$.  In addition, $\mathbbm{M}''$
@@ -264,14 +264,14 @@ without proof that this is a conservative extension of the awareness logic in
   converse of (\ref{refl}).  Next observe, forall $X \oplus Y \in \Xi$:
   \begin{eqnarray*}
     \text{$(v_V, u_Z) \in R''_X \cap R''_Y$} & \Longleftrightarrow & \exists Z
-    \in \Xi . \text{$v R'_Z u \hspace{1em} \& \hspace{1em} \twonotes (X)
-    \subseteq \twonotes (Z) \hspace{1em} \& \hspace{1em} \twonotes (Y)
+    \in \Xi . \text{$v R'_Z u \  \& \  \twonotes (X)
+    \subseteq \twonotes (Z) \  \& \  \twonotes (Y)
     \subseteq \twonotes (Z)$}\\
-    & \Longleftrightarrow & \exists Z \in \Xi . \text{$v R'_Z u \hspace{1em}
-    \& \hspace{1em} \twonotes (X) \cup \twonotes (Y) \subseteq \twonotes
+    & \Longleftrightarrow & \exists Z \in \Xi . \text{$v R'_Z u \ 
+    \& \  \twonotes (X) \cup \twonotes (Y) \subseteq \twonotes
     (Z)$}\\
-    & \Longleftrightarrow & \exists Z \in \Xi . \text{$v R'_Z u \hspace{1em}
-    \& \hspace{1em} \twonotes (X \oplus Y) \subseteq \twonotes (Z)$}\\
+    & \Longleftrightarrow & \exists Z \in \Xi . \text{$v R'_Z u \ 
+    \& \  \twonotes (X \oplus Y) \subseteq \twonotes (Z)$}\\
     & \Longleftrightarrow &  \text{$(v_V, u_Z) \in R''_{X \oplus Y}$}
   \end{eqnarray*}
   We now turn to our final construction. As in previous constructions, let
@@ -291,8 +291,8 @@ without proof that this is a conservative extension of the awareness logic in
       \end{array} \right.$ & \\
       $\bullet$ & $R'''_{X \oplus Y} \assign R'''_X \cap R'''_Y$ & \\
       &  & \\
-      $\bullet$ & $\mathcal{A}'''_v (t) \assign \{\phi \hspace{1em} | \phi \in
-      \mathcal{A}''_v \} \cup \{\neg \iota (u) \hspace{1em} | \hspace{1em}
+      $\bullet$ & $\mathcal{A}'''_v (t) \assign \{\phi \  | \phi \in
+      \mathcal{A}''_v \} \cup \{\neg \iota (u) \  | \ 
       \neg v R'''_t u\}$ & where $t \in \Pi$\\
       $\bullet$ & $\mathcal{A}'''_v (X \oplus Y) \assign \mathcal{A}'''_v (X)
       \cup \mathcal{A}'''_v (Y)$ & 

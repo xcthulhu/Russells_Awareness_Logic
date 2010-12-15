@@ -6,11 +6,11 @@
   
   \begin{align*}
     {\Sigma}_1 &
-    {\assign}{\Sigma}_0{\cup}\{{\forall}{\phi}{\hspace{1em}}|{\hspace{1em}}\Box{\phi}{\in}{\Sigma}_0\}\\
+    {\assign}{\Sigma}_0{\cup}\{{\forall}{\phi}{\ }|{\ }\Box{\phi}{\in}{\Sigma}_0\}\\
     {\Sigma}_2 &
-    {\assign}{\Sigma}_1{\cup}\{\text{@}_i{\phi}{\hspace{1em}},i{\rightarrow}{\phi}|{\hspace{1em}}{\phi}{\in}{\Sigma}_1{\hspace{1em}}\&{\hspace{1em}}i{\in}{\Upsilon}\}\\
+    {\assign}{\Sigma}_1{\cup}\{\text{@}_i{\phi}{\ },i{\rightarrow}{\phi}|{\ }{\phi}{\in}{\Sigma}_1{\ }\&{\ }i{\in}{\Upsilon}\}\\
     {\Sigma}_3 &
-    {\assign}{\Sigma}_2{\cup}\{{\neg}{\phi}{\hspace{1em}}|{\hspace{1em}}{\phi}{\in}{\Sigma}_2\}
+    {\assign}{\Sigma}_2{\cup}\{{\neg}{\phi}{\ }|{\ }{\phi}{\in}{\Sigma}_2\}
   \end{align*}
   
   It is easy to see that $\Sigma_3$ is finite and closed under subformulae and
@@ -42,7 +42,7 @@
   \right\rrbracket^{\mathbbm{M}'} = \varnothing$ or $\left\llbracket i
   \right\rrbracket^{\mathbbm{M}'} =\{v\}${\footnote{As per the usual
   convention, here $\left\llbracket \phi \right\rrbracket^{\mathbbm{M}}$
-  denotes $\{w \in W \hspace{1em} | \hspace{1em} \mathbbm{M}, w \vDash
+  denotes $\{w \in W \  | \  \mathbbm{M}, w \vDash
   \phi\}$.  We will drop $\mathbbm{M}$ where it is unambiguous.}}. Since the
   store $\Psi$ of nominals is infinite and $\Upsilon$ is finite, we have that
   $\Psi \backslash \Upsilon$ is infinite, so there is some injection $\iota :
@@ -54,12 +54,12 @@
     \begin{tabular}{lllll}
       $\bullet$ & $W'' \assign W'$ &  & $\bullet$ & $V'' (p) \assign V' (p)$\\
       $\bullet$ & $R'' \assign R'_{\Box}$ & {\hspace{3em}} & $\bullet$ &
-      $\mathcal{A}'' (v) \assign \{\phi \hspace{1em} | \hspace{1em} \phi \in
-      \mathcal{A}' (v)\} \cup \{\neg \iota (u) \hspace{1em} | \hspace{1em}
+      $\mathcal{A}'' (v) \assign \{\phi \  | \  \phi \in
+      \mathcal{A}' (v)\} \cup \{\neg \iota (u) \  | \ 
       \neg v R' u\}$\\
       \begin{tabular}{ll}
         $\bullet$ & $\ell (i) \assign \left\{ \begin{array}{ll}
-          w & i \in \Upsilon \hspace{1em} \& \hspace{1em} \mathbbm{M}, w
+          w & i \in \Upsilon \  \& \  \mathbbm{M}, w
           \vDash i\\
           \iota^{- 1} (i) & i \in \iota [W]\\
           \text{undefined} & \text{o/w}
