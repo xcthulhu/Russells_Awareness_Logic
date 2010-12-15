@@ -1,6 +1,8 @@
-\documentclass{acmconf}
+\documentclass{article}
 \usepackage{geometry,amsmath,amssymb,wasysym,enumerate,bbm,color}
 \geometry{letterpaper}
+
+\usepackage{stmaryrd}
 
 %%%%%%%%%% Start TeXmacs macros
 \newcommand{\assign}{:=}
@@ -38,9 +40,9 @@ Wampler-Doty}\maketitle
   Two efforts have since emerged with proposals for logic of explicit
   knowledge: the \tmtextit{Dynamics of Awareness}
   {\cite{van_benthem_inference_2009}} and \tmtextit{Justification Logic}
-  {\cite{artemov_introducing_2005}}. \ The purpose of this paper is to
+  {\cite{artemov_introducing_2005}}.  The purpose of this paper is to
   repurpose various epistemic logics from these previous efforts for reasoning
-  about logical closures over knowledge bases. \ The results in this paper are
+  about logical closures over knowledge bases.  The results in this paper are
   based on previous work carried out in
   {\cite{wampler-doty_evidentialist_2010}}.
 \end{abstract}
@@ -48,44 +50,44 @@ Wampler-Doty}\maketitle
 \section{Introduction\label{intro}}
 
 The modern tradition in epistemic logic is to assume knowledge modalities
-conform to the $S 5$ axiom schema. \ As noted in
+conform to the $S 5$ axiom schema.  As noted in
 {\cite{halpern_set-theoretic_1999,rubinstein_modeling_1998}}, the semantics of
 $S 5$ knowledge correspond exactly to partitioning a collection of situations
 into \tmtextit{information sets}, which is the traditional approach in game
-theory and decision theory. \ While it is not commonly acknowledged in
+theory and decision theory.  While it is not commonly acknowledged in
 epistemic logic, economists and philosophers accept that traditional decision
-theory is externalist and behaviourist in nature{\footnote{An early essay by
+theory is externalist and behaviourist in nature
+(FIXME)
+\footnote{An early essay by
 Amartya Sen on the philosophical foundations of traditional decision theory
 makes the behaviorist reading of decision theory clear
-{\cite{sen_behaviour_1973}}. \ Kaushik Basu also discusses the behaviorist
-nature of decision theory {\cite[pgs. 53--54]{basu\_revealed\_1980}}. \
+\cite{sen_behaviour_1973}.  Kaushik Basu also discusses the behaviorist
+nature of decision theory {\cite[pgs. 53--54]{basu_revealed_1980}}. 
 Finally, Donald Davidson appeals to decision theory to motivate an externalist
-epistemology in {\cite{davidson_could_1995}}.}}.
-
-
+epistemology in \cite{davidson_could_1995}.}.
 
 In {\cite{van_benthem_reflectionsepistemic_1991}}, Johan van Benthem proposed
 a research program to find logics for explicit knowledge, providing the first
-suggestion of an internalist perspective on epistemic logic. \ Subsequently,
+suggestion of an internalist perspective on epistemic logic.  Subsequently,
 Sergei Artemov and Elena Nogina proposed a logic of explicit justification,
 which has come to be known as \tmtextit{Justification Logic} (JL)
 {\cite{artemov_introducing_2005}}, based on Artemov's \tmtextit{Logic of
-Proofs} {\cite{artemov_logic_1994}}. \ While the original semantics of JL was
+Proofs} {\cite{artemov_logic_1994}}.  While the original semantics of JL was
 interpretability into Peano Arithmetic, Melvin Fitting proposed Kripke
-semantics for JL in {\cite{fitting_logic_2005}}. \ Recently, Fernando
+semantics for JL in {\cite{fitting_logic_2005}}.  Recently, Fernando
 Vel\'azquez-Quesada and Johan van Benthem have developed a simpler framework
 for explicit epistemics in {\cite{van_benthem_inference_2009}}, entitled the
-\tmtextit{Dynamics of Awareness}. \ This work was based on Joseph Halpern and
+\tmtextit{Dynamics of Awareness}.  This work was based on Joseph Halpern and
 Ronald Fagin's original \tmtextit{Awareness Logic} {\cite{fagin_belief_1987}}.
 
 
 
 In this essay we repurpose various externalist logics to take on an
-internalist reading. \ The concept of a \tmtextit{knowledge base}, from which
+internalist reading.  The concept of a \tmtextit{knowledge base}, from which
 beliefs may be implicitly deduced, will play a crucial role in our discussion.
 \ We propose this as an avenue for representing foundationalist perspectives
-on epistemology in epistemic logic. \ Our philosophical motivation is taken
-from two sources. \ The first is Vincent Hendricks in
+on epistemology in epistemic logic.  Our philosophical motivation is taken
+from two sources.  The first is Vincent Hendricks in
 {\cite{hendricks_mainstream_2006}}, where he characterizes the principal of
 {\tmem{logical omniscience}} for implicit knowledge in epistemic
 logic{\footnote{We have modified Hendricks' notation here slightly to match
@@ -100,14 +102,14 @@ our own.}}:
 We will design our semantics such that ``$\Box \phi$'' may be equated with
 ``$\phi$ follows logically from a knowledge base $\mathcal{A}$,'' which is
 sometimes written as $\phi \in \tmop{Cn} ( \mathcal{A})$ in the artificial
-intelligence literature. \ Our second inspiration comes from what Hilary
+intelligence literature.  Our second inspiration comes from what Hilary
 Kornblith calls the \tmtextit{the arguments on paper thesis}
 {\cite{kornblith_beyond_1980}}, which he feels characterizes apsychological,
 internalist theories of knowledge:
 
 \begin{quote}
   Let us suppose that, for any person, it is possible, at least in principle,
-  to list all of the propositions that person believes. \ The
+  to list all of the propositions that person believes.  The
   arguments-on-paper thesis is just the view that a person has a justified
   belief that a particular proposition is true just in case that proposition
   appears on the list of propositions that person believes, and either it
@@ -116,9 +118,9 @@ internalist theories of knowledge:
 \end{quote}
 
 Kornblith asserts that foundationalism and coherentism vie for accounts of a
-``good argument'' in the above thesis. \ He provides an extensive bibliography
+``good argument'' in the above thesis.  He provides an extensive bibliography
 citing proposals for this principle by a number of 20th century
-epistemologists, including figures such as A.J. Ayer and C.I. Lewis. \ The
+epistemologists, including figures such as A.J. Ayer and C.I. Lewis.  The
 rest of Kornblith's paper is devoted to attacking this view and proposing a
 form of naturalized epistemology; we will not address this debate here,
 however.
@@ -126,15 +128,15 @@ however.
 
 
 We adopt a arguments-on-paper-thesis perspective on epistemic logic in this
-paper. \ We consider a \tmtextit{good argument} to be a logical derivation
-from propositions present in a knowledge base. \ In this fashion, our \ \
+paper.  We consider a \tmtextit{good argument} to be a logical derivation
+from propositions present in a knowledge base.  In this fashion, ou.  \
 Special attention will be given to \tmtextit{sound derivations}, which will be
-thought of as a form of knowledge. \ In Awareness Logic, we will interpret
-awareness of a formula as membership in a knowledge base. \ We prove
-completeness for basic awareness logic and a hybrid logic extension. \ Logics
+thought of as a form of knowledge.  In Awareness Logic, we will interpret
+awareness of a formula as membership in a knowledge base.  We prove
+completeness for basic awareness logic and a hybrid logic extension.  Logics
 of multiple knowledge bases are also presented: a simplified form of
 Justification Logic, a logic with neighborhood semantics, an a logic with
-modalities for quantifying over knowledge bases. \ We conclude with an
+modalities for quantifying over knowledge bases.  We conclude with an
 application to naturalized epistemology found in the psychological literature.
 
 \section{Basic Explicit Logics of Knowledge Bases}
@@ -144,7 +146,7 @@ application to naturalized epistemology found in the psychological literature.
 In this section, we give the explicit semantics to basic awareness logic,
 originally presented in {\cite{fagin_belief_1987}}, with an additional axiom.
 \ One difference in our presentation is the inclusion of a novel letter and a
-superficial change in notation. \ This work is inspired by the developments in
+superficial change in notation.  This work is inspired by the developments in
 van Benthem and Vel\'azquez-Quesada {\cite{van_benthem_inference_2009}}.
 
 \begin{definition}
@@ -164,13 +166,13 @@ modal logics.
   \label{awarenessmodels}An {\tmstrong{awareness model}} $\mathbbm{M}= \langle
   W, V, R, \mathcal{A} \rangle$ is a Kripke model with a valuation $V : \Phi
   \cup \{\circlearrowleft\} \rightarrow 2^W$ and an awareness function
-  $\mathcal{A} : W \rightarrow 2^{\mathcal{L}_A (\Phi)}$. \ We will usually
+  $\mathcal{A} : W \rightarrow 2^{\mathcal{L}_A (\Phi)}$.  We will usually
   denote $\mathcal{A} (w)$ as $\mathcal{A}_w$.
   
   
   
   Define the semantic entailment relation $\vDash$ where atomic propositions,
-  logical connectives and modality are interpreted as usual. \ We employ the
+  logical connectives and modality are interpreted as usual.  We employ the
   following novel definition:
   \begin{eqnarray*}
     \mathbbm{M}, w \vDash A : \phi & \text{iff} & \phi \in \mathcal{A_w}
@@ -214,9 +216,9 @@ in {\S}\ref{intro}.
 
 \tmtextbf{SND} asserts that $\circlearrowleft$ corresponds to the agent's
 knowledge base being sound. A sound knowledge base will only render true
-conclusions when used in deductions. \ If one considers ``the existance of a
+conclusions when used in deductions.  If one considers ``the existance of a
 sound deduction'' sufficient for a kind of knowledge, then $\circlearrowleft$
-is suitable for investigating this notion of epistemology. \ That is, if
+is suitable for investigating this notion of epistemology.  That is, if
 $\mathbbm{M}, w \vDash \circlearrowleft \wedge \Box \phi$, then we may
 naturally say that the agent (implicitly) {\tmem{knows}} $\phi$ on the basis
 of $\mathcal{A}_w$, rather than merely {\tmem{believing}} $\phi$ on the basis
@@ -255,19 +257,19 @@ in Table \ref{logic1}.
 \end{theorem}
 
 \begin{proof}
-  Soundness is straightforward, so we will only address completeness. \ Assume
-  $\nvdash \psi$. \ Consider the finite canonical model $\mathbbm{M}= \langle
+  Soundness is straightforward, so we will only address completeness.  Assume
+  $\nvdash \psi$.  Consider the finite canonical model $\mathbbm{M}= \langle
   W, V, R, \mathcal{A} \rangle$ formed of maximally consistent sets of
   subformulae of $\phi$ (closed under single negations{\footnote{A discussion
   of this property may be found in {\cite[pg.
-  243]{blackburn\_modal\_2001}}.}}), as per the finitary modal completeness
-  proofs found in {\cite[chapter 4.8]{blackburn\_modal\_2001}} and
-  {\cite[chapter 5]{boolos\_logic\_1995}}. \ Typical presentations do not
+  243]{blackburn_modal_2001}}.}}), as per the finitary modal completeness
+  proofs found in {\cite[chapter 4.8]{blackburn_modal_2001}} and
+  {\cite[chapter 5]{boolos_logic_1995}}.  Typical presentations do not
   include awareness, however it is defined intuitively in this case:
   \[ \phi \in \mathcal{A}_w \Longleftrightarrow A : \phi \in w \]
   Since $\psi$ is a subformula of itself, we have $\mathbbm{M}, w \nvDash
   \psi$ for some world $w$ by a finitary {\tmem{Lindenbaum Lemma}} and
-  {\tmem{Truth Theorem}}. \ Moreover, it is straightforward to verify that
+  {\tmem{Truth Theorem}}.  Moreover, it is straightforward to verify that
   $\mathbbm{M}$ makes true the following properties:
   \begin{enumeratenumeric}
     \item $W$ and $\mathcal{A}_v$ are finite, and $\psi \in \mathcal{A}_v$
@@ -281,7 +283,7 @@ in Table \ref{logic1}.
   
   
   We next produce a bisimular{\footnote{The notion of bisimulation is
-  discussed at length in {\cite[chapter 2.2]{blackburn\_modal\_2001}}. \ We
+  discussed at length in {\cite[chapter 2.2]{blackburn_modal_2001}}.  We
   note that the basic definition and all of the usual theorems (modal
   equivalence, Henessy Milner, etc.) may be generalized to awareness models in
   a straightforward fashion. }} model $\mathbbm{M}'$ which makes true (1), (2)
@@ -316,22 +318,22 @@ in Table \ref{logic1}.
   
   
   It is straightforward to verify that $\mathbbm{M}'$ makes true the desired
-  properties. \ Let $Z \assign \{(v, v_l), (v, v_r) \hspace{1em} |
-  \hspace{1em} v \in W\}$; \ then $Z$ is a bisimulation between $\mathbbm{M}$
-  and $\mathbbm{M}'$. \ Therefore we know there is some $w \in W$ such that
+  properties.  Let $Z \assign \{(v, v_l), (v, v_r) \hspace{1em} |
+  \hspace{1em} v \in W\}$.  then $Z$ is a bisimulation between $\mathbbm{M}$
+  and $\mathbbm{M}'$.  Therefore we know there is some $w \in W$ such that
   $\mathbbm{M}', w_l \nvDash \psi$ and $\mathbbm{M}', w_r \nvDash \psi$.
   
   
   
   Finally we construct a model $\mathbbm{M}''$ which agrees with
   $\mathbbm{M}'$ for all subformulae of $\psi$, which makes true
-  \tmtextbf{CSQ} and \tmtextbf{SND}. \ Let $\Lambda$ be the set of proposition
-  letters occuring in $\psi$. \ We will make use members of $\Phi \backslash
-  \Lambda$ as {\tmem{nominals}}, as per the tradition in hybrid logic. \ This
+  \tmtextbf{CSQ} and \tmtextbf{SND}.  Let $\Lambda$ be the set of proposition
+  letters occuring in $\psi$.  We will make use members of $\Phi \backslash
+  \Lambda$ as {\tmem{nominals}}, as per the tradition in hybrid logic.  This
   is possible since both $W'$ and $\Lambda$ are finite and $\Phi$ is infinite
-  by hypothesis. \ Let $\iota : W \uplus W \hookrightarrow \Phi \backslash
+  by hypothesis.  Let $\iota : W \uplus W \hookrightarrow \Phi \backslash
   \Lambda$ be an injection assigning a fresh nominal associated with each
-  world in $\mathbbm{M}'$. \ Now define $\mathbbm{M}'' \assign \langle W'',
+  world in $\mathbbm{M}'$.  Now define $\mathbbm{M}'' \assign \langle W'',
   V'', R'', \mathcal{A}'' \rangle$, where:
   
   
@@ -359,7 +361,7 @@ in Table \ref{logic1}.
   
   
   All that is left to show is that $\mathbbm{M}''$ makes true \tmtextbf{CSQ}
-  and \tmtextbf{SND}. \ $\mathbbm{M}''$ has three further properties:
+  and \tmtextbf{SND}.  $\mathbbm{M}''$ has three further properties:
   \begin{enumerateroman}
     \item $\mathcal{A}''_v$ is finite for all worlds $v$
     
@@ -374,8 +376,8 @@ in Table \ref{logic1}.
   
   
   
-  All that is left is to demonstrate \tmtextbf{CSQ} for some sound logic. \ We
-  will use the logic in Table \ref{logic1} itself. \ From (i), (ii), (iii),
+  All that is left is to demonstrate \tmtextbf{CSQ} for some sound logic.  We
+  will use the logic in Table \ref{logic1} itself.  From (i), (ii), (iii),
   and the \tmtextit{deduction theorem} for modal logic, we have the following
   line of reasoning:
   
@@ -401,8 +403,8 @@ in Table \ref{logic1}.
 The method of the above completeness proof makes implicit use of concepts from
 hybrid logic{\footnote{Hybrid logic was first presented in
 {\cite{prior_revised_1969}} and later formally developed in
-{\cite{bull_approach_1970}}.}}. \ In this section we adapt hybrid logic and
-show that it is a complete for reasoning about knowledge bases. \ We note that
+{\cite{bull_approach_1970}}.}}.  In this section we adapt hybrid logic and
+show that it is a complete for reasoning about knowledge bases.  We note that
 because of the increased expressive power of hybrid logic, our completeness
 theorem is simpler.
 
@@ -417,9 +419,9 @@ theorem is simpler.
 \end{definition}
 
 Our approach in hybrid logic is to employ a universal modality along with
-nominals. \ This framework presents a logic where the agent may reason about
-various labeled scenarios. \ Scenarios may be multiply labeled or not labeled
-at all. \ From these intuitions we have the following definition:
+nominals.  This framework presents a logic where the agent may reason about
+various labeled scenarios.  Scenarios may be multiply labeled or not labeled
+at all.  From these intuitions we have the following definition:
 
 \begin{definition}
   \label{hybridsemantics}Let a \tmtextbf{hybrid model} $\mathbbm{M}= \langle
@@ -456,7 +458,7 @@ This gives rise to a validity reflecting one of the axioms we saw in
    \text{\tmtextup{@}}_i \phi \]
 This can be read as ``If the agent's knowledge base is sound at world $i$,
 then if they can deduce something from their knowledge base, what they deduce
-must be true at world $i$.'' \ In a way, this may be considered as
+must be true at world $i$.'.  In a way, this may be considered as
 {\tmem{relativising}} knowledge particular named situations.
 
 
@@ -464,7 +466,7 @@ must be true at world $i$.'' \ In a way, this may be considered as
 The semantics in Definition \ref{hybridsemantics} obviates the \tmtextbf{SND}
 principle we previously presented, since there is no explicit
 $\circlearrowleft$ symbol in this setting. \tmtextbf{CSQ} still makes sense
-without modification, however. \ The following gives a logic for hybrid models
+without modification, however.  The following gives a logic for hybrid models
 making true \tmtextbf{CSQ}:
 
 \begin{table}[h]
@@ -499,10 +501,10 @@ making true \tmtextbf{CSQ}:
 \end{theorem}
 
 \begin{proof}
-  As before, soundness is trivial. \ Completeness is based on a modification
-  of techniques found in {\cite[chapter 5]{boolos\_logic\_1995}}. \ Assume
+  As before, soundness is trivial.  Completeness is based on a modification
+  of techniques found in {\cite[chapter 5]{boolos_logic_1995}}.  Assume
   that $\nvdash \psi$ and let $\Sigma_0$ be the set of subformulae of $\psi$,
-  and let $\Upsilon$ be the set of nominals occuring in $\psi$. \ Define:
+  and let $\Upsilon$ be the set of nominals occuring in $\psi$.  Define:
   
   \begin{align*}
     {\Sigma}_1 &
@@ -534,20 +536,20 @@ making true \tmtextbf{CSQ}:
     most one world making true $i$ for all $i \in \Upsilon$
   \end{enumerateroman}
   As in our previous construction we have that there is some world $w$ where
-  $\mathbbm{M}, w \nvDash \psi$. \ Let $\mathbbm{M}^1 = \langle W', V',
+  $\mathbbm{M}, w \nvDash \psi$.  Let $\mathbbm{M}^1 = \langle W', V',
   R_{\Box}', \sim_{\forall}', \mathcal{A}' \rangle$ be the submodel generated
   by $\{w\}$; we have that $\mathbbm{M}', w \nvDash \psi$ (see {\cite[chapter
-  2.1]{blackburn\_modal\_2001}} for details on generated submodels). \ In this
+  2.1]{blackburn_modal_2001}} for details on generated submodels).  In this
   model $\forall$ is a universal modality and either $\left\llbracket i
   \right\rrbracket^{\mathbbm{M}'} = \varnothing$ or $\left\llbracket i
   \right\rrbracket^{\mathbbm{M}'} =\{v\}${\footnote{As per the usual
   convention, here $\left\llbracket \phi \right\rrbracket^{\mathbbm{M}}$
   denotes $\{w \in W \hspace{1em} | \hspace{1em} \mathbbm{M}, w \vDash
-  \phi\}$. \ We will drop $\mathbbm{M}$ where it is unambiguous.}}. Since the
+  \phi\}$.  We will drop $\mathbbm{M}$ where it is unambiguous.}}. Since the
   store $\Psi$ of nominals is infinite and $\Upsilon$ is finite, we have that
   $\Psi \backslash \Upsilon$ is infinite, so there is some injection $\iota :
   W' \hookrightarrow \Psi \backslash \Upsilon$ which assigns a fresh nominal
-  to every world. \ Let $\mathbbm{M}'' = \langle W'', V'', R'', \mathcal{A}'',
+  to every world.  Let $\mathbbm{M}'' = \langle W'', V'', R'', \mathcal{A}'',
   \ell \rangle$, where:
   
   \begin{center}
@@ -578,37 +580,37 @@ making true \tmtextbf{CSQ}:
 \section{Logics of Multiple Knowledge Bases}
 
 So far, we have only dealt with systems that reason over a single knowledge
-base. \ In this section, we present various logics for reasoning over multiple
+base.  In this section, we present various logics for reasoning over multiple
 knowledge bases.
 
 \subsection{Simple Justification Logic}
 
 Justification Logic (JL) was originally developed by Artemov as the
-\tmtextit{Logic of Proofs} (LP) {\cite{artemov_logic_1994}}. \ Its original
+\tmtextit{Logic of Proofs} (LP) {\cite{artemov_logic_1994}}.  Its original
 purpose was to provide a framework for reasoning about explicit provability in
-Peano Arithmetic. \ The first introduction of Justification Logic can be found
+Peano Arithmetic.  The first introduction of Justification Logic can be found
 in {\cite{artemov_introducing_2005}}, where Artemov and Nogina propose LP as a
-logic for reasoning about evidence. \ In {\cite{fitting_logic_2005}}, Melvin
+logic for reasoning about evidence.  In {\cite{fitting_logic_2005}}, Melvin
 Fitting provided JL with Kripke model based semantics.
 
 
 
 The principle innovation of LP/JL is to extend awareness logic, such that
-awareness operations are now \tmtextit{proof terms}. \ Informally, we say that
+awareness operations are now \tmtextit{proof terms}.  Informally, we say that
 ``a proof term $X$ witnesses proposition $\phi$'', denoted ``$X : \phi$'',
-whenever $X$ represents a proof of $\phi$. \ Proofs may have
+whenever $X$ represents a proof of $\phi$.  Proofs may have
 {\tmstrong{multiple-conclusions}} in this system, so it is possible that $X :
-\phi$ and $X : \psi$ can be true where $\phi \neq \psi$. \ In Fitting's Kripke
+\phi$ and $X : \psi$ can be true where $\phi \neq \psi$.  In Fitting's Kripke
 semantics, $X : \phi$ means that $\phi$ is in awareness set corresponding to
-$X$. \ Proof terms are thought be operating in a \tmtextit{multi-conclusion}
+$X$.  Proof terms are thought be operating in a \tmtextit{multi-conclusion}
 proof system, so the same proof term may witness many different propositions.
 
 
 
 The logics LP/JL include operators over proofs terms, so that new proof terms
-may be assembled. \ One operation of particular interest to us is
-{\tmem{choice}}, denoted $\oplus$. \ The expression ``$X \oplus Y : \phi$''
-denotes that either $X$ or $Y$ are proofs witnessing $\phi$. \ There are other
+may be assembled.  One operation of particular interest to us is
+{\tmem{choice}}, denoted $\oplus$.  The expression ``$X \oplus Y : \phi$''
+denotes that either $X$ or $Y$ are proofs witnessing $\phi$.  There are other
 operations which correspond to \tmtextit{modus ponens} and
 \tmtextit{proof-theoretic reflection}, however we do not consider these
 operations here.
@@ -620,14 +622,14 @@ over multiple knowledge bases, which we call \tmtextit{simple justification
 logic} (SJL). However, instead of thinking of terms as representing proofs, we
 use them to represent knowledge bases. This is in the spirit of JL as a logic
 of evidence: we consider each knowledge base to be a corpus of evidence. \
-Each term ``names'' a different knowledge base at a particular world. \ Terms
+Each term ``names'' a different knowledge base at a particular world.  Terms
 may not refer to the same knowledge base at different worlds, just as in how
 in awareness logic the agent need not be aware of the same formulae at
-different worlds. \ Finally, we will make use of JL's {\tmem{choice}} operator
+different worlds.  Finally, we will make use of JL's {\tmem{choice}} operator
 as a mechanism for forming the union of knowledge bases, creating new ones.
 
 \begin{definition}
-  Let $\Pi$ be a set of primitive terms. \ Define $\tau (\Pi)$ with the
+  Let $\Pi$ be a set of primitive terms.  Define $\tau (\Pi)$ with the
   following grammar:
   \[ X \hspace{1em} : : = \hspace{1em} t \in \Pi \hspace{1em} | \hspace{1em} X
      \oplus Y \]
@@ -682,13 +684,13 @@ as a mechanism for forming the union of knowledge bases, creating new ones.
 
 The above semantics are similar to the ones given in previous sections. \
 \tmtextbf{JCSQ} is the same as \tmtextbf{CSQ} from {\S}\ref{awarenesslogic},
-only it is relativized to a knowledge base denoted by $X$ at $w$. \ The
+only it is relativized to a knowledge base denoted by $X$ at $w$.  The
 awareness logic of knowledge bases is special case of simple justification
 logic where there is only one term.
 
 
 
-Simplified justification logic is given in Table \ref{logic5}. \ We assert
+Simplified justification logic is given in Table \ref{logic5}.  We assert
 without proof that this is a conservative extension of the awareness logic in
 {\S}\ref{awarenesslogic}.
 
@@ -737,11 +739,11 @@ without proof that this is a conservative extension of the awareness logic in
 \end{theorem}
 
 \begin{proof}
-  As in the previous proofs, we only show completeness. \ Assume that $\nvdash
-  \psi$. \ Let $\Xi \subseteq \tau (\Pi)$ be all of the subterms occurring in
+  As in the previous proofs, we only show completeness.  Assume that $\nvdash
+  \psi$.  Let $\Xi \subseteq \tau (\Pi)$ be all of the subterms occurring in
   $\psi$; we assume that $\Xi$ is non-empty, since otherwise we may obtain the
   theorem via the usual completeness theorem for classical propositional
-  logic. Let $\Sigma_0$ be the subformulae of $\psi$. \ Define:
+  logic. Let $\Sigma_0$ be the subformulae of $\psi$.  Define:
   
   \begin{align*}
     {\Sigma}_1 &
@@ -751,7 +753,7 @@ without proof that this is a conservative extension of the awareness logic in
   \end{align*}
   
   As in the proof of Theorem \ref{completeness2}, it is simple to verify that
-  $\Sigma_2$ is closed under subformulae and single negations. \ Let
+  $\Sigma_2$ is closed under subformulae and single negations.  Let
   $\mathbbm{M} \assign \langle W, V, R, \mathcal{A} \rangle$ be the finite
   cannonical model formed of maximally consistent subsets of $\Sigma_2$, where
   $V$ and $\mathcal{A}$ are defined as usual, and $R : \Xi \rightarrow 2^{W
@@ -767,7 +769,7 @@ without proof that this is a conservative extension of the awareness logic in
   Next, define an operator $\twonotes : \tau (\Pi) \rightarrow 2^{\Pi}$ where:
   \[ \twonotes (X) \assign \{t \in \Pi \hspace{1em} | \hspace{1em} t \text{
      occurs in } X\} \]
-  In other words, $\twonotes (X)$ is the set of atomic terms in $X$. \ As in
+  In other words, $\twonotes (X)$ is the set of atomic terms in $X$.  As in
   our construction for Theorem \ref{completeness1}, $\mathbbm{M}$ makes true
   certain properties, along with some new properties:
   \begin{enumeratenumeric}
@@ -791,7 +793,7 @@ without proof that this is a conservative extension of the awareness logic in
     \twonotes (Y)$ then $R_Y \subseteq R_X$
   \end{enumeratenumeric}
   As in our previous constructions, it is necessary to refine this model using
-  bisimulations to achieve properties which are not modally definable. \ In
+  bisimulations to achieve properties which are not modally definable.  In
   particular, we shall strengthen (\ref{refl}) to a biconditional and
   (\ref{sub}) to:
   
@@ -824,7 +826,7 @@ without proof that this is a conservative extension of the awareness logic in
   
   
   
-  We next make a strengthened the model where (\ref{sub}$'$) holds. \ Define
+  We next make a strengthened the model where (\ref{sub}$'$) holds.  Define
   $\mathbbm{M}'' \assign \langle W'', V'', R'', \mathcal{A}'' \rangle$ such
   that{\footnote{Let $\{i_X \hspace{1em} | \hspace{1em} X \in \Xi\}$ be the
   family of canonical injections into the coproduct $\uplus_{\Xi} W$. As per
@@ -842,13 +844,13 @@ without proof that this is a conservative extension of the awareness logic in
     \item $\mathcal{A}'' (v_Y, X) \assign \mathcal{A}' (v, X)$
   \end{itemizedot}
   Note that this construction makes use of the assumption that $\Xi$ is
-  non-empty. \ Let $Z \assign \{(v, v_X) \hspace{1em} | \hspace{1em} X \in \Xi
+  non-empty.  Let $Z \assign \{(v, v_X) \hspace{1em} | \hspace{1em} X \in \Xi
   \hspace{1em} \& \hspace{1em} v \in W' \}$; it is straightforward to prove
   that $Z$ is a bisimulation between $\mathbbm{M}'$ and $\mathbbm{M}''$, for
   all relations corresponding to terms $X \in \Xi$. Hence $\mathbbm{M}'', w_X
-  \nvDash \psi$ for some $w_X \in W''$. \ In addition, $\mathbbm{M}''$
+  \nvDash \psi$ for some $w_X \in W''$.  In addition, $\mathbbm{M}''$
   inherits (\ref{fin}) through (\ref{sub}) from $\mathbbm{M}'$, as well as the
-  converse of (\ref{refl}). \ Next observe, forall $X \oplus Y \in \Xi$:
+  converse of (\ref{refl}).  Next observe, forall $X \oplus Y \in \Xi$:
   \begin{eqnarray*}
     \text{$(v_V, u_Z) \in R''_X \cap R''_Y$} & \Longleftrightarrow & \exists Z
     \in \Xi . \text{$v R'_Z u \hspace{1em} \& \hspace{1em} \twonotes (X)
@@ -863,7 +865,7 @@ without proof that this is a conservative extension of the awareness logic in
   \end{eqnarray*}
   We now turn to our final construction. As in previous constructions, let
   $\iota : W'' \hookrightarrow \Phi \backslash \Psi$ be an injection assigning
-  fresh nominals to worlds. \ Define $\mathbbm{M}''' \assign \langle W''',
+  fresh nominals to worlds.  Define $\mathbbm{M}''' \assign \langle W''',
   V''', R''', \mathcal{A}''' \rangle$ just as in the final construction in the
   proof of Theorem \ref{completeness1}, except that $R'''_X$ and
   $\mathcal{A}_v''' (X)$ are defined inductively as follows:
@@ -893,38 +895,38 @@ without proof that this is a conservative extension of the awareness logic in
   Induction over complexity of subformulae $\phi$ of $\psi$ yields
   $\mathbbm{M}'', w \vDash \phi \Longleftrightarrow \mathbbm{M}''', w \vDash
   \phi$, so we know that there is some world $w \in W'''$ such that
-  $\mathbbm{M}''', w \nvDash \psi$. \ All that is left is to illustrate that
+  $\mathbbm{M}''', w \nvDash \psi$.  All that is left is to illustrate that
   $\mathbbm{M}'''$ has the properties we desire.
   
   
   
   First note that by definition, $\mathbbm{M}'''$ makes true
-  \tmtextbf{CHOICE}. \ Next, an induction argument on the complexity of a
+  \tmtextbf{CHOICE}.  Next, an induction argument on the complexity of a
   terms $X$, making essential use of (\ref{sub}$'$), yields:
   \[ u R_X''' v \Longleftrightarrow \mathbbm{M}''', v \vDash \bigwedge
      \mathcal{A}'''_v (X) \]
   With this, $\mathbbm{M}'''$ makes true \tmtextbf{JSND} since it inherits
-  (\ref{refl}). \ Finally, we note that we may repeat our previous arguments
+  (\ref{refl}).  Finally, we note that we may repeat our previous arguments
   from Theorem \ref{completeness1} to prove \tmtextbf{JCSQ}.
 \end{proof}
 
 \subsection{Lattice Justification Logic}
 
-{\color{red} NOTE: \ THIS SECTION HAS SOME SERIOUS PROBLEMS AND IT'S PROBABLY
+{\color{red} NOTE.  THIS SECTION HAS SOME SERIOUS PROBLEMS AND IT'S PROBABLY
 WRONG...}
 
 
 
-Implicit in our previous presentation of SJL: \ $\oplus$ behaves like a union
+Implicit in our previous presentation of SJL.  $\oplus$ behaves like a union
 operation for knowledge bases, and dually like an intersection operation on
-accessibility relations. \ It is natural to think of $\oplus$ as a join/meet
-operator over a {\tmem{semi-lattice}}. \ In this section we make this
+accessibility relations.  It is natural to think of $\oplus$ as a join/meet
+operator over a {\tmem{semi-lattice}}.  In this section we make this
 explicit, by increasing the expressive power of simple JL to express the order
-theory inherent in knowledge bases. \ We call the novel logic presented in
+theory inherent in knowledge bases.  We call the novel logic presented in
 this section \tmtextit{Lattice Justification Logic} (LJL){\footnote{We note
 that ``Semi-Lattice Justification Logic'' may be a more appropriate name,
 however we have decided to shorten semic-lattice to lattice in this article
-for purposes of concision.}}. \ Lattice JL may be considered a novel logic for
+for purposes of concision.}}.  Lattice JL may be considered a novel logic for
 studying the dynamics of \tmtextit{theory change}, where the logic employed by
 the changing theories could be LJL itself.
 
@@ -945,7 +947,7 @@ the changing theories could be LJL itself.
   \label{justmodels}A {\tmstrong{lattice justification model}} $\mathbbm{M}=
   \langle W, V, R, \mathcal{A}, \preccurlyeq \rangle$ is a simple
   justification model with a new relation $\preccurlyeq : W \rightarrow
-  2^{\tau (\Pi) \times \tau (\Pi)}$ between terms, indexed by worlds. \ The
+  2^{\tau (\Pi) \times \tau (\Pi)}$ between terms, indexed by worlds.  The
   semantics of $\sqsubseteq$ correspond to $\preccurlyeq$ as follows:
   \[ \mathbbm{M}, w \vDash X \sqsubseteq Y \Longleftrightarrow X
      \preccurlyeq_w Y \]
@@ -1005,13 +1007,13 @@ models with the properties we have been investigating:
 \end{theorem}
 
 \begin{proof}
-  Assume $\nvdash \psi$. \ Let $\mathbbm{M} \assign \langle W, V, R,
+  Assume $\nvdash \psi$.  Let $\mathbbm{M} \assign \langle W, V, R,
   \mathcal{A}, \preccurlyeq \rangle$ be the same as the finitary canonical
   model we initially constructed in Theorem \ref{completeness5}, only
   $\preccurlyeq$ is defined as:
   \[ X \preccurlyeq_w Y \Longleftrightarrow w \vdash X \sqsubseteq Y \]
   We may deduce that there is a world $w \in W$ such that $\mathbbm{M}, w
-  \nvDash \psi$. \ This canonical model makes true properties (\ref{fin})
+  \nvDash \psi$.  This canonical model makes true properties (\ref{fin})
   through (\ref{union}) we listed in Theorem \ref{completeness5}, as well as a
   certain new properties:
   
@@ -1030,24 +1032,24 @@ models with the properties we have been investigating:
   \end{descriptioncompact}
   
   As in previous constructions, completeness is achieved by through a series
-  of model refinements. \ Note that property 8 has been implicitly true in all
+  of model refinements.  Note that property 8 has been implicitly true in all
   of our previous constructions, although we have not been interested in
   enforcing it to be inherited by model refinements previously.
   
   
   
   We first construct a model $\mathbbm{M}'$ which is bisimular to
-  $\mathbbm{M}$, where (\ref{refl}) is strengthened to a biconditional. \ This
+  $\mathbbm{M}$, where (\ref{refl}) is strengthened to a biconditional.  This
   is done exactly as we proceeded in previous constructions. We note that the
   notion of ``bisimulation'' here includes that two bisimular worlds $v$ and
   $u$ must have isomorphic semi-lattices $\preccurlyeq_v$ and
-  $\preccurlyeq_w$. \ This is achieved by enforcing that $\preccurlyeq_{v_l}
+  $\preccurlyeq_w$.  This is achieved by enforcing that $\preccurlyeq_{v_l}
   \assign \preccurlyeq_{v_r} \assign \preccurlyeq_v$. As before, we have that
   $\mathbbm{M}', w \nvDash \psi$ for some world $w \in W'$.
   
   
   
-  We next strengthen (6$\preccurlyeq$) to a biconditional. \ Define
+  We next strengthen (6$\preccurlyeq$) to a biconditional.  Define
   $\mathbbm{M}'' \assign \langle W'', V'', R'', \mathcal{A}'' \rangle$ such
   that:
   \begin{itemizedot}
@@ -1063,7 +1065,7 @@ models with the properties we have been investigating:
     \item $\mathcal{A}'' (v_Y, X) \assign \mathcal{A}' (v, X)$
   \end{itemizedot}
   $\mathbbm{M}''$ is bisimular to $\mathbbm{M}'$ by the same mechanism as the
-  previous construction. \ The important feature of this structure is to
+  previous construction.  The important feature of this structure is to
   observe that the converse of (6$\preccurlyeq$) holds:
   \begin{eqnarray*}
     R_Y [v] \subseteq R_X [v] & \Longleftrightarrow & \forall Z \in \Xi
@@ -1075,7 +1077,7 @@ models with the properties we have been investigating:
   
   Our first transformation strengthens (\ref{union}), (6$\preccurlyeq$a) and
   (6$\preccurlyeq$b) so that they hold for all terms in $\tau (\Pi)$, rather
-  than being restricted to $\Xi$. \ To this end define $\mathbbm{M}' \assign
+  than being restricted to $\Xi$.  To this end define $\mathbbm{M}' \assign
   \langle W', V', R', \mathcal{A}', \preccurlyeq' \rangle$ where $W'$, $R'$
   and $\preccurlyeq'$ are the same as in $\mathbbm{M}$, but $R'$ and
   $\mathcal{A}'$ have the following modifications:
@@ -1091,13 +1093,13 @@ models with the properties we have been investigating:
 
 Neighborhood semantics were originally developed by Dana Scott and Richard
 Montague in the early 1970s as a generalization of Kripke semantics \
-{\cite{montague_universal_2008,scott_advice_1970}}. \ In
+{\cite{montague_universal_2008,scott_advice_1970}}.  In
 {\cite{fagin_belief_1988}}, Halpern and Fagin adapted neighborhood semantics
-for reasoning about epistemic agents without logical omniscience. \ In this
+for reasoning about epistemic agents without logical omniscience.  In this
 section will demonstrate how these semantics may be modified so that
 neighborhoods corresponds to the logical consequences of a different knowledge
-bases. \ This allows for using logics with neighborhood semantics for
-reasoning about multiple knowledge bases. \ A point of distinction of
+bases.  This allows for using logics with neighborhood semantics for
+reasoning about multiple knowledge bases.  A point of distinction of
 neighborhood semantics from JL is that it may be possible that two distinct
 knowledge bases cannot be merged by the agent.
 
@@ -1111,7 +1113,7 @@ knowledge bases cannot be merged by the agent.
 \end{definition}
 
 Just as previous semantics, ``$\Box \phi$'' is intended to mean that the agent
-has an argument for $\phi$ from some knowledge base. \ A novelty we present
+has an argument for $\phi$ from some knowledge base.  A novelty we present
 here is that ``$K \phi$'' means that the agent has an argument for $\phi$ from
 some \tmtextit{sound} knowledge base.
 
@@ -1208,30 +1210,30 @@ match how our semantics are intended for reasoning over multiple bases:
   \end{itemizedot}
   Note that in this model, there are neighborhoods for both knowledge and
   belief; more work is necessary to find a model based on this one which
-  conforms to the semantics in Definition \ref{neighborhoodmodels}. \ For now,
+  conforms to the semantics in Definition \ref{neighborhoodmodels}.  For now,
   assume that $K$ is just another modality governed by the neighborhoods in
-  $\mathcal{K}_w$. \ In both neighborhood functions, our idea is that the
+  $\mathcal{K}_w$.  In both neighborhood functions, our idea is that the
   neighborhoods of $w$ in are supersets $S \supseteq \left\llbracket \phi
   \right\rrbracket$ where $\Box \phi \in w$ or $K \phi \in w$, respectively.
   
   
   
   There are steps of the inductive proof of the Truth Lemma for this structure
-  which are not obvious nor obviously documented elsewhere. \ Assume
+  which are not obvious nor obviously documented elsewhere.  Assume
   $\mathbbm{M}, w \vDash \Box \chi$, where the Truth Lemma has been proven to
-  hold for $\chi$; we must show $\Box \chi \in w$. \ By our assumption there
+  hold for $\chi$; we must show $\Box \chi \in w$.  By our assumption there
   is some $\phi$ and $S$ where $\Box \phi \in w$ and $S \supseteq \{v \in W
-  \hspace{1em} | \hspace{1em} \phi \in v\}$. \ We argue that $\vdash \phi
+  \hspace{1em} | \hspace{1em} \phi \in v\}$.  We argue that $\vdash \phi
   \rightarrow \chi$; for if not then by the finitary Lindenbaum lemma there is
-  some $u \in W$ where $\phi \in u$ and $\chi \nin u$. \ Hence $u \in S$ and
-  $\mathbbm{M}, u \nvDash \chi$, a contradiction. \ Since $\vdash \phi
+  some $u \in W$ where $\phi \in u$ and $\chi \nin u$.  Hence $u \in S$ and
+  $\mathbbm{M}, u \nvDash \chi$, a contradiction.  Since $\vdash \phi
   \rightarrow \chi$ then we know that $\vdash \Box \phi \rightarrow \Box \chi$
   by our rules, which means that $\Box \chi \in w$ by maximality.
   
   
   
   By the Lindenbaum Lemma we have that there is some $w \in W$ where
-  $\mathbbm{M}, w \nvDash \psi$. \ $\mathbbm{M}$ makes true a number of
+  $\mathbbm{M}, w \nvDash \psi$.  $\mathbbm{M}$ makes true a number of
   properties:
   \begin{enumeratenumeric}
     \item $W$ and $\mathcal{A}_v$ are finite for all $v \in W$, and $\psi \in
@@ -1250,13 +1252,13 @@ match how our semantics are intended for reasoning over multiple bases:
   
   As in the proof of Theorem \ref{completeness1}, we use a bisimulation to
   move to a model where property (3) is strengthened to (3$'$): for all $S \in
-  \mathcal{N}_w$, $w \in S$ if and only if $S \in \mathcal{K}'_w$. \ We defer
+  \mathcal{N}_w$, $w \in S$ if and only if $S \in \mathcal{K}'_w$.  We defer
   the reader to {\cite{hansen_bisimulation_2007,pauly_bisimulation_1999}} for
-  details regarding bisimulation in neighborhood semantics. \ Define
+  details regarding bisimulation in neighborhood semantics.  Define
   $\mathbbm{M}' \assign \langle W', V', \mathcal{K}', \mathcal{N}',
   \mathcal{A}' \rangle$ such that:
   \begin{itemizedot}
-    \item $W' \assign W \uplus W$ where \ $l, r$ its associated canonical
+    \item $W' \assign W \uplus W$ wher.  $l, r$ its associated canonical
     injections and $\theta (v_l) \assign \theta (v_r) \assign v$ is a
     left-inverse of $l, r$
     
@@ -1278,8 +1280,8 @@ match how our semantics are intended for reasoning over multiple bases:
   
   If we let $Z \assign \{(v, v_r), (v, v_l) \hspace{1em} | \hspace{1em} v \in
   W\}$, it is straightforward to verify that $Z$ is a neighborhood
-  bisimulation. \ Hence $\mathbbm{M}, w_l \nvDash \psi$. \ Along with (3$'$),
-  this model makes true (1), (2), (4). \ In fact, in light of ($3'$), we can
+  bisimulation.  Hence $\mathbbm{M}, w_l \nvDash \psi$.  Along with (3$'$),
+  this model makes true (1), (2), (4).  In fact, in light of ($3'$), we can
   see that this model does not need $\mathcal{K}'$, and conforms to the
   semantics in Definition \ref{neighborhoodmodels}.{\hspace*{\fill}}
   
@@ -1287,7 +1289,7 @@ match how our semantics are intended for reasoning over multiple bases:
   
   As in previous proofs, let $\Lambda$ be the proposition letters occuring in
   $\psi$ and define an injection $\iota : W' \hookrightarrow \Phi \backslash
-  \Lambda$, assigning a nominal to every world in $\mathbbm{M}'$. \ Define
+  \Lambda$, assigning a nominal to every world in $\mathbbm{M}'$.  Define
   $\mathbbm{M}'' \assign \langle W'', V'', \mathcal{N}'', \mathcal{A}''
   \rangle$ such that:
   
@@ -1327,7 +1329,7 @@ match how our semantics are intended for reasoning over multiple bases:
   new properties:
   \begin{enumerateroman}
     \item For all words $v$ and all $X \in \mathcal{A}_v''$, $X$ is finite and
-    \ $X = \partial_v S$ for some $S \in \mathcal{N}_v''$
+  .  $X = \partial_v S$ for some $S \in \mathcal{N}_v''$
     
     \item For all $v$ and all $S \in \mathcal{N}_v$, $u \in S$ if and only if
     $\mathbbm{M}'', u \vDash \bigwedge \partial_v S$
@@ -1364,7 +1366,7 @@ match how our semantics are intended for reasoning over multiple bases:
 \end{proof}
 
 It is not too hard to identify the fragment of this logic that governs
-knowledge alone. \ The fragment given in Table \ref{logic4} has special
+knowledge alone.  The fragment given in Table \ref{logic4} has special
 significance to us, since it governs the notion of knowledge presented in
 {\S}\ref{quantifying}.
 
@@ -1401,95 +1403,18 @@ Bases}
 
 The logic presented in Table \ref{logic1} is a conservative extension of the
 basic modal logic $K$, which means that its decision problem is
-\tmtextsf{PSPACE} hard (a lower bound). \ Our finitary completeness proof
+\tmtextsf{PSPACE} hard (a lower bound).  Our finitary completeness proof
 establishes that its complexity is in \tmtextsf{EXP2-TIME} (an upper bound).
 
 
 
 Worlds in epistemic logic might correspond to fantastic, pretend scenarios;
 however, it may be desirable for some philosophers to model knowledge about
-imaginary lands. \ After all, many children ``know'' a lot about Tolkien's
+imaginary lands.  After all, many children ``know'' a lot about Tolkien's
 {\tmem{middle earth}} or Rowling's {\tmem{Hogwarts}} (the school Harry Potter
 attends).
 
-\begin{thebibliography}{10}
-  \bibitem[1]{artemov\_logic\_1994}S.~N Artemov. {\newblock}Logic of proofs.
-  {\newblock}\tmtextit{Annals of Pure and Applied Logic}, 67(1):29--60, 1994.
-  
-  \bibitem[2]{artemov\_introducing\_2005}S.~N Artemov and E.~Nogina.
-  {\newblock}Introducing justification into epistemic logic.
-  {\newblock}\tmtextit{Journal of Logic and Computation}, 15(6):1059, 2005.
-  
-  \bibitem[3]{basu\_revealed\_1980}Kaushik Basu. {\newblock}\tmtextit{Revealed
-  preference of government}. {\newblock}Cambridge University Press, Cambridge;
-  New York, 1980.
-  
-  \bibitem[4]{blackburn\_modal\_2001}P.~Blackburn, M.~De Rijke, and Y.~Venema.
-  {\newblock}\tmtextit{Modal logic}. {\newblock}Cambridge Univ Pr, 2001.
-  
-  \bibitem[5]{boolos\_logic\_1995}George Boolos. {\newblock}\tmtextit{The
-  logic of provability}. {\newblock}Cambridge University Press, 1995.
-  
-  \bibitem[6]{bull\_approach\_1970}R.~A. Bull. {\newblock}An approach to tense
-  logic. {\newblock}\tmtextit{Theoria}, 36(3):282--300, December 1970.
-  
-  \bibitem[7]{davidson\_could\_1995}Donald Davidson. {\newblock}Could there be
-  a science of rationality? {\newblock}\tmtextit{International Journal of
-  Philosophical Studies}, 3(1):1--16, 1995.
-  
-  \bibitem[8]{fagin\_belief\_1988}R.~Fagin and J.~Y Halpern.
-  {\newblock}Belief, awareness, and limited reasoning.
-  {\newblock}\tmtextit{Artificial Intelligence}, 34(1):39--76, 1988.
-  
-  \bibitem[9]{fitting\_logic\_2005}M.~Fitting. {\newblock}The logic of proofs,
-  semantically. {\newblock}\tmtextit{Annals of Pure and Applied Logic},
-  132(1):1--25, 2005.
-  
-  \bibitem[10]{halpern\_set-theoretic\_1999}Joseph~Y. Halpern.
-  {\newblock}Set-theoretic completeness for epistemic and conditional logic.
-  {\newblock}\tmtextit{Annals of Mathematics and Artificial Intelligence},
-  26(1-4):1--27, 1999.
-  
-  \bibitem[11]{hansen\_bisimulation\_2007}Helle~Hvid Hansen, Clemens Kupke,
-  and Eric Pacuit. {\newblock}Bisimulation for neighbourhood structures.
-  {\newblock}In \tmtextit{Proceedings of the 2nd international conference on
-  Algebra and coalgebra in computer science}, pages 279--293, Bergen, Norway,
-  2007. Springer-Verlag.
-  
-  \bibitem[12]{hendricks\_mainstream\_2006}V.~F Hendricks.
-  {\newblock}\tmtextit{Mainstream and formal epistemology}.
-  {\newblock}Cambridge Univ Pr, 2006.
-  
-  \bibitem[13]{kornblith\_beyond\_1980}Hilary Kornblith. {\newblock}Beyond
-  foundationalism and the coherence theory. {\newblock}\tmtextit{The Journal
-  of Philosophy}, 77(10):597--612, October 1980.
-  
-  \bibitem[14]{montague\_universal\_2008}Richard Montague.
-  {\newblock}Universal grammar. {\newblock}\tmtextit{Theoria}, 36(3):373--398,
-  2008.
-  
-  \bibitem[15]{pauly\_bisimulation\_1999}M.~Pauly. {\newblock}Bisimulation for
-  general non-normal modal logic. {\newblock}\tmtextit{Manuscript}, 1999.
-  
-  \bibitem[16]{prior\_revised\_1969}Arthur~N. Prior.
-  {\newblock}\tmtextit{Revised and Expanded Edition of Arthur N. Prior: Papers
-  on Time and Tense}. {\newblock}Oxford University Press, 1969.
-  {\newblock}reprinted in 2003.
-  
-  \bibitem[17]{rubinstein\_modeling\_1998}Ariel Rubinstein.
-  {\newblock}\tmtextit{Modeling Bounded Rationality}. {\newblock}MIT Press,
-  1998.
-  
-  \bibitem[18]{scott\_advice\_1970}D.~Scott. {\newblock}Advice on modal logic.
-  {\newblock}\tmtextit{Philosophical problems in Logic}, 143:74, 1970.
-  
-  \bibitem[19]{sen\_behaviour\_1973}Amartya Sen. {\newblock}Behaviour and the
-  concept of preference. {\newblock}\tmtextit{Economica}, 40(159):241--259,
-  August 1973.
-  
-  \bibitem[20]{wampler-doty\_evidentialist\_2010}Matthew Wampler-Doty.
-  {\newblock}Evidentialist logic. {\newblock}MSc thesis, Universiteit van
-  Amsterdam, Amsterdam, North-Holland, September 2010.
-\end{thebibliography}
+\bibliographystyle{plain}
+\bibliography{zotero}
 
 \end{document}
