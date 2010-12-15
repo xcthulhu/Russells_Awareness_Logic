@@ -71,7 +71,7 @@ in {\S}\ref{intro}.
 
 \tmtextbf{SND} asserts that $\circlearrowleft$ corresponds to the agent's
 knowledge base being sound. A sound knowledge base will only render true
-conclusions when used in deductions.  If one considers ``the existance of a
+conclusions when used in deductions.  If one considers ``the existence of a
 sound deduction'' sufficient for a kind of knowledge, then $\circlearrowleft$
 is suitable for investigating this notion of epistemology.  That is, if
 $\mathbbm{M}, w \vDash \circlearrowleft \wedge \Box \phi$, then we may
@@ -136,18 +136,15 @@ in Table \ref{logic1}.
     \item if $\mathbbm{M}, v \vDash \circlearrowleft$ then $v R v$
   \end{enumeratenumeric}
   
-  
   We next produce a bisimular{\footnote{The notion of bisimulation is
   discussed at length in {\cite[chapter 2.2]{blackburn_modal_2001}}.  We
   note that the basic definition and all of the usual theorems (modal
-  equivalence, Henessy Milner, etc.) may be generalized to awareness models in
+  equivalence, Henessy-Milner, etc.) may be generalized to awareness models in
   a straightforward fashion. }} model $\mathbbm{M}'$ which makes true (1), (2)
   and a stronger from of (3):
   
-  
-  
   {\hspace*{\fill}}\begin{tabular}{ll}
-    \tmtextbf{3$'$.} & $\mathbbm{M}', v \vDash \circlearrowleft$ iff $v R v$
+    \tmtextbf{3$'$.} & $\mathbbm{M}', v \vDash \circlearrowleft \iff v R v$
   \end{tabular}{\hspace*{\fill}}
   
   
@@ -183,7 +180,7 @@ in Table \ref{logic1}.
   Finally we construct a model $\mathbbm{M}''$ which agrees with
   $\mathbbm{M}'$ for all subformulae of $\psi$, which makes true
   \tmtextbf{CSQ} and \tmtextbf{SND}.  Let $\Lambda$ be the set of proposition
-  letters occuring in $\psi$.  We will make use members of $\Phi \backslash
+  letters occurring in $\psi$.  We will make use members of $\Phi \backslash
   \Lambda$ as {\tmem{nominals}}, as per the tradition in hybrid logic.  This
   is possible since both $W'$ and $\Lambda$ are finite and $\Phi$ is infinite
   by hypothesis.  Let $\iota : W \uplus W \hookrightarrow \Phi \backslash
