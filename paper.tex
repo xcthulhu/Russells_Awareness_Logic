@@ -43,21 +43,20 @@
 
 \begin{document}
 
-\title{Epistemic Logics For Knowledge Bases}\author{Matthew P.
+\title{Awareness and Russell's Epistemology}\author{Matthew P.
 Wampler-Doty}\date{}\maketitle
 
 \begin{abstract}
-  In {\cite{benthem_reflections_1991}}, Johan van Benthem
-  proposed a research program for logic of \tmtextit{explicit knowledge}. 
-  Two efforts have since emerged with proposals for logic of explicit
-  knowledge: the \tmtextit{Dynamics of Awareness}
-  {\cite{benthem_inference_2009}} and \tmtextit{Justification Logic}
-  {\cite{artemov_introducing_2005}}.  The purpose of this paper is to
-  repurpose various epistemic logics from these previous efforts for reasoning
-  about logical closures over knowledge bases.  The results in this paper are
-  based on previous work carried out in
-  {\cite{wampler-doty_evidentialist_2010}}.
+  In this essay, we show that awareness logic is suitable for
+  formal modeling of Bertrand Russell's theory of knowledge,
+  originally developed in \cite{russell_problems_1936}.  This is done
+  by introducing a novel property to the semantics of 
+  awareness logics. 
+  We present a variety of sound and complete awareness
+  logics compatible which exhibit this property.
 \end{abstract}
+\todo{This abstract isn't flowery enough.  Lookup PhD comics
+  ``Abstract madlibs'' and use that as a template.}
 
 \listoftodos
 
@@ -65,19 +64,27 @@ Wampler-Doty}\date{}\maketitle
 \label{intro}
 \input{introduction.tex}
 
-\section{Basic Explicit Logics of Knowledge Bases}
+\section{Philosophical Background}
+\label{trad}
+\input{foundationalism.tex}
 
-\subsection{Awareness Logic}
+\section{Basic Explicit Logics of Foundationalism}
+
+\subsection{Acquaintance and Knowledge By Description}
+\label{awarenesslogic0}
+\input{awareness0.tex}
+
+\subsection{Knowledge and Belief}
 \label{awarenesslogic}
 \input{awareness.tex}
 
-\subsection{Hybrid Awareness Logic}
+\subsection{Hybrid Logic}
 \label{hybrid_awareness}
 \input{hybrid_awareness.tex}
 
-\section{Logics of Multiple Knowledge Bases}
+\section{Logics of Multiple Awareness Sets}
 
-So far, we have only dealt with systems that reason over a single knowledge
+So far, we have only dealt with systems for reasoning over a single knowledge
 base.  In this section, we present various logics for reasoning over multiple
 knowledge bases.
 
@@ -85,16 +92,15 @@ knowledge bases.
 \label{simple_justification}
 \input{simple_justification.tex}
 
-\subsection{Lattice Justification Logic}
-\label{lattice_justification}
-\input{lattice_justification.tex}
+% \subsection{Lattice Justification Logic}
+% \label{lattice_justification}
+% \input{lattice_justification.tex}
 
 \subsection{Neighborhood Semantics}
 \label{neighborhood_semantics}
 \input{neighborhood_semantics.tex}
 
-\subsection{\label{quantifying}Using Modalities to Quantify over Knowledge
-Bases}
+\subsection{\label{quantifying}Multi-Modal Logic}
 \label{modal-modal}
 \input{modal-modal.tex}
 

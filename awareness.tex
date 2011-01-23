@@ -1,7 +1,8 @@
 In this section, we give the explicit semantics to basic awareness logic,
 originally presented in {\cite{fagin_belief_1988}}, with an additional axiom.
- One difference in our presentation is the inclusion of a novel letter and a
-superficial change in notation.  This work is inspired by the developments in
+%  One difference in our presentation is the inclusion of a novel letter and a
+% superficial change in notation. 
+ This work was inspired by the developments in
 van Benthem and Vel\'azquez-Quesada {\cite{benthem_inference_2009}}.
 
 \begin{definition}
@@ -24,8 +25,7 @@ modal logics.
   $\mathcal{A} : W \rightarrow 2^{\mathcal{L}_A (\Phi)}$.  We will usually
   denote $\mathcal{A} (w)$ as $\mathcal{A}_w$.
   
-  
-  
+ 
   Define the semantic entailment relation $\vDash$ where atomic propositions,
   logical connectives and modality are interpreted as usual.  We employ the
   following novel definition:
@@ -58,28 +58,6 @@ awareness logic:
 
 Neither \tmtextbf{CSQ} nor \tmtextbf{SND} correspond to simple modally
 definable properties.
-
-
-
-Intuitively, the \tmtextbf{CSQ} asserts that an agent believes a formula
-$\phi$ if and only if it follows logically from their knowledge base and their
-background knowledge, represented by $\tmop{Th} (\mathbbm{M})$. 
-\tmtextbf{CSQ} is Vincent Hendrik's principle of logical omniscience mentioned
-in {\S}\ref{intro}.
-
-
-
-\tmtextbf{SND} asserts that $\circlearrowleft$ corresponds to the agent's
-knowledge base being sound. A sound knowledge base will only render true
-conclusions when used in deductions.  If one considers ``the existence of a
-sound deduction'' sufficient for a kind of knowledge, then $\circlearrowleft$
-is suitable for investigating this notion of epistemology.  That is, if
-$\mathbbm{M}, w \vDash \circlearrowleft \wedge \Box \phi$, then we may
-naturally say that the agent (implicitly) {\tmem{knows}} $\phi$ on the basis
-of $\mathcal{A}_w$, rather than merely {\tmem{believing}} $\phi$ on the basis
-of $\mathcal{A}_w$.
-
-
 
 The logic of models making true \tmtextbf{CSQ} and \tmtextbf{SND} is provided
 in Table \ref{logic1}.

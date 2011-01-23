@@ -1,0 +1,230 @@
+\subsection{Russell's Theory of Knowledge}\label{Russell}
+
+In this section we review Russell's epistemology, propose a reading of
+Russell in
+terms of modern epistemic logic, and review Hintikka's dismissal of a similar reading.
+
+Russell's theory of knowledge is presented in Chapter XIII, entitled
+\emph{Knowledge, Error, and Probable Opinion} \cite[pg. 52]{russell_problems_1936}:
+\begin{quote}
+We may now take a survey of the sources of our knowledge, as they have
+appeared in the course of our analysis. We have first to distinguish knowledge
+of things and knowledge of truths. In each there are two kinds, one immediate
+and one derivative. Our immediate knowledge of things, which we called
+\emph{acquaintance}, consists of two sorts, according as the things known are
+particulars or universals. Among particulars, we have acquaintance with
+sense-data and (probably) with ourselves.%  Among universals, there seems to
+% be no principle by which we can decide which can be known by acquaintance,
+% but it is clear that among those that can be so known are sensible qualities,
+% relations of space and time, similarity, and certain abstract
+% logical universals.
+\ldots Our derivative knowledge of things, which we call knowledge by \emph{description},
+always involves both acquaintance with something and knowledge of truths.
+Our immediate knowledge of truths may be called \emph{intuitive} knowledge, and the
+truths so known may be called \emph{self-evident} truths. Among such truths are
+included those which merely state what is given in sense, and also certain
+abstract logical and arithmetical principles, and (though with less certainty)
+some ethical propositions. Our derivative knowledge of truths consists of
+everything that we can deduce from self-evident truths by the use of self-
+evident principles of deduction.
+\end{quote}
+
+  In this essay, we will focus on modeling Russell's ``knowledge of things'',
+  although implicit knowledge in particular will play an important
+  role.
+
+  Russell epistemology equates naturally to the modern concepts in
+  epistemic logic. 
+  \emph{Acquaintance} can be seen as explicit knowledge, while
+  \emph{knowledge by description} can be seen as implicit knowledge.
+  In particular, knowledge by description is the logical closure of
+  acquaintance and \emph{intuitive} knowledge.
+
+Historically, Hintikka briefly entertains a similar reading of
+epistemic logic in \emph{Knowledge and Belief}
+\cite{hintikka_knowledge_1969}[pgs. 38--39].  He proposes that ``$K_a
+p$" might be read as ``It follows from what $a$ knows that $p$.''
+Hintikka then rejects this reading on the grounds that it appeals to
+some given standard of logical consequence.  He asserts that this is
+``diametrically opposed'' to his research program in epistemic logic,
+which is intended to ascribe a definition of logical consequence in
+terms of the semantics he invents.
+
+Hintikka is too dismissive of the foundationalist reading
+of epistemic logic.  While unintuitive from a semantic
+standpoint, it is possible to enforce a reading of knowledge in terms
+of logical consequence. In the next section we sketch how this may be
+accomplished, by employing awareness
+logic and following Russell's formulation of knowledge by description.
+
+% % The modern tradition in epistemic logic is to assume knowledge modalities
+% % conform to the $S 5$ axiom schema.  As noted in
+% % {\cite{halpern_set-theoretic_1999,rubinstein_modeling_1998}}, the semantics of
+% % $S 5$ knowledge correspond exactly to partitioning a collection of situations
+% % into \tmtextit{information sets}, which is the traditional approach in game
+% % theory and decision theory.  While it is not commonly acknowledged in
+% % epistemic logic, economists and philosophers accept that traditional decision
+% % theory is externalist and behaviorist in nature
+% % \footnote{An early essay by
+% % Amartya Sen on the philosophical foundations of traditional decision theory
+% % makes the behaviorist reading of decision theory clear
+% % \cite{sen_behaviour_1973}.  Kaushik Basu also discusses the behaviorist
+% % nature of decision theory {\cite[pgs. 53--54]{basu_revealed_1980}}. 
+% % Finally, Donald Davidson appeals to decision theory to motivate an externalist
+% % epistemology in \cite{davidson_could_1995}.}.
+
+% \subsection{Parallels in Epistemic Logic}
+
+% Russell's theory of \emph{deductive} and \emph{intuitive}
+% knowledge is paralleled by modern research into implicit and explicit
+% belief. Levesque introduced these terms in his 1984 paper \emph{A Logic of Implicit and Explicit Belief}
+% \cite{levesque_logic_1984}.
+
+% \todo{Find quote by Levesque which exposes his reinvention of Russell}
+
+% In 1991 Johan van Benthem proposed a research program to find logics
+% for explicit knowledge {\cite{benthem_reflections_1991}}.  Subsequently,
+% Sergei Artemov and Elena Nogina have proposed a logic of explicit justification,
+% which has come to be known as \tmtextit{Justification Logic} (JL)
+% {\cite{artemov_introducing_2005}}, based on Artemov's \tmtextit{Logic of
+% Proofs} {\cite{artemov_logic_1994}}.  While the original semantics of
+% JL were based on interpretability into Peano Arithmetic, Melvin Fitting proposed Kripke
+% semantics for JL in {\cite{fitting_logic_2005}}.  One may understand
+% JL as extend awareness logic with operations for combining and
+% composing awareness sets, although we note that this was \emph{not}
+% the intended interpretation of the original logic of proofs.  In
+% \cite{velazquez-quesada_inference_2009}, Fernando Vel\'azquez
+% develops a logic similar to JL, using update operations make changes
+% to models corresponding to changes in knowledge, based on ordinary
+% awareness logic.  Unfortunately,
+% Vel\'azquez' logic has a severe grammar restriction on the formula
+% permissible for awareness, making it unattractive. 
+% In {\cite{benthem_inference_2009}},
+% Vel\'azquez-Quesada and van Benthem simplified Vel\'azquez-Quesada's
+% framework so that the grammar restriction is relaxed.  Unlike the other efforts, this
+% logic is more abstract and does not attempt to semantically model
+% deduction; there is in fact no relationship between explicit and
+% implicit in this logic at all.
+
+% The purpose of this essay is to propose novel awareness logics which
+% connect the research program surrounding explicit knowledge to
+% traditional foundationalism.
+
+\subsection{Modeling Russell Using Awareness Logic}
+
+In this section we introduce models of Russell's epistemology.  We
+will make use of \emph{awareness models} $\mathbb{M}$, using semantics originally developed in \cite{fagin_belief_198}.
+
+As we discussed in \S\ref{Russell}, \emph{Acquaintance with $\phi$} is
+naturally interpreted as denoted as \emph{explicit awareness of
+  $\phi$}.  We will denote this as $A:\phi$, with the usual
+semantics of $\mathbb{M},w \models A:\phi \iff \phi \in \mathcal{A}_w$
+where $\mathcal{A}_w$ is an awareness set.  
+
+Modeling descriptive knowledge is not as straightforward.  We will model
+\emph{knowledge by description that $\phi$} as \emph{implicit knowledge
+  that $\phi$}, denoted $\Box\phi$.  However, it is necessary to introduce
+further constraints.
+Minimally, we want to enforce that $\mathbb{M} \models A : \phi \to \Box \phi$ and
+$\mathbb{M} \models \Box \phi \to \phi$, reflecting that knowledge by
+description extends acquaintance and that knowledge is necessarily
+\emph{true}.
+
+All that is left is to establish a connection between knowledge by
+description and logical
+consequence.  Let $\vdash$ be any Hilbert-style calculus,
+that is a sequent that takes a set of premises $\Gamma$ on the left and yields a
+single conclusion $\phi$ on the right. Define the following terminology:
+\begin{itemizedot}
+\item $\vdash$ is \emph{relatively sound} for $\mathbb{M}$ if and only if
+  when $\Gamma \vdash \phi$, then if $\mathbb{M},w\models \Gamma$ then
+  $\mathbb{M},w \models \phi$.
+\item $\vdash$ is \emph{reflexive} if and only if whenever $\phi \in
+  \Gamma$ then $\Gamma \vdash \phi$
+\item $\vdash$ makes true \emph{modus ponens} if and only if whenever
+  $\Gamma \vdash \phi \to \psi$ and $\Gamma \vdash \phi$, then $\Gamma
+  \vdash \psi$
+\end{itemizedot}
+
+A model $\mathbb{M}$ is thought to be suitable for Russell's epistemology just in
+case there is some relatively sound,
+reflexive Hilbert-style calculus making true modus ponens, such that for all
+worlds $w$:
+
+\[ \mathbb{M}, w \models \Box \phi \textup{ if and only if } Th(\mathbb{M}) \cup
+\mathcal{A}_w \vdash \phi \]
+
+Here $Th(\mathbb{M})$ is the \emph{theory of $\mathbb{M}$}, and
+denotes the set $\{ \phi\ |\ \mathbb{M},w \models \phi$ for all worlds
+$w \}$.  We take it to represent Russell's \emph{intuitive knowledge}
+in our modeling\emph{knowledge by description}\footnote{A caveat: we are being very liberal with our interpretation
+  of Russell's
+  epistemology here.  The set $Th(\mathbb{M})$ contains, among other
+  things, all tautologies for any logic $\mathbb{M}$ obeys.  Russell
+  intended for intuitive knowledge to correspond to empirical
+  knowledge and a small number of a priori truths, which serve as
+  an axiom system for derivations.  We defend choice to call $Th(\mathbb{M})$ intuitive
+  knowledge, since (1) it may be considered as a sort of a priori knowledge, (2) it fits the definition of knowledge by description well,
+  and (3) it provides a framework for our subsequent formal results.}.
+  
+The property we suggest is \emph{not} definitional of modality.  Rather, it is a
+feature that an awareness model might or might not make.  Restricting
+oneself to models with the above property is
+similar to restricting models to the class which has reflexive
+relations.
+
+Restricting our attention to models where implicit knowledge is
+equated to the presence
+of a derivation is a faithful to Russell's epistemology.  Our response
+to Hintikka's criticism of this is that while epistemic logic may be
+based on models, it could also be based on particular, special models
+which have an associated logic suited to them.  Assuming that
+knowledge in epistemic logic corresponds to \emph{some} notion of logical consequence
+does not rely on the notion of logical consequence in epistemic
+itself.  While logic about logic is circular, it is not
+\emph{viciously} so.
+
+The rest of this essay is devoted to developing awareness logics which have
+the mechanics we have sketched here.
+
+% In this essay we repurpose various externalist logics to take on an
+% internalist reading.  The concept of a \tmtextit{knowledge base}, from which
+% beliefs may be implicitly deduced, will play a crucial role in our discussion.
+%  We propose this as an avenue for representing foundationalist perspectives
+% on epistemology in epistemic logic.  Our philosophical motivation is taken
+% from two sources.  The first is Vincent Hendricks in
+% {\cite{hendricks_mainstream_2006}}, where he characterizes the principal of
+% {\tmem{logical omniscience}} for implicit knowledge in epistemic
+% logic{\footnote{We have modified Hendricks' notation here slightly to match
+% our own.}}:
+
+% \begin{quote}
+%   {\tmem{Whenever an agent $X$ knows all of the formulae in $\mathcal{A}$,
+%   and $\phi$ follows logically from $\mathcal{A}$, then $\Xi$ [implicitly]
+%   knows $\phi$.}}
+% \end{quote}
+
+% We will design our semantics such that ``$\Box \phi$'' may be equated with
+% ``$\phi$ follows logically from a knowledge base $\mathcal{A}$,'' which is
+% sometimes written as $\phi \in \tmop{Cn} ( \mathcal{A})$ in the artificial
+% intelligence literature.  Our second inspiration comes from what   The
+% rest of Kornblith's paper is devoted to attacking this view and proposing a
+% form of naturalized epistemology; we will not address this debate here,
+% however.
+
+% We adopt a arguments-on-paper-thesis perspective on epistemic logic in this
+% paper.  We consider a \tmtextit{good argument} to be a logical derivation
+% from propositions present in a knowledge base in this setting.  
+% Special attention will be given to \tmtextit{sound derivations}, which will be
+% thought of as a form of knowledge.  In \emph{Awareness Logic}, we will interpret
+% awareness of a formula as membership in a knowledge base.  We prove
+% completeness for basic awareness logic and a hybrid logic extension.  Logics
+% of multiple knowledge bases are also presented: a simplified form of
+% Justification Logic, a logic with neighborhood semantics, an a logic with
+% modalities for quantifying over knowledge bases.  We conclude with an
+% application to naturalized epistemology found in the psychological
+% literature.
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 

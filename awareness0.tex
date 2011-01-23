@@ -1,0 +1,90 @@
+In this section, apply basic awareness logic to Russell's
+epistemology.  As we described in \S\ref{mod-russell}, we will use
+awareness to model \emph{acquaintance}, and modality to model \emph{knowledge by description}.
+
+\begin{definition}
+  Let $\Phi$ be a set of letters and define the language $\mathcal{L}_A
+  (\Phi)$ as:
+  \[ \phi \  : : = \  p \in \Phi \  |
+     \  \circlearrowleft \  | \  \bot
+     \  | \  \phi \rightarrow \psi \  |
+     \  \Box \phi \  | \  A : \phi \ 
+  \]
+\end{definition}
+
+We define the other connectives and modal operators as usual for classical
+modal logics.
+
+\begin{definition}
+  \label{awarenessmodels0}An {\tmstrong{awareness model}} $\mathbbm{M}= \langle
+  W, V, R, \mathcal{A} \rangle$ is a Kripke model with a valuation $V : \Phi
+  \cup \{\circlearrowleft\} \rightarrow 2^W$ and an awareness function
+  $\mathcal{A} : W \rightarrow 2^{\mathcal{L}_A (\Phi)}$.  We will usually
+  denote $\mathcal{A} (w)$ as $\mathcal{A}_w$.
+  
+  Define the semantic entailment relation $\vDash$ according to
+  \textbf{awareness logic} as defined in \cite{fagin_belief_1988},
+  where $A : \phi$ denotes awareness of $\phi$. 
+% where atomic propositions,
+%   logical connectives and modality are interpreted as usual.  We employ the
+%   following novel definition:
+%   \begin{eqnarray*}
+%     \mathbbm{M}, w \vDash A : \phi & \text{iff} & \phi \in \mathcal{A_w}
+%   \end{eqnarray*}
+\end{definition}
+
+Define the following property, as sketched in \S\ref{mod-russell}:
+
+\begin{definition}
+  \begin{descriptiondash}
+    \item[CSQ$_\vdash$] $\mathbbm{M}, w \vDash \Box \phi \text{ iff } \tmop{Th}
+    (\mathbbm{M}) \cup \mathcal{A}_w \vdash \phi$
+    % \item[SND] $\mathbbm{M}, w \vDash \circlearrowleft \text{ iff }
+    % \mathbbm{M}, w \vDash \phi$ for all $\phi \in \mathcal{A}_w$
+  \end{descriptiondash}
+  
+  Here $\vdash$ is any logical consequence relation which is sound for
+  $\vDash$, making true \tmtextbf{modus ponens} and \tmtextbf{reflection} (ie,
+  $\Gamma \vdash \phi$ if $\phi \in \Gamma$)
+\end{definition}
+
+% Neither \tmtextbf{CSQ} nor \tmtextbf{SND} correspond to simple modally
+% definable properties.
+
+The logic of models making true \tmtextbf{CSQ} % and \tmtextbf{SND} 
+is provided in Table \ref{logic0}.
+
+\begin{table}[h]
+  \begin{tabular}{l}
+    $\vdash \phi \rightarrow \psi \rightarrow \phi$\\
+    $\vdash (\phi \rightarrow \psi \rightarrow \chi) \rightarrow (\phi
+    \rightarrow \psi) \rightarrow \phi \rightarrow \chi$\\
+    $\vdash ((\phi \rightarrow \bot) \rightarrow (\psi \rightarrow \bot))
+    \rightarrow \psi \rightarrow \phi$\\
+    $\vdash \Box(\phi \rightarrow \psi) \rightarrow \Box \phi \rightarrow \Box
+    \psi$\\
+    $\vdash A : \phi \rightarrow \Box \phi$\\
+    $\vdash \circlearrowleft \rightarrow \Box \phi \rightarrow \phi$\\
+    \\
+    \begin{tabular}{lll}
+      $\frac{\vdash \phi \rightarrow \psi \hspace{4em} \vdash \phi}{\vdash
+      \psi}$ & {\hspace{6em}} & $\frac{\vdash \phi}{\vdash \Box \phi}$
+    \end{tabular}
+  \end{tabular}
+  \caption{\label{logic0}Awareness Logic for Acquaintance and
+    Knowledge by Description}
+\end{table}
+
+\begin{theorem}
+  \label{completeness0}Assuming an infinite store of proposition letters
+  $\Phi$, the awareness logic presented is sound and weakly complete for
+  awareness models making true \tmtextbf{CSQ} and \tmtextbf{SND}.
+\end{theorem}
+
+\input{completeness1.tex}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "paper"
+%%% End: 
