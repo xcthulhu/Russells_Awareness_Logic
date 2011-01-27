@@ -110,16 +110,16 @@ logic and following Russell's formulation of knowledge by description.
 % connect the research program surrounding explicit knowledge to
 % traditional foundationalism.
 
-\subsection{Modeling Russell Using Awareness Logic}
+\subsection{Modeling Russell}\label{mod-russell}
 
 In this section we introduce models of Russell's epistemology.  We
-will make use of \emph{awareness models} $\mathbb{M}$, using semantics originally developed in \cite{fagin_belief_198}.
+will make use of \emph{awareness models} $\mathbb{M}$, using semantics originally developed in \cite{fagin_belief_1988}.
 
 As we discussed in \S\ref{Russell}, \emph{Acquaintance with $\phi$} is
 naturally interpreted as denoted as \emph{explicit awareness of
   $\phi$}.  We will denote this as $A:\phi$, with the usual
 semantics of $\mathbb{M},w \models A:\phi \iff \phi \in \mathcal{A}_w$
-where $\mathcal{A}_w$ is an awareness set.  
+where $\mathcal{A}_w$ is an awareness set.
 
 Modeling descriptive knowledge is not as straightforward.  We will model
 \emph{knowledge by description that $\phi$} as \emph{implicit knowledge
@@ -137,18 +137,21 @@ that is a sequent that takes a set of premises $\Gamma$ on the left and yields a
 single conclusion $\phi$ on the right. Define the following terminology:
 \begin{itemizedot}
 \item $\vdash$ is \emph{relatively sound} for $\mathbb{M}$ if and only if
-  when $\Gamma \vdash \phi$, then if $\mathbb{M},w\models \Gamma$ then
+  when $\Gamma \vdash \phi$, then if $\mathbb{M},w\models \gamma$, for
+  all $\gamma \in \Gamma$, then
   $\mathbb{M},w \models \phi$.
 \item $\vdash$ is \emph{reflexive} if and only if whenever $\phi \in
   \Gamma$ then $\Gamma \vdash \phi$
 \item $\vdash$ makes true \emph{modus ponens} if and only if whenever
   $\Gamma \vdash \phi \to \psi$ and $\Gamma \vdash \phi$, then $\Gamma
   \vdash \psi$
+\item $\vdash$ is said to be \emph{suitable} for $\mathbb{M}$ just in
+  case that it is reflexive, makes true modus ponens, and is
+  relatively sound for $\mathbb{M}$.
 \end{itemizedot}
 
-A model $\mathbb{M}$ is thought to be suitable for Russell's epistemology just in
-case there is some relatively sound,
-reflexive Hilbert-style calculus making true modus ponens, such that for all
+A model $\mathbb{M}$ is thought to model Russell's epistemology in the
+case that there is some suitable logic $\vdash$ such that for all
 worlds $w$:
 
 \[ \mathbb{M}, w \models \Box \phi \textup{ if and only if } Th(\mathbb{M}) \cup
@@ -156,8 +159,8 @@ worlds $w$:
 
 Here $Th(\mathbb{M})$ is the \emph{theory of $\mathbb{M}$}, and
 denotes the set $\{ \phi\ |\ \mathbb{M},w \models \phi$ for all worlds
-$w \}$.  We take it to represent Russell's \emph{intuitive knowledge}
-in our modeling\emph{knowledge by description}\footnote{A caveat: we are being very liberal with our interpretation
+$w \}$.  We take it to represent Russell's \emph{intuitive
+  knowledge} \footnote{A caveat: we are being very liberal with our interpretation
   of Russell's
   epistemology here.  The set $Th(\mathbb{M})$ contains, among other
   things, all tautologies for any logic $\mathbb{M}$ obeys.  Russell
@@ -165,7 +168,8 @@ in our modeling\emph{knowledge by description}\footnote{A caveat: we are being v
   knowledge and a small number of a priori truths, which serve as
   an axiom system for derivations.  We defend choice to call $Th(\mathbb{M})$ intuitive
   knowledge, since (1) it may be considered as a sort of a priori knowledge, (2) it fits the definition of knowledge by description well,
-  and (3) it provides a framework for our subsequent formal results.}.
+  and (3) it provides a framework for our subsequent formal
+  results.}. 
   
 The property we suggest is \emph{not} definitional of modality.  Rather, it is a
 feature that an awareness model might or might not make.  Restricting
@@ -173,19 +177,22 @@ oneself to models with the above property is
 similar to restricting models to the class which has reflexive
 relations.
 
-Restricting our attention to models where implicit knowledge is
+Models where implicit knowledge is
 equated to the presence
-of a derivation is a faithful to Russell's epistemology.  Our response
-to Hintikka's criticism of this is that while epistemic logic may be
-based on models, it could also be based on particular, special models
-which have an associated logic suited to them.  Assuming that
+of a derivation are faithful to Russell's epistemology.  As we stated
+before, Russell's knowledge by description is the logical closure of
+acquaintance and intuitive knowledge, which is exactly our proposal.  Our response
+to Hintikka's criticism of this approach is that while epistemic logic may be
+based on models, it could also be based on particular models
+which have logic associated with them in a special way.  Assuming that
 knowledge in epistemic logic corresponds to \emph{some} notion of logical consequence
-does not rely on the notion of logical consequence in epistemic
-itself.  While logic about logic is circular, it is not
-\emph{viciously} so.
+does not require us to have already formulated the notion of logical
+consequence we will ultimately
+develop.  While logic about logic is circular, it is not
+\emph{viciously} so, and moreover poses no inescapable paradoxes.
 
 The rest of this essay is devoted to developing awareness logics which have
-the mechanics we have sketched here.
+the mechanics we have sketched.
 
 % In this essay we repurpose various externalist logics to take on an
 % internalist reading.  The concept of a \tmtextit{knowledge base}, from which
