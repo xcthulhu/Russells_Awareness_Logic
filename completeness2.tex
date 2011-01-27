@@ -26,15 +26,13 @@
   
   This model makes true the following properties:
   \begin{enumerateroman}
-    \item $\sim_{\forall}$ is an equivalence relation
-    
+    \item $\sim_{\forall}$ is an equivalence relation    
     \item $R_{\Box} \subseteq \sim_{\forall}$
-    
     \item In each equivalence class specified by $\sim_{\forall}$, there is at
     most one world making true $i$ for all $i \in \Upsilon$
   \end{enumerateroman}
   As in our previous construction we have that there is some world $w$ where
-  $\mathbbm{M}, w \nvDash \psi$.  Let $\mathbbm{M}^1 = \langle W', V',
+  $\mathbbm{M}, w \nvDash \psi$.  Let $\mathbbm{M}' = \langle W', V',
   R_{\Box}', \sim_{\forall}', \mathcal{A}' \rangle$ be the submodel generated
   by $\{w\}$; we have that $\mathbbm{M}', w \nvDash \psi$ (see {\cite[chapter
   2.1]{blackburn_modal_2001}} for details on generated submodels).  In this
@@ -49,30 +47,30 @@
   W' \hookrightarrow \Psi \backslash \Upsilon$ which assigns a fresh nominal
   to every world.  Let $\mathbbm{M}'' = \langle W'', V'', R'', \mathcal{A}'',
   \ell \rangle$, where:
-  
   \begin{center}
     \begin{tabular}{lllll}
       $\bullet$ & $W'' \assign W'$ &  & $\bullet$ & $V'' (p) \assign V' (p)$\\
-      $\bullet$ & $R'' \assign R'_{\Box}$ & {\hspace{3em}} & $\bullet$ &
+      $\bullet$ & $R'' \assign R'_{\Box}$ & \ \  & $\bullet$ &
       $\mathcal{A}'' (v) \assign \{\phi \  | \  \phi \in
       \mathcal{A}' (v)\} \cup \{\neg \iota (u) \  | \ 
       \neg v R' u\}$\\
-      \begin{tabular}{ll}
-        $\bullet$ & $\ell (i) \assign \left\{ \begin{array}{ll}
+       $\bullet$ & \begin{tabular}{ll}
+       $\ell (i) \assign \left\{ \begin{array}{ll}
           w & i \in \Upsilon \  \& \  \mathbbm{M}, w
           \vDash i\\
           \iota^{- 1} (i) & i \in \iota [W]\\
           \text{undefined} & \text{o/w}
         \end{array} \right.$
-      \end{tabular} & $R'' \assign R'_{\Box}$ &  &  & 
+      \end{tabular} &  & $\bullet$ &  $R'' \assign R'_{\Box}$ 
     \end{tabular}
   \end{center}
   
   The the worlds is $\mathbbm{M}'$ and $\mathbbm{M}''$ agree on all
-  subformulae of $\psi$, hence $\mathbbm{M}'', w \nvDash \psi$. The same
-  reasoning as in the proof of Theorem \ref{completeness1} establishes and
-  that the logic in Table \ref{logic2} itself is sound for $\mathbbm{M}''$ and
-  makes true \tmtextbf{CSQ}, establishing completeness.
+  subformulae of $\psi$, hence $\mathbbm{M}'', w \nvDash
+  \psi$. Moreover, the logic in Table \ref{logic2} itself 
+  is suitable for $\mathbbm{M}''$ and
+  $\mathbbm{M}''$ makes true $\textup{\tmtextbf{CSQ}}_{\vdash}$.  From
+  this it follows that we have completeness.
 \end{proof}
 %%% Local Variables: 
 %%% mode: latex
