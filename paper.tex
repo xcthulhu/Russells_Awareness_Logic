@@ -37,29 +37,31 @@
 \definecolor{brown}{rgb}{0.5,0.25,0.0}
 \definecolor{pink}{rgb}{1.0,0.5,0.5}
 \newtheorem{definition}{Definition}
+\newtheorem{notation}{Notation}
 \newtheorem{proposition}{Proposition}
 \newtheorem{theorem}{Theorem}
 %%%%%%%%%% End TeXmacs macros
 
+\newcommand{\PP}{\circlearrowleft}
+\newcommand{\nmodels}{\nvDash}
 \begin{document}
 
 \title{Awareness and Russell's Epistemology}\author{Matthew P.
 Wampler-Doty}\date{}\maketitle
 
 \begin{abstract}
-  In this essay, we show that awareness logic is suitable for
-  formal modeling of Bertrand Russell's theory of knowledge,
-  originally developed in \cite{russell_problems_1936}.  This is done
-  by introducing a novel property to the semantics of 
-  awareness logics. 
-  We present a variety of sound and complete awareness
-  logics compatible which exhibit this property.
+This paper presents a novel approach to formulating epistemic directly
+in terms of logical inference.  Using awareness logic, $\Box_X \phi$ is
+taken to literally mean ``it follows from formulae $X$ is explicitly aware of
+that $\phi$''.  This is done by incorporating logic into the semantics
+of awareness logic.  Our approach corresponds closely to the framework
+for epistemology proposed by Bertrand
+Russell\cite{russell_problems_1936}, and illustrates that
+objections provided by Jaako Hintikka\cite{hintikka_knowledge_1969} to
+the proposed interpretation of epistemic logic should be considered invalid.
 \end{abstract}
-\todo{This abstract isn't flowery enough.  Lookup PhD comics
-  ``Abstract madlibs'' and use that as a template.}
 
 \listoftodos
-
 \section{Introduction}
 \label{intro}
 \input{introduction.tex}
