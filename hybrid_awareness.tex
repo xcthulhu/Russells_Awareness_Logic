@@ -1,10 +1,24 @@
-The method of the previous completeness proof makes implicit use of concepts from
+The method of the previous completeness proofs make implicit use of concepts from
 hybrid logic{\footnote{Hybrid logic was first presented in
 {\cite{prior_revised_1969}} and later formally developed in
-{\cite{bull_approach_1970}}.}}.  In this section we adapt hybrid logic and
-show that it is a complete for reasoning about knowledge bases.  We note that
-because of the increased expressive power of hybrid logic, our completeness
-theorem is simpler.
+{\cite{bull_approach_1970}}.}}.  In this section we extend the logic
+we have been developing to full hybrid logic.
+
+No such concept like hybrid logic is present in Russell's writing,
+however it is not hard to motivate an epistemic reading.
+Colloquially, we might describe a particular fantasy fiction
+as ``knowing a lot about Tolkien's \emph{middle earth}''.  One way of
+making sense of how she ``knows'' is that her explicit and implicit reasoning about
+Tolkien's fantasy world is  \emph{valid at middle
+  earth}.  To model this in a hybrid framework, assume there is a
+nominal entitled $\textup{\emph{middle earth}}$, and some world with
+that label. We denote that the agent's reasoning is valid there as $\PP^{\textup{\emph{middle
+      earth}}}$. 
+We permit that worlds may be multiply labeled or not labeled at
+all, and labels may fail to refer to anything.
+
+We do not express $\PP^i$ directly; rather, we will define it in terms
+of a universal modality.
 
 \begin{definition}
   Let $\Phi$ be a set of letters and $\Psi$ a set of nominals, and define the
@@ -18,8 +32,7 @@ theorem is simpler.
 
 Our approach in hybrid logic is to employ a universal modality along with
 nominals.  This framework presents a logic where the agent may reason about
-various labeled scenarios.  Scenarios may be multiply labeled or not labeled
-at all.  From these intuitions we have the following definition:
+various labeled scenarios.    From these intuitions we have the following definition:
 
 \begin{definition}
   \label{hybridsemantics}Let a \tmtextbf{hybrid model} $\mathbbm{M}= \langle
@@ -27,33 +40,31 @@ at all.  From these intuitions we have the following definition:
   \ref{awarenessmodels}, along with a partial labeling function $\ell : \Psi
   \nrightarrow W$
   
-  
-  
   The semantics for $\vDash$ are the same as in Definition
-  \ref{awarenessmodels}, only we have
+  \ref{awarenessmodels0}, with the following extensions
   \begin{eqnarray*}
-    \mathbbm{M}, w \vDash \forall \phi & \text{iff} & \forall v \in
+    \mathbbm{M}, w \vDash \forall \phi & \iff & \forall v \in
     W.\mathbbm{M}, v \vDash \phi\\
-    \mathbbm{M}, w \vDash i & \text{iff} & \ell (i) = w
+    \mathbbm{M}, w \vDash i & \iff & \ell (i) = w
   \end{eqnarray*}
 \end{definition}
 
-The other connectives and operators are defined as usual, although we employ a
-few special shorthands:
+The other connectives and operators are defined as usual. We also employ a
+the following shorthand:
 
-\begin{definition}
+\begin{notation}
   We employ the following special abbreviations:
   \begin{eqnarray}
-    \text{\tmtextup{@}}_i \phi \assign \forall (i \rightarrow \phi)
+    \text{\tmtextup{@}}^i \phi \assign \forall (i \rightarrow \phi)
     \hspace{2em} & \exists \phi \assign \neg \forall \neg \phi \hspace{3em} &
-    \circlearrowleft_i \assign \diamondsuit i \nonumber
+    \circlearrowleft^i \assign \diamondsuit i \nonumber
   \end{eqnarray}
-\end{definition}
+\end{notation}
 
-This gives rise to a validity reflecting one of the axioms we saw in
+We have a validity reflecting one of the axioms we saw in
 {\S}\ref{awarenesslogic}:
-\[ \vDash \circlearrowleft_i \rightarrow \Box \phi \rightarrow
-   \text{\tmtextup{@}}_i \phi \]
+\[ \vDash \circlearrowleft^i \rightarrow \Box \phi \rightarrow
+   \text{\tmtextup{@}}^i \phi \]
 This can be read as ``If the agent's knowledge base is sound at world $i$,
 then if they can deduce something from their knowledge base, what they deduce
 must be true at world $i$.'.  In a way, this may be considered as
@@ -66,8 +77,8 @@ principle we previously presented, since there is no explicit
 $\circlearrowleft$ symbol in this setting. \tmtextbf{CSQ} still makes sense
 without modification, however.  The following gives a logic for hybrid models
 making true \tmtextbf{CSQ}:
-
 \begin{table}[h]
+\begin{centering}
   \begin{tabular}{ll}
     $\vdash \phi \rightarrow \psi \rightarrow \phi$ & $\vdash \forall (\phi
     \rightarrow \psi) \rightarrow \forall \phi \rightarrow \forall \psi$\\
@@ -81,21 +92,23 @@ making true \tmtextbf{CSQ}:
     \psi$ & $\vdash \exists \phi \rightarrow \forall \exists \phi$\\
     $\vdash A : \phi \rightarrow \Box \phi$ & $\vdash \forall \phi \rightarrow
     \Box \phi$\\
-    & $\vdash i \rightarrow \phi \rightarrow \text{\tmtextup{@}}_i \phi$\\
-    & \\
-    \begin{tabular}{llll}
-      $\frac{\vdash \phi \rightarrow \psi \hspace{4em} \vdash \phi}{\vdash
-      \psi}$ & {\hspace{6em}}$\frac{\vdash \phi}{\vdash \Box \phi}$ &
-      {\hspace{6em}} & $\frac{\vdash \phi}{\vdash \forall \phi}$
-    \end{tabular} & 
+    & $\vdash i \rightarrow \phi \rightarrow \text{\tmtextup{@}}^i \phi$\\
+    &  
   \end{tabular}
+\begin{tabular}{lllll}
+      $\displaystyle\frac{\vdash \phi \rightarrow \psi \ \ \vdash \phi}{\vdash
+      \psi}$ & \ \  & $\displaystyle \frac{\vdash \phi}{\vdash \Box \phi}$ &
+      \ \  & $\displaystyle \frac{\vdash \phi}{\vdash \forall \phi}$
+    \end{tabular}
   \caption{\label{logic2}Hybrid Awareness Logic for \tmtextbf{CSQ}}
+\end{centering}
 \end{table}
 
 \begin{theorem}
   \label{completeness2}Assuming an infinite store of nominals $\Psi$, the
   hybrid awareness logic presented is sound and weakly complete for all hybrid
-  models making true \tmtextbf{CSQ}.
+  models making true $\textup{\tmtextbf{CSQ}}_{\vdash'}$ for some
+  suitable logic $\vdash'$.
 \end{theorem}
 \input{completeness2.tex}
 
