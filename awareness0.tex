@@ -17,12 +17,12 @@ modal logics.
 
 \begin{definition}
   \label{awarenessmodels0}An {\tmstrong{awareness model}} $\mathbbm{M}= \langle
-  W, V, R, \mathcal{A} \rangle$ is a Kripke model with a valuation $V : \Phi
-  \cup \{\circlearrowleft\} \rightarrow 2^W$ and an awareness function
-  $\mathcal{A} : W \rightarrow 2^{\mathcal{L}_A (\Phi)}$.  We will usually
-  denote $\mathcal{A} (w)$ as $\mathcal{A}_w$.
+  W, V, R, \mathcal{A} \rangle$ is a Kripke model with a valuation $V : \Phi \rightarrow 2^W$ and an awareness function
+  $\mathcal{A} : W \rightarrow 2^{\mathcal{L}_A (\Phi)}$.  We will
+  usually denote $\mathcal{A} (w)$ as $\mathcal{A}_w$.
   
-  Define the semantic entailment relation $\vDash$ according to
+  Define the semantic entailment relation $\vDash$ according to the
+  usual formulation of
   \textbf{awareness logic} as defined in \cite{fagin_belief_1988},
   where $A : \phi$ denotes awareness of $\phi$. 
 % where atomic propositions,
@@ -35,7 +35,7 @@ modal logics.
 
 Define the following property, as sketched in \S\ref{mod-russell}:
 
-\begin{definition}
+\begin{definition}\label{csq0}
   \begin{descriptiondash}
     \item[CSQ$_\vdash$] $\mathbbm{M}, w \vDash \Box \phi \text{ iff } \tmop{Th}
     (\mathbbm{M}) \cup \mathcal{A}_w \vdash \phi$
@@ -51,10 +51,11 @@ Define the following property, as sketched in \S\ref{mod-russell}:
 % Neither \tmtextbf{CSQ} nor \tmtextbf{SND} correspond to simple modally
 % definable properties.
 
-The logic of models making true \tmtextbf{CSQ} % and \tmtextbf{SND} 
-is provided in Table \ref{logic0}.
+% The logic of models making true \tmtextbf{CSQ} % and \tmtextbf{SND} 
+% is provided in Table \ref{logic0}.  
 
 \begin{table}[h]
+\begin{centering}
   \begin{tabular}{l}
     $\vdash \phi \rightarrow \psi \rightarrow \phi$\\
     $\vdash (\phi \rightarrow \psi \rightarrow \chi) \rightarrow (\phi
@@ -64,25 +65,33 @@ is provided in Table \ref{logic0}.
     $\vdash \Box(\phi \rightarrow \psi) \rightarrow \Box \phi \rightarrow \Box
     \psi$\\
     $\vdash A : \phi \rightarrow \Box \phi$\\
-    $\vdash \circlearrowleft \rightarrow \Box \phi \rightarrow \phi$\\
+    $\vdash \Box \phi \rightarrow \phi$\\
     \\
     \begin{tabular}{lll}
-      $\frac{\vdash \phi \rightarrow \psi \hspace{4em} \vdash \phi}{\vdash
-      \psi}$ & {\hspace{6em}} & $\frac{\vdash \phi}{\vdash \Box \phi}$
+      $\displaystyle \frac{\vdash \phi \rightarrow \psi \ \  \vdash \phi}{\vdash
+      \psi}$ & {\ \ } & $\displaystyle \frac{\vdash \phi}{\vdash \Box \phi}$
     \end{tabular}
   \end{tabular}
   \caption{\label{logic0}Awareness Logic for Acquaintance and
     Knowledge by Description}
+\end{centering}
 \end{table}
+
+\begin{notation}
+For all Hilbert-style calculi, let $\Gamma \vdash \phi$
+denote that there is some sequence
+$\gamma_0,\gamma_1,\ldots,\gamma_n\in\Gamma$ such that $\vdash
+\gamma_0 \to \gamma_1 \to \cdots \to \gamma_n \to \phi$
+\end{notation}
 
 \begin{theorem}
   \label{completeness0}Assuming an infinite store of proposition letters
-  $\Phi$, the awareness logic presented is sound and weakly complete for
-  awareness models making true \tmtextbf{CSQ} and \tmtextbf{SND}.
+  $\Phi$, $\vdash$ is sound and weakly complete for
+  reflexive awareness models $\mathbb{M}$ making true
+  $\text{\tmtextbf{CSQ}}_{\vdash'}$, for some suitable $\vdash'$.
 \end{theorem}
 
-\input{completeness1.tex}
-
+\input{completeness0.tex}
 
 %%% Local Variables: 
 %%% mode: latex
