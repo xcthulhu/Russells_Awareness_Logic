@@ -16,8 +16,6 @@ semantics, $X : \phi$ means that $\phi$ is in awareness set corresponding to
 $X$.  Proof terms are thought be operating in a \tmtextit{multi-conclusion}
 proof system, so the same proof term may witness many different propositions.
 
-
-
 The logics LP/JL include operators over proofs terms, so that new proof terms
 may be assembled.  One operation of particular interest to us is
 {\tmem{choice}}, denoted $\oplus$.  The expression ``$X \oplus Y : \phi$''
@@ -27,24 +25,24 @@ operations which correspond to \tmtextit{modus ponens} and
 operations here.
 
 
-
-In this section we consider a simplified form of JL suitable for reasoning
+We propose a stripped down, simplified form of JL suitable for reasoning
 over multiple knowledge bases, which we call \tmtextit{simple justification
-logic} (SJL). However, instead of thinking of terms as representing proofs, we
-use them to represent knowledge bases. This is in the spirit of JL as a logic
-of evidence: we consider each knowledge base to be a corpus of evidence. \
-Each term ``names'' a different knowledge base at a particular world.  Terms
-may not refer to the same knowledge base at different worlds, just as in how
-in awareness logic the agent need not be aware of the same formulae at
-different worlds.  Finally, we will make use of JL's {\tmem{choice}} operator
-as a mechanism for forming the union of knowledge bases, creating new ones.
+logic} (SJL). % However, instead of thinking of terms as representing proofs, we
+% use them to represent knowledge bases. This is in the spirit of JL as a logic
+% of evidence: we consider each knowledge base to be a corpus of evidence. \
+% Each term ``names'' a different knowledge base at a particular world.  Terms
+% may not refer to the same knowledge base at different worlds, just as in how
+% in awareness logic the agent need not be aware of the same formulae at
+% different worlds.
+We will only make use of JL's {\tmem{choice}} operator,
+and use it as a mechanism for forming the union of awareness sets, creating new ones.
+
+
 
 \begin{definition}
   Let $\Pi$ be a set of primitive terms.  Define $\tau (\Pi)$ with the
   following grammar:
-  \[ X \  : : = \  t \in \Pi \  | \  X
-     \oplus Y \]
-  
+  \[ X \  : : = \  t \in \Pi \  | \  X    \oplus Y \]
   
   Let $\Phi$ be a set of letters and $\Pi$ a set of primitive terms, and
   define the language $\mathcal{L}_{\tmop{SJL}} (\Phi, \Pi)$ as:
