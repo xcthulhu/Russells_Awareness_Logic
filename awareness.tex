@@ -1,68 +1,58 @@
-In this section, we give the explicit semantics to basic awareness logic,
-originally presented in {\cite{fagin_belief_1988}}, with an additional axiom.
-%  One difference in our presentation is the inclusion of a novel letter and a
-% superficial change in notation. 
- This work was inspired by the developments in
-van Benthem and Vel\'azquez-Quesada {\cite{benthem_inference_2009}}.
+In this section, we modify the framework we have previously given so that both
+knowledge and belief may be modeled.  Russell provides some intuition
+about what distinguishes knowledge from belief\cite[pg. 63]{russell_problems_1936}:
+\begin{quote}
+But are we to say that nothing is knowledge except what is validly deduced
+from true premisses? Obviously we cannot say this. Such a definition is at
+once too wide and too narrow. In the first place, it is too wide, because it is
+not enough that our premisses should be \emph{true}, they must also be
+known.
+\end{quote}
+Russell may be interpreted as taking immediate knowledge to be
+\emph{primitive} in the above passage.  To this end, we propose a new
+symbol: $\PP$, which is a kind of letter.  We will interpret it to mean ``All of propositions
+the agent is explicitly aware of are articles of knowledge.'' Unless $\PP$ is
+true, the agent can only be said to possess logical belief.  
+
+It may be that everything the agent is explicitly aware of is accidentally true,
+and therefore all of her beliefs derivative beliefs are true.
+However, in this case we take it that the agent has a form of
+\emph{right opinion}. 
+
+As before, we make the minimal assumption that knowledge is \emph{true}.
 
 \begin{definition}
-  Let $\Phi$ be a set of letters and define the language $\mathcal{L}_A
-  (\Phi)$ as:
-  \[ \phi \hspace{1em} : : = \hspace{1em} p \in \Phi \hspace{1em} |
-     \hspace{1em} \circlearrowleft \hspace{1em} | \hspace{1em} \bot
-     \hspace{1em} | \hspace{1em} \phi \rightarrow \psi \hspace{1em} |
-     \hspace{1em} \Box \phi \hspace{1em} | \hspace{1em} A : \phi \hspace{1em}
+   $\mathcal{L}_\PP
+  (\Phi)$ extends $\mathcal{L}_A(\Phi)$ as follows:
+  \[ \phi \  : : = \  p \in \Phi \  | \  \bot
+     \  | \  \phi \rightarrow \psi \  |
+     \  \Box \phi \  | \  A : \phi \ |\ \circlearrowleft 
   \]
 \end{definition}
 
-We define the other connectives and modal operators as usual for classical
-modal logics.
-
 \begin{definition}
-  \label{awarenessmodels}An {\tmstrong{awareness model}} $\mathbbm{M}= \langle
+  \label{awarenessmodels}A {\tmstrong{$\PP$-awareness model}} $\mathbbm{M}= \langle
   W, V, R, \mathcal{A} \rangle$ is a Kripke model with a valuation $V : \Phi
-  \cup \{\circlearrowleft\} \rightarrow 2^W$ and an awareness function
-  $\mathcal{A} : W \rightarrow 2^{\mathcal{L}_A (\Phi)}$.  We will usually
-  denote $\mathcal{A} (w)$ as $\mathcal{A}_w$.
-  
- 
-  Define the semantic entailment relation $\vDash$ where atomic propositions,
-  logical connectives and modality are interpreted as usual.  We employ the
-  following novel definition:
-  \begin{eqnarray*}
-    \mathbbm{M}, w \vDash A : \phi & \text{iff} & \phi \in \mathcal{A_w}
-  \end{eqnarray*}
+  \cup \{\circlearrowleft\} \rightarrow 2^W$, which is otherwise the
+  same as an ordinary awareness model.  The semantics are unmodified,
+  except that $\mathbb{M},w \models \PP \iff w \in V(\PP)$.
 \end{definition}
 
-The following definition distinguishes us from previously investigations of
-awareness logic:
+Aside from \textbf{CSQ$_\vdash$}, we will be concerned with the
+following new property
 
-\begin{definition}
-  Define the ``\tmtextbf{theory of a model} $\mathbbm{M}$'' as:
-  \[ \tmop{Th} (\mathbbm{M}) \assign \{\phi \hspace{1em} | \hspace{1em}
-     \mathbbm{M}, v \vDash \phi \text{ for all } v \in W\} \]
-  We define the following properties that a model $\mathbbm{M}$ may posses:
-  
+\begin{definition}\label{snd1}
   \begin{descriptiondash}
-    \item[CSQ] $\mathbbm{M}, w \vDash \Box \phi \text{ iff } \tmop{Th}
-    (\mathbbm{M}) \cup \mathcal{A}_w \vdash \phi$
-    
-    \item[SND] $\mathbbm{M}, w \vDash \circlearrowleft \text{ iff }
+    \item[SND] If $\mathbbm{M}, w \vDash \circlearrowleft \text{ then }
     \mathbbm{M}, w \vDash \phi$ for all $\phi \in \mathcal{A}_w$
   \end{descriptiondash}
-  
-  Here $\vdash$ is any logical consequence relation which is sound for
-  $\vDash$, making true \tmtextbf{modus ponens} and \tmtextbf{reflection} (ie,
-  $\Gamma \vdash \phi$ if $\phi \in \Gamma$)
 \end{definition}
 
-Neither \tmtextbf{CSQ} nor \tmtextbf{SND} correspond to simple modally
-definable properties.
-
-The logic of models making true \tmtextbf{CSQ} and \tmtextbf{SND} is provided
-in Table \ref{logic1}.
+The logic for \textbf{CSQ$_\vdash$} and \textbf{SND} differs from the
+logic given in \S\ref{awarenesslogic0} by a single axiom:
 
 \begin{table}[h]
+\begin{centering}
   \begin{tabular}{l}
     $\vdash \phi \rightarrow \psi \rightarrow \phi$\\
     $\vdash (\phi \rightarrow \psi \rightarrow \chi) \rightarrow (\phi
@@ -72,24 +62,29 @@ in Table \ref{logic1}.
     $\vdash \Box(\phi \rightarrow \psi) \rightarrow \Box \phi \rightarrow \Box
     \psi$\\
     $\vdash A : \phi \rightarrow \Box \phi$\\
-    $\vdash \circlearrowleft \rightarrow \Box \phi \rightarrow \phi$\\
+    $\vdash \PP \to \Box \phi \rightarrow \phi$\\
     \\
     \begin{tabular}{lll}
-      $\frac{\vdash \phi \rightarrow \psi \hspace{4em} \vdash \phi}{\vdash
-      \psi}$ & {\hspace{6em}} & $\frac{\vdash \phi}{\vdash \Box \phi}$
+      $\displaystyle \frac{\vdash \phi \rightarrow \psi \ \  \vdash \phi}{\vdash
+      \psi}$ & {\ \ } & $\displaystyle \frac{\vdash \phi}{\vdash \Box \phi}$
     \end{tabular}
   \end{tabular}
-  \caption{\label{logic1}Awareness Logic for \tmtextbf{CSQ} and
-  \tmtextbf{SND}}
+  \caption{\label{logic1}Awareness Logic for For Knowledge And
+    Derivative Belief}
+\end{centering}
 \end{table}
 
 \begin{theorem}
   \label{completeness1}Assuming an infinite store of proposition letters
   $\Phi$, the awareness logic presented is sound and weakly complete for
-  awareness models making true \tmtextbf{CSQ} and \tmtextbf{SND}.
+  awareness models making true \tmtextbf{CSQ}$_{\vdash'}$ and
+  \tmtextbf{SND} for a suitable logic $\vdash'$.
 \end{theorem}
-
-\input{completeness1.tex}
+\begin{proof}
+The proof proceeds exactly as the proof of Theorem
+\ref{completeness0}; the only difference is that the canonical model
+and modified model make true \textbf{SND} instead of being reflexive.
+\end{proof}
 
 %%% Local Variables: 
 %%% mode: latex
