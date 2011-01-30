@@ -1,15 +1,103 @@
-The logic presented in Table \ref{logic1} is a conservative extension of the
-basic modal logic $K$, which means that its decision problem is
-\tmtextsf{PSPACE} hard (a lower bound).
-\todo[noline]{Needs to be extended a lot!}  
-Our finitary completeness proof
-establishes that its complexity is in \tmtextsf{EXP2-TIME} (an upper bound).
+In this section we provide our final analysis of Hintikka's objection
+to our proposed reading of epistemic modality, connections of our
+logic to other approaches, and we propose future avenues of research.
 
-Worlds in epistemic logic might correspond to fantastic, pretend scenarios;
-however, it may be desirable for some philosophers to model knowledge about
-imaginary lands.  After all, many children ``know'' a lot about Tolkien's
-{\tmem{middle earth}} or Rowling's {\tmem{Hogwarts}} (the school Harry Potter
-attends).
+\subsection{Hintikka's Objection}\label{hintikka-conc}
+
+Contrary to Hintikka's opposition, we have demonstrated various logics
+where $\Box \phi$ has a Russellian interpretation: 
+``$\phi$ may be derived logically from basic propositions that the
+agent is aware of that $\phi$''.  This is accomplished
+by first providing basic semantics, and then restricting ourselves to
+classes of models which express the property we have labeled as 
+$\textup{\textbf{CSQ}}_\vdash$, where $\vdash$ is some suitable
+logic.  Our specification of what suitable means is minimal, although it
+is enough to determine a complete notion of logical consequence in
+every case.
+
+However, we propose that a more radical reading of $\Box \phi$ is adequate: ``$\phi$ may be derived logically from basic propositions that the
+agent is aware of that $\phi$, \emph{using epistemic logic itself}''.
+In other words, one may interpret epistemic agents as using the
+same logic we are ultimately developing.
+We take the relevant notion of epistemic logic to be application dependent;
+it may be awareness logic, hybrid logic, etc.
+  This is because of the
+following observation, which we assert without proof: \emph{for every
+  logic $\vdash_L$ we propose, $\vdash_L$ is sound and weakly complete
+  for an appropriate class of models $\mathbb{M}$ making true
+  $\textup{\textbf{CSQ}}_{\vdash_L}$}.
+To see why this is true, it is routine to verify soundness, and then
+check that each of our completeness proofs deliver suitable counter-models.
+
+Our more radical reading directly contradicts Hintikka: we are proposing that semantics
+may appeal to their own notion of logical consequence.  The method of
+developing systems that accomplish this is analogous to other
+techniques in mathematics.  In
+order to derive the static solution of a diffusion equation, one
+ minimally assumes the solution to be \emph{separable}.  
+From this assumption, the form of the solution may be derived, and one may
+check that the derived solution fulfills all of the initial assumptions.  Formulating logics that have
+semantics which incorporate themselves may be regarded as a similar
+exercise to solving differential equations, with our assumption of
+\emph{suitability} playing the similar r\^{o}le as \emph{separability}.
+
+\subsection{Related Work}
+
+All of the logics in this paper are variations of
+systems that have been developed elsewhere for different purposes.
+We defer to the cited literature for readers interested in the
+comparing our approach to others.
+
+There is a connection we did not anticipate between the neighborhood 
+logic in \S\ref{neighborhood_semantics} and a logic for statistical inference
+presented by Kyburg et al. \cite{kyburg_logic_2002}.  We assert
+without proof that the awareness free fragment of our logic is exactly
+the same as the logic developed in Kyburg et al., which is precisely Chellas'
+neighborhood logic $EMN$ \cite[chapter 9]{chellas_modal_1980}.
+
+An important similarity between Kyburg et al.'s approach and our own is
+our respective philosophical motivations.  In both systems, the guiding intuition lies in pragmatic
+considerations in scientific epistemology; specifically it is meant
+for reasoning about the ``Lottery Paradox''
+\cite[pg. 197]{kyburg_probability_1961}.  To sketch this puzzle, let
+$\phi_X$ denote ``$X$ will win the lottery'', for some lottery with
+1000 tickets.  For any given person $X$, call them ``$1$'', we have
+that $Pr(\neg \phi_1)
+\approx 1$, so one may reasonably conclude that $\neg\phi_1$.  One
+could similarly conclude $\neg \phi_2$, and it seems $Pr(\phi_1 \vee
+\phi_2) \approx 0$, so one could conclude $\neg\phi_1 \wedge \neg \phi_2$.
+However, can cannot rationally conclude that $\bigvee_{1 \leq X \leq 1000}
+\neg \phi_X$, since \emph{somebody} must win the lottery.  
+
+One method of resolving this paradox is to employ a system of statistical
+inference known as the \emph{Evidential Probability
+  Calculus} \cite{kyburg_uncertain_2001}.  
+This may be seen as a variation on Maynard Keynes' interval probability 
+calculus \cite{keynes_treatise_1921}.  Using this system, Kyburg et
+al. write $\Gamma
+\vdash_\epsilon \phi$ to mean that a body of statistical evidence
+$\Gamma$ determines that $Pr(\phi) \in [p,q]$ where $p \geq
+1 - \epsilon$ (given certain other constraints).  They then propose semantics which equate doxastic
+modality $\Box_\epsilon \phi$ with an inference $\Gamma \vdash_\epsilon\phi$ for some
+body of statistical evidence $\Gamma$.  The similarity between this
+approach and the Russellian epistemic logics we propose is clear.
+
+Furthermore, we regard it as significant that two disparate efforts,
+both motivated by scientific epistemology,
+have converged Chellas' neighborhood logic $EMN$.
+
+\subsection{Conclusion}
+
+Philosophers and logicians have been informally reading $\Box \phi$ as
+``it follows from what the agent knows that $\phi$'' for years,
+contrary to Hintikka's rejection of this interpretation.  It is natural that formal systems
+may be developed with correspond to this intuition.  What is somewhat
+unexpected is that Russell's epistemology effectively fits this
+perspective, and anticipates awareness logic.  We have demonstrated that a Russellian
+reading is robustly applicable to modal, submodal, and hybrid awareness
+logics.  In future work, we want to investigate the relationship
+between our approach and Kyburg et al.'s, given that the two
+employ similar semantics and share a common logic. 
 
 %%% Local Variables: 
 %%% mode: latex
