@@ -24,30 +24,66 @@ operations which correspond to \tmtextit{modus ponens} and
 \tmtextit{proof-theoretic reflection}, however we do not consider these
 operations here.
 
-
-We propose a stripped down, simplified form of JL suitable for reasoning
-over multiple knowledge bases, which we call \tmtextit{simple justification
-logic} (SJL). % However, instead of thinking of terms as representing proofs, we
+In this section we propose a stripped down, simplified form of JL suitable for reasoning
+about derivative knowledge from awareness sets, which we call 
+\tmtextit{simple justification logic} (SJL). Instead of reading $X :
+\phi$ as ``$X$ is a proof term deriving $\phi$'', we will read this
+expression as ``$X$ is acquainted with $\phi$''\footnote{This is
+  inspired by Fitting's semantics for JL proposed in
+  \cite{fitting_logic_2005}.}.  We read $\Box_X\phi$ as ``$X$ has
+derivative knowledge that $\phi$''.
+% However, instead of thinking of terms as representing proofs, we
 % use them to represent knowledge bases. This is in the spirit of JL as a logic
 % of evidence: we consider each knowledge base to be a corpus of evidence. \
 % Each term ``names'' a different knowledge base at a particular world.  Terms
 % may not refer to the same knowledge base at different worlds, just as in how
 % in awareness logic the agent need not be aware of the same formulae at
 % different worlds.
-We will only make use of JL's {\tmem{choice}} operator,
-and use it as a mechanism for forming the union of awareness sets, creating new ones.
+SJL reduces JL to only the {\tmem{choice}} operator, which is used as a 
+mechanism for forming the union of awareness sets.
 
-
+While the intuition behind SJL cannot be found in
+Russell's writings, it may be found elsewhere in the epistemic logic
+literature.  For instance in
+\cite[pg. 67]{meyer_epistemic_1995}, Meyer et al. motivate logic for what they call
+\emph{implicit knowledge in a group} with the following thought experiment:
+\begin{quote}
+[A]ssume $\phi$ to be `P = NP'. We furthermore assume that three
+researchers 1, 2, 3 work on this long-standing and famous problem in
+order to discover a proof of the theorem. Suppose that the actual
+situation is such that $\phi$ follows from three lemmas: $\psi_1$,
+$\psi_2$ and $\psi_3$. Researcher 1 has proved $\psi_1$ -- so he knows
+$\psi_1$. Analogously for researchers 2 and 3 with respect to $\psi_2$
+and $\psi_3$, respectively. \ldots If the researchers would interact
+at a congress on theoretical computer science, they would be able to
+gather their partial knowledge and thereby know (a proof of) $\phi$.
+\end{quote}
+This motivation works just as well for SJL. We model this situation by
+employing the following symbolism:
+there are three awareness sets $\mathcal{A}_1(w)$, $\mathcal{A}_2(w)$ and
+$\mathcal{A}_3(w)$ which correspond to facts each researcher is
+acquainted with.  Moreover, each lemma may be derived from its
+respective base: $Th(\mathbb{M}) \cup \mathcal{A}_1(w) \vdash
+\psi_1$, $Th(\mathbb{M}) \cup \mathcal{A}_1(w) \vdash
+\psi_2$ and $Th(\mathbb{M}) \cup \mathcal{A}_1(w) \vdash
+\psi_3$.  Finally, it holds that the three lemmas prove the theorem:
+$Th(\mathbb{M}) \vdash \psi_1 \to \psi_2 \to \psi_3 \to \phi$.
+Provided that our notion of logical consequence is \emph{monotonic},
+and makes true modus ponens, it then follows that
+$Th(\mathbb{M}) \cup \mathcal{A}_1(w) \cup \mathcal{A}_2(w) \cup
+\mathcal{A}_3(w) \vdash \phi$.  In order to express this in the semantics, we represent $\mathcal{A}_1(w) \cup \mathcal{A}_2(w) \cup
+\mathcal{A}_3(w)$ as $\mathcal{A}_{1 \oplus 2 \oplus 3}(w)$, and
+$Th(\mathbb{M}) \cup \mathcal{A}_1(w) \cup \mathcal{A}_2(w) \cup
+\mathcal{A}_3(w) \vdash \phi$ as $\mathbb{M}, w \models \Box_{1 \oplus 2 \oplus 3} \phi$.
 
 \begin{definition}
   Let $\Pi$ be a set of primitive terms.  Define $\tau (\Pi)$ with the
   following grammar:
-  \[ X \  : : = \  t \in \Pi \  | \  X    \oplus Y \]
+  \[ X \  : : = \  t \in \Pi \  | \  X  \oplus Y \]
   
   Let $\Phi$ be a set of letters and $\Pi$ a set of primitive terms, and
   define the language $\mathcal{L}_{\tmop{SJL}} (\Phi, \Pi)$ as:
-  \[ \phi \  : : = \  p \in \Phi \  |
-     \  \circlearrowleft_X \  | \  \bot
+  \[ \phi \  : : = \  p \in \Phi \  | \  \bot
      \  | \  \phi \rightarrow \psi \  |
      \  \Box_X \phi \  | \  X : \phi \]
   where $X \in \tau (\Pi)$
@@ -56,56 +92,41 @@ and use it as a mechanism for forming the union of awareness sets, creating new 
 \begin{definition}
   \label{justmodels}A {\tmstrong{simple justification model}} $\mathbbm{M}=
   \langle W, V, R, \mathcal{A} \rangle$ is a Kripke model with a valuation $V
-  : \Phi \cup \{\circlearrowleft_X \  | \  X \in \tau
-  (\Pi)\} \rightarrow 2^W$, an indexed relation $R : \tau (\Pi) \rightarrow
-  2^{W \times W}$, along with a modified awareness function $\mathcal{A} : W
-  \times \tau (\Pi) \rightarrow 2^{\mathcal{L}_{\tmop{SJL}} (\Phi, \Pi)}$. \
-  In practice we will denote $\mathcal{A} (w, X)$ by a curried shorthand,
-  namely $\mathcal{A}_w (X)$.
-  
-  
+  : \Phi  \rightarrow 2^W$, an indexed relation $R : \tau (\Pi) \rightarrow
+  2^{W \times W}$, along with a modified awareness function
+  $\mathcal{A} : \tau (\Pi) \times W
+   \rightarrow 2^{\mathcal{L}_{\tmop{SJL}} (\Phi, \Pi)}$. 
+  In practice we will denote $\mathcal{A} (X, w)$ by a curried shorthand, namely $\mathcal{A}_X (w)$.
   
   The semantics for $\vDash$ have the following modifications:
   \begin{eqnarray*}
-    \mathbbm{M}, w \vDash \Box_X \phi & \text{iff} & \text{for all $v \in W$
+    \mathbbm{M}, w \vDash \Box_X \phi & \iff & \text{for all $v \in W$
     where $w R_X v$ we have $\mathbbm{M}, v \vDash v$}\\
-    \mathbbm{M}, w \vDash X : \phi & \text{iff} & \phi \in \mathcal{A}_w (X)
+    \mathbbm{M}, w \vDash X : \phi & \iff & \phi \in \mathcal{A}_X (w)
   \end{eqnarray*}
+\end{definition}
+
+\begin{definition}
+A Hilbert-style calculus $\vdash$ is said to be \textbf{SJL-suitable} for an SJL model
+$\mathbb{M}$ if and only if it makes true modus ponens, it is
+relatively sound for $\mathbb{M}$, and it is \textbf{monotonic}: if
+$\Gamma \vdash \phi$ and $\Gamma \subseteq \Delta$, then $\Delta
+\vdash \phi$.
 \end{definition}
 
 \begin{definition}
   The following defines properties a simple justification model may make true:
   
   \begin{descriptiondash}
-    \item[JCSQ] $\mathbbm{M}, w \vDash \Box_X \phi \text{ iff } \tmop{Th}
-    (\mathbbm{M}) \cup \mathcal{A}_w (X) \vdash \phi$
-    
-    \item[JSND] $\mathbbm{M}, w \vDash \circlearrowleft_X \text{ iff
-    $\mathbbm{M}, w \vDash \phi$ for all $\phi \in \mathcal{A}_w (X)$}$
-    
-    \item[CHOICE] $\mathcal{A}_w (X \oplus Y) = \mathcal{A}_w (X) \cup
-    \mathcal{A}_w (Y)$
+    \item[$\textup{\textbf{JCSQ}}_\vdash$] $\mathbbm{M}, w \vDash \Box_X \phi \iff \tmop{Th}
+    (\mathbbm{M}) \cup \mathcal{A}_X (W) \vdash \phi$
+    \item[CHOICE] $\mathcal{A}_{X \oplus Y}(w) = \mathcal{A}_X (w) \cup
+    \mathcal{A}_Y (w)$
   \end{descriptiondash}
-  
-  as before, $\vdash$ is any sound logical consequence relation for $\vDash$
-  with \tmtextbf{modus ponens} and \tmtextbf{reflection}
 \end{definition}
 
-The above semantics are similar to the ones given in previous sections. \
-\tmtextbf{JCSQ} is the same as \tmtextbf{CSQ} from {\S}\ref{awarenesslogic},
-only it is relativised to a knowledge base denoted by $X$ at $w$.  The
-awareness logic of knowledge bases is special case of simple justification
-logic where there is only one term.
-
-
-
-Simplified justification logic is given in Table \ref{logic5}.  We assert
-without proof that this is a conservative extension of the awareness logic in
-{\S}\ref{awarenesslogic}.
-
-
-
 \begin{table}[h]
+\begin{centering}
   \begin{tabular}{ll}
     $\vdash \phi \rightarrow \psi \rightarrow \phi$ & \\
     $\vdash (\phi \rightarrow \psi \rightarrow \chi) \rightarrow (\phi
@@ -115,15 +136,9 @@ without proof that this is a conservative extension of the awareness logic in
     $\vdash \Box_X (\phi \rightarrow \psi) \rightarrow \Box_X \phi \rightarrow
     \Box_X \psi$ & \\
     $\vdash (X : \phi) \rightarrow \Box_X \phi$ & \\
-    $\vdash \circlearrowleft_X \rightarrow \Box_X \phi \rightarrow \phi$ & \\
-    $\vdash (X : \phi) \rightarrow (Y : \phi) \rightarrow X \oplus Y : \phi$ &
-    \\
-    $\vdash (X \oplus Y : \phi) \rightarrow X : \phi$ & $\vdash (X \oplus Y :
-    \phi) \rightarrow Y : \phi$\\
-    $\vdash \circlearrowleft_X \rightarrow \circlearrowleft_Y \rightarrow
-    \circlearrowleft_{X \oplus Y}$ & \\
-    $\vdash \circlearrowleft_{X \oplus Y} \rightarrow \circlearrowleft_X$ &
-    $\vdash \circlearrowleft_{X \oplus Y} \rightarrow \circlearrowleft_Y$\\
+    $\vdash \Box_X \phi \rightarrow \phi$ & \\
+    $\vdash (X \oplus Y : \phi) \leftrightarrow (X : \phi \vee Y :
+    \phi)$ & \\
     $\vdash \Box_X \phi \rightarrow \Box_{X \oplus Y} \phi$ & \\
     $\vdash \Box_{X \oplus X} \phi \rightarrow \Box_X \phi$ & $\vdash \Box_{(X
     \oplus X) \oplus Y} \phi \rightarrow \Box_{X \oplus Y} \phi$ \\
@@ -132,19 +147,24 @@ without proof that this is a conservative extension of the awareness logic in
     \oplus Z} \phi$\\
     $\vdash \Box_{(X \oplus Y) \oplus Z} \phi \rightarrow \Box_{X \oplus (Y
     \oplus Z)} \phi$ & \\
-    & \\
-    \begin{tabular}{lll}
-      $\frac{\vdash \phi \rightarrow \psi \hspace{4em} \vdash \phi}{\vdash
-      \psi}$ & {\hspace{6em}} & $\frac{\vdash \phi}{\vdash \Box_X \phi}$
-    \end{tabular} & 
+    & 
   \end{tabular}
+\begin{tabular}{lll}
+      $\displaystyle\frac{\vdash \phi \rightarrow \psi \ \  \vdash \phi}{\vdash
+      \psi}$ & {\ \ } & $\displaystyle\frac{\vdash \phi}{\vdash \Box_X \phi}$
+    \end{tabular}
   \caption{\label{logic5}Simple Justification Logic}
+\end{centering}
 \end{table}
+We assert without proof that SJL is a conservative extension of the awareness logic in
+{\S}\ref{awarenesslogic0}.
 
 \begin{theorem}
   \label{completeness5}Assuming an infinite store of proposition letters
-  $\Phi$, SJL is sound and weakly complete for simple justification models
-  making true \tmtextbf{JCSQ}, \tmtextbf{JSND} and \tmtextbf{CHOICE}
+  $\Phi$, SJL (Table \ref{logic5}) is sound and weakly complete for reflexive simple justification models
+  which make true $\textup{\tmtextbf{JCSQ}}_{\vdash'}$ for some
+  SJL-suitable logic $\vdash'$ as well as
+  \tmtextbf{CHOICE}
 \end{theorem}
 \input{completeness3}
 
