@@ -38,17 +38,17 @@ As before, we make the minimal assumption that knowledge is \emph{true}.
   except that $\mathbb{M},w \models \PP \iff w \in V(\PP)$.
 \end{definition}
 
-Aside from \textbf{CSQ$_\vdash$}, we will be concerned with the
-following new property
+Aside from $\textup{\textbf{CSQ}}_\vdash$, we will be concerned with
+the following new property
 
 \begin{definition}\label{snd1}
   \begin{descriptiondash}
     \item[SND] If $\mathbbm{M}, w \vDash \circlearrowleft \text{ then }
-    \mathbbm{M}, w \vDash \phi$ for all $\phi \in \mathcal{A}_w$
+    \mathbbm{M}, w \vDash \phi$ for all $\phi \in \mathcal{A}(w)$
   \end{descriptiondash}
 \end{definition}
 
-The logic for \textbf{CSQ$_\vdash$} and \textbf{SND} differs from the
+The logic for  $\textup{\textbf{CSQ}}_\vdash$ and \textbf{SND} differs from the
 logic given in \S\ref{awarenesslogic0} by a single axiom:
 
 \begin{table}[h]
@@ -76,9 +76,10 @@ logic given in \S\ref{awarenesslogic0} by a single axiom:
 
 \begin{theorem}
   \label{completeness1}Assuming an infinite store of proposition letters
-  $\Phi$, the awareness logic presented is sound and weakly complete for
-  awareness models making true \tmtextbf{CSQ}$_{\vdash'}$ and
-  \tmtextbf{SND} for a suitable logic $\vdash'$.
+  $\Phi$, the awareness logic presented in Table \ref{logic1} is sound and weakly complete for
+  $\PP$-awareness models making true \tmtextbf{CSQ}$_{\vdash'}$ for a
+  suitable logic $\vdash'$ as well as
+  \tmtextbf{SND}.
 \end{theorem}
 \begin{proof}
 The proof proceeds exactly as the proof of Theorem
