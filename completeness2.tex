@@ -26,9 +26,11 @@
   
   This model makes true the following properties:
   \begin{enumerateroman}
-    \item $\sim_{\forall}$ is an equivalence relation    
+    \item \label{hybprop1} $\sim_{\forall}$ is an equivalence relation
+    \item If $\mathbbm{M}, v \vDash A : \psi$ then $\mathbbm{M}, v
+      \vDash \Box \psi$     
     \item $R_{\Box} \subseteq \sim_{\forall}$
-    \item In each equivalence class specified by $\sim_{\forall}$, there is at
+    \item \label{hybprop4}In each equivalence class specified by $\sim_{\forall}$, there is at
     most one world making true $i$ for all $i \in \Upsilon$
   \end{enumerateroman}
   As in our previous construction we have that there is some world $w$ where
@@ -65,12 +67,14 @@
     \end{tabular}
   \end{center}
   
-  The the worlds is $\mathbbm{M}'$ and $\mathbbm{M}''$ agree on all
-  subformulae of $\psi$, hence $\mathbbm{M}'', w \nvDash
-  \psi$. Moreover, the logic in Table \ref{logic2} itself 
-  is suitable for $\mathbbm{M}''$ and
-  $\mathbbm{M}''$ makes true $\textup{\tmtextbf{CSQ}}_{\vdash}$.  From
-  this it follows that we have completeness.
+  The the worlds is $\mathbbm{M}'$ and $\mathbbm{M}''$ agree on all  subformulae of $\psi$, hence $\mathbbm{M}'', w \nvDash
+  \psi$. Note that both $\mathbb{M}'$ and $\mathbb{M}''$ inherit
+  properties \ref{hybprop1} through \ref{hybprop4} from $\mathbb{M}$.
+  This implies that the logic in Table \ref{logic2} itself 
+  is suitable for $\mathbbm{M}''$. Moreover, one can show that
+  $\mathbbm{M}''$ makes true $\textup{\tmtextbf{CSQ}}_{\vdash}$, using
+  a line of argument analogous to what we have provided in previous proofs.
+  From this we have enough to establish completeness.
 \end{proof}
 %%% Local Variables: 
 %%% mode: latex
