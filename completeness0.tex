@@ -8,17 +8,17 @@
   proofs found in {\cite[chapter 4.8]{blackburn_modal_2001}} and
   {\cite[chapter 5]{boolos_logic_1995}}.  Typical presentations do not
   include awareness, however it is defined intuitively in this case:
-  \[ \phi \in \mathcal{A}_w \Longleftrightarrow A : \phi \in w \]
+  \[ \phi \in \mathcal{A}(w) \Longleftrightarrow A : \phi \in w \]
   Since $\psi$ is a subformula of itself, we have $\mathbbm{M}, w \nvDash
   \psi$ for some world $w$ by finitary forms of the {\tmem{Lindenbaum Lemma}} and
   {\tmem{Truth Theorem}}.  Moreover, it is straightforward to verify that
   $\mathbbm{M}$ makes true the following properties:
   \begin{enumeratenumeric}
-    \item $W$ and $\mathcal{A}_v$ are finite, and $\psi \in \mathcal{A}_v$
+    \item\label{awareness0-prop1} $W$ and $\mathcal{A}(v)$ are finite, and $\psi \in \mathcal{A}(v)$
     only if $\psi$ is a (possibly negated) subformula of $\phi$
-    \item \label{awareness0-prop2} if $\mathbbm{M}, v \vDash A : \psi$ then $\mathbbm{M}, v \vDash \Box
+    \item \label{awareness0-prop2} If $\mathbbm{M}, v \vDash A : \psi$ then $\mathbbm{M}, v \vDash \Box
     \psi$ 
-    \item $v R v$ for all worlds $v$
+    \item \label{awareness0-prop3} $v R v$ for all worlds $v$
   \end{enumeratenumeric}
   
   % We next produce a bisimular{\footnote{The notion of bisimulation is
@@ -64,11 +64,10 @@
   letters occurring in $\psi$.  We will make use members of $\Phi \backslash
   \Lambda$ as {\tmem{nominals}}, as per the tradition in hybrid logic.  This
   is possible since both $W$ and $\Lambda$ are finite and $\Phi$ is infinite
-  by hypothesis.  Let $\iota : W \uplus W \hookrightarrow \Phi \backslash
-  \Lambda$ be an injection assigning a fresh nominal associated with each
-  world in $W$.  Now define $\mathbbm{M}' \assign \langle W',
-  V', R', \mathcal{A}' \rangle$, where:
-  
+  by hypothesis.  Let $\iota : W  \hookrightarrow \Phi \backslash
+  \Lambda$ be an injection assigning a fresh nominal to each
+  world in $W$.  Define $\mathbbm{M}' \assign \langle W',
+  V', R', \mathcal{A}' \rangle$ as follows:
   \begin{center}
     \begin{tabular}{lllll}
       $\bullet$ & $W' \assign W$ &  & $\bullet$ & $V' (p) \assign \left\{
@@ -78,33 +77,37 @@
         \varnothing & o / w
       \end{array} \right.$\\
       $\bullet$ & $R' \assign R$ & {\hspace{3em}} & $\bullet$ &
-      $\mathcal{A}'_v \assign \{\phi \  | \phi \in \mathcal{A}_v
+      $\mathcal{A}'(v) \assign \{\phi \  |\ \phi \in \mathcal{A}(v)
       \} \cup \{\neg \iota (u) \  | \  \neg v R' u\}$
     \end{tabular}
   \end{center}
   
   By induction we have that for every subformula $\phi$ of $\psi$ that
   $\mathbbm{M}, v \vDash \phi$ if and only if $\mathbbm{M}', v \vDash \phi$,
-  hence $\mathbbm{M}', w \nvDash \psi$.
+  hence $\mathbbm{M}', w \nvDash \psi$.  % In addition, $\mathbb{M}'$
+  % inherits properties \ref{awareness0-prop1} through
+  % \ref{awareness0-prop3} from $\mathbb{M}$.
     
   All that is left to show is that $\mathbbm{M}'$ is reflexive and
-  makes true $\text{\tmtextbf{CSQ}}_{\vdash'}$ for some suitable logic $\vdash'$.  Since $\mathbb{M}$ was reflexive, $W' =
-  W$ and $R' = R$, we know that $\mathbb{M}'$ is reflexive too.  We
-  also have the following, additional properties:
+  makes true $\text{\tmtextbf{CSQ}}_{\vdash'}$ for some suitable logic
+  $\vdash'$.  Since $\mathbb{M}$ in reflexive, and $W' =
+  W$ and $R' = R$, we know that $\mathbb{M}'$ is reflexive too.
+  
+  Now observe that $\mathbb{M}'$ has the following features:
   \begin{enumerateroman}
-    \item \label{awareness0-one} $\mathcal{A}'_v$ is finite for all worlds $v$
+    \item \label{awareness0-one} $\mathcal{A}'(v)$ is finite for all worlds $v$
     \item \label{awareness0-two} $\vdash$, the logic presented in Table \ref{logic0}, is
       relatively sound for $\mathbbm{M}'$
     \item\label{awareness0-three}  $v R' u$ if and only if $\mathbbm{M}', u \vDash \bigwedge
-    \mathcal{A}'_v$
+    \mathcal{A}'(v)$
   \end{enumerateroman}
 
    We only prove \eqref{awareness0-three}.
 
   \begin{descriptiondash}
    \item[Left to Right]  Assume $v R' u$. We must show that if
-   $\phi \in \mathcal{A}'_v$ then $\mathbb{M}', u \models \phi$.  If
-   $\phi \in \mathcal{A}'_v$, either (a) $\phi \in \mathcal{A}_v$ or
+   $\phi \in \mathcal{A}'(v)$ then $\mathbb{M}', u \models \phi$.  If
+   $\phi \in \mathcal{A}'(v)$, either (a) $\phi \in \mathcal{A}(v)$ or
    (b) $\phi = \neg \iota(x)$ for some world $x$ where $\neg v R x$. Note
    that by definition, $v R' u$ is equivalent to $v R u$.  So in the
    case of (a) we know have by property \eqref{awareness0-prop2} of
@@ -119,7 +122,7 @@
    all, a contradiction.
   
    \item[Right to Left] It suffices to establish the contrapositive.  Assume $\neg v R' u$,
-   we must find some formula $\phi \in \mathcal{A}'_v$ such that
+   we must find some formula $\phi \in \mathcal{A}'(v)$ such that
    $\mathbb{M}, u \nmodels \phi$.  Evidently $\phi = \iota(u)$ suffices.
  \end{descriptiondash}
   
@@ -130,20 +133,22 @@
   line of reasoning:
   
   \begin{align*}
-    Th({\mathbbm{M}}'){\cup}\mathcal{A}'_v{\vdash}{\phi}\ &
-    {\Longleftrightarrow}\ Th({\mathbbm{M}}'){\vdash}\bigwedge\mathcal{A}'_v{\rightarrow}{\phi}\\
+    Th({\mathbbm{M}}'){\cup}\mathcal{A}'(v){\vdash}{\phi}\ &
+    {\Longleftrightarrow}\ Th({\mathbbm{M}}'){\vdash}\bigwedge\mathcal{A}'(v){\rightarrow}{\phi}\\
     &
-    {\Longleftrightarrow}\ \bigwedge\mathcal{A}'_v{\rightarrow}{\phi}{\in}Th({\mathbbm{M}}')\\
+    {\Longleftrightarrow}\ \bigwedge\mathcal{A}'(v){\rightarrow}{\phi}{\in}Th({\mathbbm{M}}')\\
     &
-    {\Longleftrightarrow}\ {\mathbbm{M}}',u{\vDash}\bigwedge\mathcal{A}'_v{\rightarrow}{\phi}\text{
+    {\Longleftrightarrow}\ {\mathbbm{M}}',u{\vDash}\bigwedge\mathcal{A}'(v){\rightarrow}{\phi}\text{
     for all $u \in W'$}\\
     & {\Longleftrightarrow}\ \text{for all $u \in W'$, if
-    }{\mathbbm{M}}',u{\vDash}\bigwedge\mathcal{A}'_v\text{ then
+    }{\mathbbm{M}}',u{\vDash}\bigwedge\mathcal{A}'(v)\text{ then
     }{\mathbbm{M}}',u{\vDash}{\phi}\\
     & {\Longleftrightarrow}\ \text{for all $u \in W'$, if }v R 'u \text{ then
     }{\mathbbm{M}}',u{\vDash}{\phi}\\
     & {\Longleftrightarrow}\ {\mathbbm{M}}',v{\models}\Box{\phi}
   \end{align*}
+This suffices to prove $\textup{\tmtextbf{CSQ}}_{\vdash}$, which
+suffices the proof.
 \end{proof}
 %%% Local Variables: 
 %%% mode: latex
