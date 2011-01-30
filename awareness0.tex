@@ -18,8 +18,7 @@ modal logics.
 \begin{definition}
   \label{awarenessmodels0}An {\tmstrong{awareness model}} $\mathbbm{M}= \langle
   W, V, R, \mathcal{A} \rangle$ is a Kripke model with a valuation $V : \Phi \rightarrow 2^W$ and an awareness function
-  $\mathcal{A} : W \rightarrow 2^{\mathcal{L}_A (\Phi)}$.  We will
-  usually denote $\mathcal{A} (w)$ as $\mathcal{A}_w$.
+  $\mathcal{A} : W \rightarrow 2^{\mathcal{L}_A (\Phi)}$.
   
   Define the semantic entailment relation $\vDash$ according to the
   usual formulation of
@@ -38,9 +37,9 @@ Define the following property, as sketched in \S\ref{mod-russell}:
 \begin{definition}\label{csq0}
   \begin{descriptiondash}
     \item[CSQ$_\vdash$] $\mathbbm{M}, w \vDash \Box \phi \text{ iff } \tmop{Th}
-    (\mathbbm{M}) \cup \mathcal{A}_w \vdash \phi$
+    (\mathbbm{M}) \cup \mathcal{A}(w) \vdash \phi$
     % \item[SND] $\mathbbm{M}, w \vDash \circlearrowleft \text{ iff }
-    % \mathbbm{M}, w \vDash \phi$ for all $\phi \in \mathcal{A}_w$
+    % \mathbbm{M}, w \vDash \phi$ for all $\phi \in \mathcal{A}(w)$
   \end{descriptiondash}
   
   Here $\vdash$ is any logical consequence relation which is sound for
@@ -86,7 +85,7 @@ $\gamma_0,\gamma_1,\ldots,\gamma_n\in\Gamma$ such that $\vdash
 
 \begin{theorem}
   \label{completeness0}Assuming an infinite store of proposition letters
-  $\Phi$, $\vdash$ is sound and weakly complete for
+  $\Phi$, $\vdash$ (from Table \ref{logic0}) is sound and weakly complete for
   reflexive awareness models $\mathbb{M}$ making true
   $\text{\tmtextbf{CSQ}}_{\vdash'}$, for some suitable $\vdash'$.
 \end{theorem}
