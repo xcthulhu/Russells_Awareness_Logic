@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[smallextended]{svjour3}
 
 \usepackage{hyperref}
  \hypersetup{
@@ -31,15 +31,15 @@
 \newenvironment{enumeratenumeric}{\begin{enumerate}[1.] }{\end{enumerate}}
 \newenvironment{enumerateroman}{\begin{enumerate}[i.] }{\end{enumerate}}
 \newenvironment{itemizedot}{\begin{itemize} \renewcommand{\labelitemi}{$\bullet$}\renewcommand{\labelitemii}{$\bullet$}\renewcommand{\labelitemiii}{$\bullet$}\renewcommand{\labelitemiv}{$\bullet$}}{\end{itemize}}
-\newenvironment{proof}{\noindent\textbf{Proof\ }}{\hspace*{\fill}$\Box$\medskip}
+%\newenvironment{proof}{\noindent\textbf{Proof\ }}{\hspace*{\fill}$\Box$\medskip}
 \definecolor{grey}{rgb}{0.75,0.75,0.75}
 \definecolor{orange}{rgb}{1.0,0.5,0.5}
 \definecolor{brown}{rgb}{0.5,0.25,0.0}
 \definecolor{pink}{rgb}{1.0,0.5,0.5}
-\newtheorem{definition}{Definition}
+%\newtheorem{definition}{Definition}
 \newtheorem{notation}{Notation}
-\newtheorem{proposition}{Proposition}
-\newtheorem{theorem}{Theorem}
+%\newtheorem{proposition}{Proposition}
+%\newtheorem{theorem}{Theorem}
 %%%%%%%%%% End TeXmacs macros
 
 \newcommand{\PP}{\circlearrowleft}
@@ -63,7 +63,7 @@ objection provided by Jaako Hintikka\cite{hintikka_knowledge_1969} to
 the proposed interpretation of epistemic modality is invalid.
 \end{abstract}
 
-\listoftodos
+%\listoftodos
 \section{Introduction}
 \label{intro}
 \input{introduction.tex}
@@ -100,7 +100,7 @@ knowledge bases.
 % \label{lattice_justification}
 % \input{lattice_justification.tex}
 
-\subsection{Neighborhood Semantics (Doxastic Logic)}
+\subsection{Neighborhood Logic}
 \label{neighborhood_semantics}
 \input{neighborhood_semantics.tex}
 
