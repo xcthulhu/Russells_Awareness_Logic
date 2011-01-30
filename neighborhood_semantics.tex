@@ -3,127 +3,159 @@ Montague in the early 1970s as a generalization of Kripke semantics \
 {\cite{montague_universal_2008,scott_advice_1970}}.  In
 {\cite{fagin_belief_1988}}, Halpern and Fagin adapted neighborhood semantics
 for reasoning about epistemic agents without logical omniscience.  In this
-section will demonstrate how these semantics may be modified so that
-neighborhoods corresponds to the logical consequences of a different knowledge
-bases.  This allows for using logics with neighborhood semantics for
-reasoning about multiple knowledge bases.  A point of distinction of
-neighborhood semantics from JL is that it may be possible that two distinct
-knowledge bases cannot be merged by the agent.
+section will demonstrate how these semantics may be merged with
+awareness logic, such that each neighborhood corresponds to the
+logical consequences of a different
+awareness set.  
+%This allows for using logics with neighborhood semantics for
+%reasoning about multiple knowledge bases.
+
+Russell does not provide any intuition which motivates the logic we
+want to develop here.  
+Instead, we rely on a thought experiment of our own invention. Consider
+a physicist who has studied both \emph{classical thermodynamics} and
+\emph{statistical mechanics}.  The former theory supports a proposition
+known as \emph{Boltzman's $H$-theorem}, while the latter supports 
+a result known as \emph{Poincar\'{e}'s recurrence theorem}.
+  However, she refuses to recognize the \emph{conjunction} of these
+  two statements, because Boltzman's
+  $H$-theorem and Poincar\'{e}'s recurrence theorem logically exclusive.
+  The former implies that spilt milk will not go back into a bottle
+  unless work is performed, while the latter holds that given enough
+  time spilt milk will eventually \emph{unspill} itself all on its
+  own, infinitely often.  As a result, our
+  physicists picks and chooses assumptions from both classical
+  thermodynamics and statistical mechanics as application
+  demands, but she is careful to never \emph{combine} the two theories
+  entirely\footnote{This is a point of distinction of neighborhood
+    semantics from SJL, since in SJL two awareness sets can
+    \emph{always} be combined.}, on pain of contradiction.
+  
+  We model our thought experiment by first interpreting
+  $\mathcal{A}(w)$ not as one
+  unified awareness set, as in previous sections, but rather as
+  \emph{a collection} of awareness sets.  Each awareness set
+  represents a different sets
+  of admissible assumptions.  The physicist can derive a
+  proposition only if she has a suitable set of assumptions $X$ at her
+  disposal.  We model this by stipulating that 
+  $\mathbb{M},w\models \Box \phi$ if and only if there is some 
+  $X \in \mathcal{A}(w)$ such that $Th(\mathbb{M}) \cup
+  X \vdash \phi$.  In the case of the physicist, we imagine there
+  being two sets of assumptions in $\mathcal{A}(w)$, $X$ and $Y$,
+  representing the assumptions of classical thermodynamics
+  and statistical mechanics respectively.  Likewise, we have represent
+  Boltzman's $H$-theorem and Poincar\'{e}'s recurrence theorem as
+  $\phi$ and $\psi$, respectively.  From the thought experiment we have $Th(\mathbb{M}) \cup
+  X \vdash \phi$ and $Th(\mathbb{M}) \cup
+  Y \vdash \psi$, while $Th(\mathbb{M})\vdash \phi \wedge \psi \to
+  \bot$.  
+  It is not hard to imagine cases, however, no such third set
+  $Z$ being available in $\mathcal{A}(w)$ such that $Th(\mathbb{M}) \cup
+  Z \vdash \phi \wedge \psi$, since the physicist is making an effort
+  to be rational.
+
+Unlike other sections, this section is not concerned with \emph{epistemic logic} in the strictest sense. 
+% using neighborhood semantics, and another
+% extending it with knowledge.  
+Reflecting on our thought experiment, it seems impossible to \emph{know} both
+Boltzman's $H$-theorem and Poincar\'{e}'s recurrence theorem, as they
+form an antimony.  Based on his writings, we feel that Russell would
+hold that neither principle is \emph{known}, and that each one of them
+constitutes a \emph{probable
+  opinion}\cite[pgs. 63--67]{russell_problems_1936} 
+that physicists entertain whenever convenient.  
+Accordingly, we interpret the neighborhood based logic we 
+develop here as a \emph{doxastic logic} of probable opinion.
 
 \begin{definition}
   Let $\Phi$ be a set of letters and define the language $\mathcal{L}_N (\Phi)$ as:
   \[ \phi\ : : =\ p \in \Phi\ |
     \ \bot\ |\ \phi \rightarrow \psi
     \ |\ \Box \phi\ |\ A :
-     \phi\ |\ K \phi \]
+     \phi\  \]
 \end{definition}
 
-Just as previous semantics, ``$\Box \phi$'' is intended to mean that the agent
-has an argument for $\phi$ from some knowledge base.  A novelty we present
-here is that ``$K \phi$'' means that the agent has an argument for $\phi$ from
-some \tmtextit{sound} knowledge base.
+% Just as previous semantics, ``$\Box \phi$'' is intended to mean that the agent
+% has an argument for $\phi$ from some knowledge base.  A novelty we present
+% here is that ``$K \phi$'' means that the agent has an argument for $\phi$ from
+% some \tmtextit{sound} knowledge base.
 
 \begin{definition}
   \label{neighborhoodmodels}A {\tmstrong{neighborhood model}} $\mathbbm{M}=
   \langle W, V, \mathcal{N}, \mathcal{A} \rangle$ has a neighborhood function
-  $\mathcal{N} : W \rightarrow 2^{2^W}$ and a multi-awareness function
-  $\mathcal{A} : W \rightarrow 2^{2^{\mathcal{L}_N (\Phi)}}$
-  
-  
-  
+  $\mathcal{N} : W \rightarrow 2^{2^W}$ and a multi-awareness function $\mathcal{A} : W \rightarrow 2^{2^{\mathcal{L}_N (\Phi)}}$
+    
   The semantics for $\vDash$ have the following modifications:
   \begin{eqnarray*}
-    \mathbbm{M}, w \vDash \Box \phi & \text{iff} & \text{there exists a $U \in
-    \mathcal{N}_w$ where $\mathbbm{M}, v \vDash \phi$ for all $v \in U$}\\
-    \mathbbm{M}, w \vDash K \phi & \text{iff} & \text{there exists a $U \in
-    \mathcal{N}_w$ where $w \in U$ and $\mathbbm{M}, v \vDash \phi$ for all $v
-    \in U$}\\
-    \mathbbm{M}, w \vDash A : \phi & \text{iff} & \phi \in \bigcup
-    \mathcal{A_w}
+    \mathbbm{M}, w \vDash \Box \phi & \iff & \text{there exists a $U \in
+    \mathcal{N}(w)$ where $\mathbbm{M}, v \vDash \phi$ for all $v \in U$}\\
+    % \mathbbm{M}, w \vDash K \phi & \text{iff} & \text{there exists a $U \in
+    % \mathcal{N}_w$ where $w \in U$ and $\mathbbm{M}, v \vDash \phi$ for all $v
+    % \in U$}\\
+    \mathbbm{M}, w \vDash A : \phi & \iff & \phi \in \bigcup
+    \mathcal{A}(w)
   \end{eqnarray*}
 \end{definition}
 
-Here we modify our previous notion of \tmtextbf{CSQ} and \tmtextbf{SND} to
-match how our semantics are intended for reasoning over multiple bases:
+% Here we modify our previous notion of \tmtextbf{CSQ} and \tmtextbf{SND} to
+% match how our semantics are intended for reasoning over multiple bases:
 
 \begin{definition}
   The following defines properties a neighborhood model may make true:
-  
   \begin{descriptiondash}
-    \item[NCSQ] $\mathbbm{M}, w \vDash \Box \phi \text{ iff there exists a set
-    $X \in \mathcal{A}_w$ such that } \tmop{Th} (\mathbbm{M}) \cup X \vdash
+    \item[NCSQ$_\vdash$] $\mathbbm{M}, w \vDash \Box \phi \text{ iff there exists a set
+    $X \in \mathcal{A}(w)$ such that } \tmop{Th} (\mathbbm{M}) \cup X \vdash
     \phi$
-    
-    \item[NSND] $\mathbbm{M}, w \vDash K \phi \text{ iff there exists a set $X
-    \in \mathcal{A}_w$ such that $\mathbbm{M}, w \vDash X$ and } \tmop{Th}
-    (\mathbbm{M}) \cup X \vdash \phi$
+    \item[NON-EMPTY] $\mathcal{A}(w)
+      \neq \varnothing$ for all worlds $w$
+%    \item[NSND] $\mathbbm{M}, w \vDash K \phi \text{ iff there exists a set $X
+%    \in \mathcal{A}_w$ such that $\mathbbm{M}, w \vDash X$ and } \tmop{Th}
+ %   (\mathbbm{M}) \cup X \vdash \phi$
   \end{descriptiondash}
-  
-  as before, $\vdash$ is any sound logical consequence relation for $\vDash$
-  with \tmtextbf{modus ponens} and \tmtextbf{reflection}
+  % as before, $\vdash$ is any sound logical consequence relation for $\vDash$
+  % with \tmtextbf{modus ponens} and \tmtextbf{reflection}
 \end{definition}
 
 \begin{table}[h]
+\begin{centering}
   \begin{tabular}{l}
     $\vdash \phi \rightarrow \psi \rightarrow \phi$\\
     $\vdash (\phi \rightarrow \psi \rightarrow \chi) \rightarrow (\phi
     \rightarrow \psi) \rightarrow \phi \rightarrow \chi$\\
     $\vdash ((\phi \rightarrow \bot) \rightarrow (\psi \rightarrow \bot))
     \rightarrow \psi \rightarrow \phi$\\
-    $\vdash K \phi \rightarrow \Box \phi$\\
-    $\vdash K \phi \rightarrow \phi$\\
+%    $\vdash K \phi \rightarrow \Box \phi$\\
+%    $\vdash K \phi \rightarrow \phi$\\
     $\vdash A : \phi \rightarrow \Box \phi$\\
-    \\
-    \begin{tabular}{llll}
-      $\frac{\vdash \phi \rightarrow \psi \hspace{4em} \vdash \phi}{\vdash
-      \psi}$ & {\hspace{6em}}$\frac{\vdash \phi \rightarrow \psi}{\vdash \Box
-      \phi \rightarrow \Box \psi}$ & {\hspace{6em}} & $\frac{\vdash \phi
-      \rightarrow \psi}{\vdash K \phi \rightarrow K \psi}$
-    \end{tabular}
+    $\vdash \Box \top$
   \end{tabular}
-  \caption{\label{logic3}A Neighborhood Logic for \tmtextbf{NCSQ} and
-  {\tmstrong{NSND}}}
+
+    \begin{tabular}{lll}
+      $\displaystyle\frac{\vdash \phi \rightarrow \psi \ \ \vdash \phi}{\vdash
+      \psi}$ & \ \ & $\displaystyle\frac{\vdash \phi \rightarrow \psi}{\vdash \Box \phi
+      \rightarrow \Box \psi}$
+    \end{tabular}
+  \caption{\label{logic3}A Neighborhood Based Doxastic Logic of
+    Probable Opinion}
+\end{centering}
 \end{table}
 
 \begin{theorem}
   Assuming an infinite store of letters $\Phi$, the logic in Table
   \ref{logic3} is sound and weakly complete for neighborhood semantics making
-  true \tmtextbf{NCSQ} and \tmtextbf{NSND}.
+  true $\textup{\tmtextbf{NCSQ}}_\vdash$ and \tmtextbf{NON-EMPTY}.
 \end{theorem}
 
 \input{completeness5.tex}
 
-It is not too hard to identify the fragment of this logic that governs
-knowledge alone.  The fragment given in Table \ref{logic4} has special
-significance to us, since it governs the notion of knowledge presented in
-{\S}\ref{quantifying}.
-
-\begin{table}[h]
-  \begin{tabular}{l}
-    $\vdash \phi \rightarrow \psi \rightarrow \phi$\\
-    $\vdash (\phi \rightarrow \psi \rightarrow \chi) \rightarrow (\phi
-    \rightarrow \psi) \rightarrow \phi \rightarrow \chi$\\
-    $\vdash ((\phi \rightarrow \bot) \rightarrow (\psi \rightarrow \bot))
-    \rightarrow \psi \rightarrow \phi$\\
-    $\vdash K \phi \rightarrow \phi$\\
-    \\
-    \begin{tabular}{llll}
-      $\frac{\vdash \phi \rightarrow \psi \hspace{4em} \vdash \phi}{\vdash
-      \psi}$ &  &  & $\frac{\vdash \phi \rightarrow \psi}{\vdash K \phi
-      \rightarrow K \psi}$
-    \end{tabular}
-  \end{tabular}
-  \caption{\label{logic4}A knowledge-only neighborhood logic for
-  \tmtextbf{NCSQ} and {\tmstrong{NSND}}}
-\end{table}
-
-\begin{proposition}
-  The knowledge-only logic presented governs the $\Box$-free fragment of the
-  logic in Table \ref{logic3}
-\end{proposition}
-
-This concludes our analysis of knowledge bases using neighborhood
-semantics.
+% \subsection{Logic for Knowledge and Belief}
+% In this section, we conservatively extend the neighborhood semantics
+% based logic of belief to account for knowledge as well. According to
+% Russell, belief which is not knowledge falls into two categories:
+% \emph{probable opinion} and \emph{error
+% As in previous sections, we model knowledge as being minimally \emph{true}, however
+% we place no further constraints on it.  
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "paper"
